@@ -2,22 +2,26 @@ package com.br.zetta.fire.data.entity;
 
 
 import com.br.zetta.fire.data.dto.request.UserRequestDTO;
+import com.br.zetta.fire.data.entity.enums.UserRole;
 import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDate;
+import java.util.UUID;
 
 @Entity
 @Getter
 @Setter
 @Table(name = "users")
+@NoArgsConstructor
 public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
-    private Long idUser;
+    private UUID idUser;
 
     @Column(name="name", nullable = false)
     private String name;
@@ -34,6 +38,10 @@ public class User {
     @Column(name = "createdAt")
     private LocalDate createdAt;
 
+    @Column(name="userRole")
+    private UserRole userRole;
+
+
     @Builder
     public User(UserRequestDTO userRequestDTO) {
         this.name = userRequestDTO.name();
@@ -42,6 +50,5 @@ public class User {
         this.phone = userRequestDTO.phone();
 
     }
-
 
 }

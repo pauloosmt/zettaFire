@@ -1,5 +1,8 @@
 package com.br.zetta.fire.data.entity.enums;
 
+import lombok.Getter;
+
+@Getter
 public enum StatusAlert {
     SENT("SENT"),
     FAILED("FAILED"),
@@ -9,10 +12,6 @@ public enum StatusAlert {
 
     StatusAlert(String status) {
         this.status = status;
-    }
-
-    public String getStatusAlert() {
-        return status;
     }
 
 }

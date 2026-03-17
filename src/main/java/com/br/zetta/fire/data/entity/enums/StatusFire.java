@@ -14,8 +14,4 @@ public enum StatusFire {
         this.statusFire = statusFire;
     }
 
-    public String getStatusFire() {
-        return statusFire;
-    }
-
 }

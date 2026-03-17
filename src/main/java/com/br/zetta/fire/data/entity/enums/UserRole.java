@@ -2,6 +2,7 @@ package com.br.zetta.fire.data.entity.enums;
 
 import lombok.Getter;
 
+
 @Getter
 public enum UserRole {
     ADMIN("ADMIN"),
@@ -13,7 +14,4 @@ public enum UserRole {
         this.role = role;
     }
 
-    public String getRole() {
-        return role;
-    }
 }

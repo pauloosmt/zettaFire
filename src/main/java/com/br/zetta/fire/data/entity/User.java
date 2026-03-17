@@ -10,6 +10,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -40,6 +42,14 @@ public class User {
 
     @Column(name="userRole")
     private UserRole userRole;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "idAddress", referencedColumnName = "id")
+    private Address address;
+
+    @OneToMany(mappedBy = "users", cascade = CascadeType.ALL)
+    private List<Alert> alertList = new ArrayList<>();
+
 
 
     @Builder

@@ -28,5 +28,13 @@ public class Alert {
     @Column(name="status", nullable = false)
     private StatusAlert statusAlert;
 
+    @ManyToOne
+    @JoinColumn(name= "idUser")
+    private User user;
+
+    @ManyToOne
+    @JoinColumn(name="idFireEvent")
+    private FireEvent fireEvent;
+
 
 }

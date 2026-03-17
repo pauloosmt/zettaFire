@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDate;
+import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -37,6 +38,9 @@ public class FireEvent {
 
     @Column(name="status", nullable = false)
     private StatusFire statusFire;
+
+    @OneToMany(mappedBy = "alert")
+    private List<Alert> alert;
 
     public FireEvent(FireEventRequestDTO fireEventRequestDTO) {
         this.description = fireEventRequestDTO.description();

@@ -39,7 +39,7 @@ public class FireEvent {
     @Column(name="status", nullable = false)
     private StatusFire statusFire;
 
-    @OneToMany(mappedBy = "alert")
+    @OneToMany(mappedBy = "fireEvent")
     private List<Alert> alert;
 
     public FireEvent(FireEventRequestDTO fireEventRequestDTO) {

@@ -9,6 +9,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.time.LocalDate;
@@ -56,19 +57,22 @@ public class User implements UserDetails {
 
 
     @Builder
-    public User(UserRequestDTO userRequestDTO) {
+    public User(UserRequestDTO userRequestDTO, String password) {
         this.name = userRequestDTO.name();
         this.email = userRequestDTO.email();
         this.password = userRequestDTO.password();
         this.phone = userRequestDTO.phone();
-
+        this.password = password;
     }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        throw new UnsupportedOperationException("Unimplemented method 'getAuthorities'");
+        if (this.userRole == UserRole.ADMIN) {
+            return List.of(new SimpleGrantedAuthority("ROLE_ADMIN"), new SimpleGrantedAuthority("ROLE_USER"));
+        } else {
+            return List.of(new SimpleGrantedAuthority("ROLE_USER"));
+        }
     }
-
     @Override
     public String getUsername() {
         throw new UnsupportedOperationException("Unimplemented method 'getUsername'");

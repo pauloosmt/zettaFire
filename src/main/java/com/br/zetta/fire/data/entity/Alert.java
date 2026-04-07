@@ -7,6 +7,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -28,9 +30,13 @@ public class Alert {
     @Column(name="status", nullable = false)
     private StatusAlert statusAlert;
 
-    @ManyToOne
-    @JoinColumn(name= "idUser")
-    private User user;
+    @ManyToMany
+    @JoinTable(
+            name = "user_alert",
+            joinColumns = @JoinColumn(name = "id_alert"),
+            inverseJoinColumns = @JoinColumn(name = "id_user")
+    )
+    private List<User> userList = new ArrayList<>();
 
     @ManyToOne
     @JoinColumn(name="idFireEvent")

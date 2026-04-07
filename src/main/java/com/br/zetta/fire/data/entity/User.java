@@ -51,7 +51,7 @@ public class User implements UserDetails {
     @JoinColumn(name = "idAddress", referencedColumnName = "idAddress")
     private Address address;
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    @ManyToMany(mappedBy = "userList")
     private List<Alert> alertList = new ArrayList<>();
 
 

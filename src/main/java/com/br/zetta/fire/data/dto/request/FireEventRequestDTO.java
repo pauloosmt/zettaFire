@@ -17,6 +17,9 @@ public record FireEventRequestDTO(
         Long radiusOfDisk,
 
         @NotBlank(message = "Status is required")
-        StatusFire statusFire
+        StatusFire statusFire,
+
+        @NotBlank(message = "City is required")
+        String city
 ) {
 }

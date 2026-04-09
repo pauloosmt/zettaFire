@@ -20,6 +20,8 @@ public record UserRequestDTO(
 
         @NotBlank(message = "Phone is required")
         @Pattern(regexp = "\\(\\d{2}\\)\\d{5}-\\d{4}", message = "Invalid phone. Use (XX)XXXXX-XXXX")
-        String phone
+        String phone,
+
+        AddressRequestDTO address
 ) {
 }

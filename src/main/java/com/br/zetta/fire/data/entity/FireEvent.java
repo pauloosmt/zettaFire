@@ -35,7 +35,7 @@ public class FireEvent {
     private Long radiusOfRisk;
 
     @Column(name="startData", nullable = false)
-    private LocalDateTime startData;
+    private LocalDateTime startTime;
 
     @Column(name="status", nullable = false)
     private StatusFire statusFire;

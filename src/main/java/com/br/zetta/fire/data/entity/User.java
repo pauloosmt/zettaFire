@@ -63,6 +63,17 @@ public class User implements UserDetails {
         this.password = userRequestDTO.password();
         this.phone = userRequestDTO.phone();
         this.password = password;
+        this.createdAt = LocalDate.now();
+
+        Address addr = new Address();
+        addr.setCep(userRequestDTO.address().cep());
+        addr.setCity(userRequestDTO.address().city());
+        addr.setStreet(userRequestDTO.address().street());
+        addr.setNumber(userRequestDTO.address().number());
+        addr.setDistrict(userRequestDTO.address().district());
+        addr.setState(userRequestDTO.address().state());
+
+        this.address = addr;
     }
 
     @Override

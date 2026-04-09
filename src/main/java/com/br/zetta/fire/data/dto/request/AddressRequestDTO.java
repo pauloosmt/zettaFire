@@ -21,13 +21,7 @@ public record AddressRequestDTO(
         String city,
 
         @NotBlank(message = "State is required")
-        String state,
-
-        @NotBlank(message = "Latitude is required")
-        Double latitude,
-
-        @NotBlank(message = "Longitude is required")
-        Double longitude
+        String state
 
 ) {
 }

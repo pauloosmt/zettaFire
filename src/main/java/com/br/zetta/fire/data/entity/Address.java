@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.math.BigDecimal;
 import java.util.UUID;
 
 @Entity
@@ -36,11 +37,11 @@ public class Address {
     @Column(name="state", nullable = false)
     private String state;
 
-    @Column(name="latitude", nullable = false)
-    private Double latitude;
+    @Column(name="latitude", nullable = false, precision = 10, scale = 8)
+    private BigDecimal latitude;
 
-    @Column(name="longitude", nullable = false)
-    private Double longitude;
+    @Column(name="longitude", nullable = false, precision = 10, scale = 8)
+    private BigDecimal longitude;
 
 
     public Address(AddressRequestDTO addressRequestDTO) {
@@ -50,8 +51,7 @@ public class Address {
         this.district = addressRequestDTO.district();
         this.city = addressRequestDTO.city();
         this.state = addressRequestDTO.state();
-        this.latitude = addressRequestDTO.latitude();
-        this.longitude = addressRequestDTO.longitude();
+
     }
 
 

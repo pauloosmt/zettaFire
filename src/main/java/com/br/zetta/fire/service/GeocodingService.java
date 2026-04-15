@@ -34,8 +34,6 @@ public class GeocodingService {
                     "&country=Brazil&format=json&limit=1";
 
 
-            System.out.println("URL enviada: " + urlApi);
-
             ResponseEntity<List<Map<String, Object>>> response = restTemplate.exchange(
                     urlApi,
                     HttpMethod.GET,

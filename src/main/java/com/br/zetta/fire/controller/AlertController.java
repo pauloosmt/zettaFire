@@ -2,6 +2,7 @@ package com.br.zetta.fire.controller;
 
 import com.br.zetta.fire.data.dto.response.AlertResponse;
 import com.br.zetta.fire.service.AlertService;
+import com.br.zetta.fire.service.EmailService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -10,10 +11,10 @@ import java.time.LocalDateTime;
 @RestController
 @RequestMapping("alert")
 public class AlertController {
-    private final AlertService alertService;
+    private final EmailService emailService;
 
-    public AlertController(AlertService alertService) {
-        this.alertService = alertService;
+    public AlertController(EmailService emailService) {
+        this.emailService = emailService;
     }
 
     @PostMapping("/send")
@@ -26,11 +27,11 @@ public class AlertController {
             ));
         }
 
-        alertService.sendEmail(email, null);
+        emailService.sendEmail(email, null);
 
         AlertResponse response = new AlertResponse("Processo de alerta disparado com suceeso para: " + email,
-        "SUCCESS",
-        LocalDateTime.now().toString()
+            "SUCCESS",
+            LocalDateTime.now().toString()
         );
 
         return ResponseEntity.ok(response);

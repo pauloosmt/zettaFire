@@ -5,33 +5,25 @@ import com.br.zetta.fire.data.entity.FireEvent;
 import com.br.zetta.fire.data.entity.User;
 import com.br.zetta.fire.data.entity.enums.StatusAlert;
 import com.br.zetta.fire.repository.AlertRepository;
-import com.br.zetta.fire.repository.UserRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.mail.SimpleMailMessage;
-import org.springframework.mail.javamail.JavaMailSender;
-import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
-import java.util.HashSet;
 import java.util.List;
-import java.util.UUID;
 
 
 @Service
 public class AlertService {
-    private final JavaMailSender mailSender;
     private final AlertRepository alertRepository;
-    private final UserRepository userRepository;
+    private final EmailService emailService;
 
     private static final Logger logger = LoggerFactory.getLogger(AlertService.class);
 
-    public AlertService(JavaMailSender mailSender, AlertRepository alertRepository, UserRepository userRepository) {
-        this.mailSender = mailSender;
+    public AlertService( AlertRepository alertRepository, EmailService emailService) {
         this.alertRepository = alertRepository;
-        this.userRepository = userRepository;
+        this.emailService = emailService;
     }
 
     //Mensagens padrões alertas
@@ -59,38 +51,9 @@ public class AlertService {
         Alert savedAlert = alertRepository.save(alert);
 
         for(User user : usersAtRisk) {
-            this.sendEmail(user.getEmail(), savedAlert.getIdAlert());
+            emailService.sendEmail(user.getEmail(), savedAlert.getIdAlert());
         }
     }
 
-    @Async
-    public void sendEmail(String to, UUID idAlert) {
-        try {
-            logger.info("Iniciando tenatativa de envio de alerta de incêndio para: {}", to);
 
-            SimpleMailMessage message = new SimpleMailMessage();
-            message.setTo(to);
-            message.setSubject(SUBJECT);
-            message.setText(BODY_TEMPLATE);
-
-            mailSender.send(message);
-
-            updateAlertStatus(idAlert, StatusAlert.SENT);
-
-            logger.info("Alerta enviado com sucesso para: {}", to);
-
-        } catch (Exception e) {
-            updateAlertStatus(idAlert, StatusAlert.FAILED);
-            logger.error("ERRO CRITICO: Falha ao enviar alerta para {}. Motivo: {}", to, e.getMessage());
-        }
-    }
-
-    private void updateAlertStatus(UUID idAlert, StatusAlert status) {
-        if(idAlert == null) return;
-
-        alertRepository.findById(idAlert).ifPresent(alert -> {
-            alert.setStatusAlert(status);
-            alertRepository.save(alert);
-        });
-    }
 }

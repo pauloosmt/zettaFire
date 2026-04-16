@@ -19,8 +19,10 @@ public class GeocodingService {
     @Value("${locationiq.api.key}")
     private String apiKey;
 
+    // Objeto do Spring usado para fazer requisições HTTP (chamar URLs externas)
     private final RestTemplate restTemplate = new RestTemplate();
 
+    //Obtém as coordenadas (Latitude e Longitude) a partir de um endereço
     public BigDecimal[] getCoordinates(String street, String number, String city, String state, String cep) {
         try {
             //Formatando o endereço que vai buscar as coords
@@ -33,7 +35,10 @@ public class GeocodingService {
                     "&postalcode=" + URLEncoder.encode(cep, StandardCharsets.UTF_8) +
                     "&country=Brazil&format=json&limit=1";
 
-
+            /* Faz a chamada GET para a API
+               O ParameterizedTypeReference é usado porque a API retorna uma Lista [ ]
+               de objetos { }
+            */
             ResponseEntity<List<Map<String, Object>>> response = restTemplate.exchange(
                     urlApi,
                     HttpMethod.GET,
@@ -50,6 +55,7 @@ public class GeocodingService {
         } catch (Exception e) {
             throw new RuntimeException();
         }
-        return new BigDecimal[]{BigDecimal.ZERO, BigDecimal.ZERO}; //retorno padrao
+
+        return new BigDecimal[]{BigDecimal.ZERO, BigDecimal.ZERO};  // Retorno de segurança caso o endereço não seja encontrado
     }
 }

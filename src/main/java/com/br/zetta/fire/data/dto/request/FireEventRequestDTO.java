@@ -14,10 +14,16 @@ public record FireEventRequestDTO(
         Double longitude,
 
         @NotBlank(message = "Radius of Risk is required")
-        Long radiusOfDisk,
+        Long radiusOfRisk,
 
         @NotBlank(message = "Status is required")
         StatusFire statusFire,
+
+        @NotBlank(message = "Fire Risk is required")
+        Double fireRisk,
+
+        @NotBlank(message = "FRP is required")
+        Double frp,
 
         @NotBlank(message = "City is required")
         String city

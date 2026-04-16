@@ -21,8 +21,6 @@ public class Alert {
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID idAlert;
 
-    @Column(name= "message", nullable = false)
-    private String message;
 
     @Column(name="date", nullable = false)
     private LocalDate shippingDate;
@@ -41,6 +39,10 @@ public class Alert {
     @ManyToOne
     @JoinColumn(name="idFireEvent")
     private FireEvent fireEvent;
+
+    public void setUsers(List<User> user) {
+        this.userList = user;
+    }
 
 
 }

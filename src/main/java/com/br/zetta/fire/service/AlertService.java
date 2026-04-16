@@ -1,17 +1,38 @@
 package com.br.zetta.fire.service;
 
+import com.br.zetta.fire.data.entity.Alert;
+import com.br.zetta.fire.data.entity.FireEvent;
+import com.br.zetta.fire.data.entity.User;
+import com.br.zetta.fire.data.entity.enums.StatusAlert;
+import com.br.zetta.fire.repository.AlertRepository;
+import com.br.zetta.fire.repository.UserRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.List;
+import java.util.UUID;
 
 
 @Service
 public class AlertService {
     private final JavaMailSender mailSender;
+    private final AlertRepository alertRepository;
+    private final UserRepository userRepository;
+
     private static final Logger logger = LoggerFactory.getLogger(AlertService.class);
+
+    public AlertService(JavaMailSender mailSender, AlertRepository alertRepository, UserRepository userRepository) {
+        this.mailSender = mailSender;
+        this.alertRepository = alertRepository;
+        this.userRepository = userRepository;
+    }
 
     //Mensagens padrões alertas
     private static final String SUBJECT = "️ ALERTA CRÍTICO: Risco de Incêndio Detectado";
@@ -24,8 +45,26 @@ public class AlertService {
             Este é um alerta automático. Não responda a este e-mail.
             """;
 
+    @Transactional
+    public void createAndSendAlerts(FireEvent fireEvent, List<User> usersAtRisk) {
+        if(usersAtRisk.isEmpty()) return;
+
+        Alert alert = new Alert();
+        alert.setShippingDate(LocalDate.now());
+        alert.setStatusAlert(StatusAlert.PENDING);
+        alert.setFireEvent(fireEvent);
+
+        alert.setUserList(usersAtRisk);
+
+        Alert savedAlert = alertRepository.save(alert);
+
+        for(User user : usersAtRisk) {
+            this.sendEmail(user.getEmail(), savedAlert.getIdAlert());
+        }
+    }
+
     @Async
-    public void sendEmail(String to) {
+    public void sendEmail(String to, UUID idAlert) {
         try {
             logger.info("Iniciando tenatativa de envio de alerta de incêndio para: {}", to);
 
@@ -36,14 +75,22 @@ public class AlertService {
 
             mailSender.send(message);
 
+            updateAlertStatus(idAlert, StatusAlert.SENT);
+
             logger.info("Alerta enviado com sucesso para: {}", to);
 
         } catch (Exception e) {
+            updateAlertStatus(idAlert, StatusAlert.FAILED);
             logger.error("ERRO CRITICO: Falha ao enviar alerta para {}. Motivo: {}", to, e.getMessage());
         }
     }
 
-    public AlertService(JavaMailSender mailSender) {
-        this.mailSender = mailSender;
+    private void updateAlertStatus(UUID idAlert, StatusAlert status) {
+        if(idAlert == null) return;
+
+        alertRepository.findById(idAlert).ifPresent(alert -> {
+            alert.setStatusAlert(status);
+            alertRepository.save(alert);
+        });
     }
 }

@@ -37,6 +37,12 @@ public class FireEvent {
     @Column(name="startData", nullable = false)
     private LocalDateTime startTime;
 
+    @Column(name="fireRisk", nullable = false)
+    private Double fireRisk;
+
+    @Column(name="frp", nullable = false)
+    private Double frp;
+
     @Column(name="status", nullable = false)
     private StatusFire statusFire;
 
@@ -46,7 +52,9 @@ public class FireEvent {
     public FireEvent(FireEventRequestDTO fireEventRequestDTO) {
         this.latitude = fireEventRequestDTO.latitude();
         this.longitude = fireEventRequestDTO.longitude();
-        this.radiusOfRisk = fireEventRequestDTO.radiusOfDisk();
+        this.fireRisk = fireEventRequestDTO.fireRisk();
+        this.frp = fireEventRequestDTO.frp();
+        this.radiusOfRisk = fireEventRequestDTO.radiusOfRisk();
         this.statusFire = fireEventRequestDTO.statusFire();
         this.city = fireEventRequestDTO.city();
     }

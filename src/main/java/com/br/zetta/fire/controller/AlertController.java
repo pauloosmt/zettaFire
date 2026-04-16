@@ -26,10 +26,10 @@ public class AlertController {
             ));
         }
 
-        alertService.sendEmail(email);
+        alertService.sendEmail(email, null);
 
         AlertResponse response = new AlertResponse("Processo de alerta disparado com suceeso para: " + email,
-        "SUCESS",
+        "SUCCESS",
         LocalDateTime.now().toString()
         );
 

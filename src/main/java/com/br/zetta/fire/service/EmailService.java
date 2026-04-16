@@ -39,6 +39,7 @@ public class EmailService {
         try{
             logger.info("Iniciando tentativa de envio para: {}", to);
             SimpleMailMessage message = new SimpleMailMessage();
+            message.setFrom("Zetta Fire <${spring.mail.username}>");
             message.setTo(to);
             message.setSubject(SUBJECT);
             message.setText(BODY_TEMPLATE);

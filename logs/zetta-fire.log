@@ -2552,3 +2552,732 @@ org.postgresql.util.PSQLException: ERRO: o valor nulo na coluna "message" da rel
 2026-04-16T01:56:58.779-03:00  INFO 20112 --- [zettaFire] [http-nio-8080-exec-3] com.br.zetta.fire.service.AlertService   : Alerta enviado com sucesso para: paulo.taciano@estudante.ufla.br
 2026-04-16T01:56:58.780-03:00  INFO 20112 --- [zettaFire] [http-nio-8080-exec-3] com.br.zetta.fire.service.AlertService   : Iniciando tenatativa de envio de alerta de incêndio para: telmagrazi@hotmail.com
 2026-04-16T01:57:12.127-03:00  INFO 20112 --- [zettaFire] [http-nio-8080-exec-3] com.br.zetta.fire.service.AlertService   : Alerta enviado com sucesso para: telmagrazi@hotmail.com
+2026-04-16T13:45:06.577-03:00  INFO 12816 --- [zettaFire] [restartedMain] com.br.zetta.fire.StartUp                : Starting StartUp using Java 21.0.7 with PID 12816 (D:\zettaFinal\zettaFire\target\classes started by paulo in D:\zettaFinal\zettaFire)
+2026-04-16T13:45:06.601-03:00  INFO 12816 --- [zettaFire] [restartedMain] com.br.zetta.fire.StartUp                : No active profile set, falling back to 1 default profile: "default"
+2026-04-16T13:45:06.654-03:00  INFO 12816 --- [zettaFire] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2026-04-16T13:45:06.655-03:00  INFO 12816 --- [zettaFire] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2026-04-16T13:45:07.594-03:00  INFO 12816 --- [zettaFire] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-04-16T13:45:07.672-03:00  INFO 12816 --- [zettaFire] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 64 ms. Found 4 JPA repository interfaces.
+2026-04-16T13:45:08.371-03:00  INFO 12816 --- [zettaFire] [restartedMain] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8080 (http)
+2026-04-16T13:45:08.389-03:00  INFO 12816 --- [zettaFire] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-04-16T13:45:08.390-03:00  INFO 12816 --- [zettaFire] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.18]
+2026-04-16T13:45:08.457-03:00  INFO 12816 --- [zettaFire] [restartedMain] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 1800 ms
+2026-04-16T13:45:08.608-03:00  INFO 12816 --- [zettaFire] [restartedMain] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-04-16T13:45:08.687-03:00  INFO 12816 --- [zettaFire] [restartedMain] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.2.4.Final
+2026-04-16T13:45:09.615-03:00  INFO 12816 --- [zettaFire] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-04-16T13:45:09.654-03:00  INFO 12816 --- [zettaFire] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-04-16T13:45:09.915-03:00  INFO 12816 --- [zettaFire] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@350a97d6
+2026-04-16T13:45:09.917-03:00  INFO 12816 --- [zettaFire] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-04-16T13:45:10.042-03:00  INFO 12816 --- [zettaFire] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:postgresql://localhost:5432/zettaFire]
+	Database driver: PostgreSQL JDBC Driver
+	Database dialect: PostgreSQLDialect
+	Database version: 17.7
+	Default catalog/schema: zettaFire/public
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-04-16T13:45:11.768-03:00  INFO 12816 --- [zettaFire] [restartedMain] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-04-16T13:45:11.949-03:00  INFO 12816 --- [zettaFire] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-04-16T13:45:12.031-03:00  INFO 12816 --- [zettaFire] [restartedMain] o.s.d.j.r.query.QueryEnhancerFactories   : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-04-16T13:45:12.405-03:00  INFO 12816 --- [zettaFire] [restartedMain] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name authService
+2026-04-16T13:45:12.487-03:00  WARN 12816 --- [zettaFire] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-04-16T13:45:13.027-03:00  INFO 12816 --- [zettaFire] [restartedMain] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8080 (http) with context path '/'
+2026-04-16T13:45:13.032-03:00  INFO 12816 --- [zettaFire] [restartedMain] com.br.zetta.fire.StartUp                : Started StartUp in 6.972 seconds (process running for 7.696)
+2026-04-16T13:45:38.351-03:00  INFO 12816 --- [zettaFire] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-04-16T13:45:38.351-03:00  INFO 12816 --- [zettaFire] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-04-16T13:45:38.353-03:00  INFO 12816 --- [zettaFire] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2026-04-16T13:45:50.250-03:00 ERROR 12816 --- [zettaFire] [http-nio-8080-exec-2] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception
+
+java.lang.NullPointerException: Cannot invoke "org.springframework.security.core.userdetails.UserDetails.getAuthorities()" because "user" is null
+	at com.br.zetta.fire.infra.security.SecurityFilter.doFilterInternal(SecurityFilter.java:38) ~[classes/:na]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-7.0.5.jar:7.0.5]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:380) ~[spring-security-web-7.0.3.jar:7.0.3]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:110) ~[spring-security-web-7.0.3.jar:7.0.3]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:96) ~[spring-security-web-7.0.3.jar:7.0.3]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:380) ~[spring-security-web-7.0.3.jar:7.0.3]
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90) ~[spring-security-web-7.0.3.jar:7.0.3]
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75) ~[spring-security-web-7.0.3.jar:7.0.3]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-7.0.5.jar:7.0.5]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:380) ~[spring-security-web-7.0.3.jar:7.0.3]
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:82) ~[spring-security-web-7.0.3.jar:7.0.3]
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:69) ~[spring-security-web-7.0.3.jar:7.0.3]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:380) ~[spring-security-web-7.0.3.jar:7.0.3]
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:62) ~[spring-security-web-7.0.3.jar:7.0.3]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-7.0.5.jar:7.0.5]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:380) ~[spring-security-web-7.0.3.jar:7.0.3]
+	at org.springframework.security.web.session.DisableEncodeUrlFilter.doFilterInternal(DisableEncodeUrlFilter.java:42) ~[spring-security-web-7.0.3.jar:7.0.3]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-7.0.5.jar:7.0.5]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:380) ~[spring-security-web-7.0.3.jar:7.0.3]
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:237) ~[spring-security-web-7.0.3.jar:7.0.3]
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:195) ~[spring-security-web-7.0.3.jar:7.0.3]
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113) ~[spring-web-7.0.5.jar:7.0.5]
+	at org.springframework.web.filter.ServletRequestPathFilter.doFilter(ServletRequestPathFilter.java:52) ~[spring-web-7.0.5.jar:7.0.5]
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113) ~[spring-web-7.0.5.jar:7.0.5]
+	at org.springframework.web.filter.CompositeFilter.doFilter(CompositeFilter.java:74) ~[spring-web-7.0.5.jar:7.0.5]
+	at org.springframework.security.config.annotation.web.configuration.WebSecurityConfiguration$CompositeFilterChainProxy.doFilter(WebSecurityConfiguration.java:317) ~[spring-security-config-7.0.3.jar:7.0.3]
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:355) ~[spring-web-7.0.5.jar:7.0.5]
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:272) ~[spring-web-7.0.5.jar:7.0.5]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:107) ~[tomcat-embed-core-11.0.18.jar:11.0.18]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-7.0.5.jar:7.0.5]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-7.0.5.jar:7.0.5]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:107) ~[tomcat-embed-core-11.0.18.jar:11.0.18]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-7.0.5.jar:7.0.5]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-7.0.5.jar:7.0.5]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:107) ~[tomcat-embed-core-11.0.18.jar:11.0.18]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:199) ~[spring-web-7.0.5.jar:7.0.5]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-7.0.5.jar:7.0.5]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:107) ~[tomcat-embed-core-11.0.18.jar:11.0.18]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:165) ~[tomcat-embed-core-11.0.18.jar:11.0.18]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:77) ~[tomcat-embed-core-11.0.18.jar:11.0.18]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:492) ~[tomcat-embed-core-11.0.18.jar:11.0.18]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:113) ~[tomcat-embed-core-11.0.18.jar:11.0.18]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:83) ~[tomcat-embed-core-11.0.18.jar:11.0.18]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:72) ~[tomcat-embed-core-11.0.18.jar:11.0.18]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:341) ~[tomcat-embed-core-11.0.18.jar:11.0.18]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:397) ~[tomcat-embed-core-11.0.18.jar:11.0.18]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63) ~[tomcat-embed-core-11.0.18.jar:11.0.18]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:903) ~[tomcat-embed-core-11.0.18.jar:11.0.18]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1779) ~[tomcat-embed-core-11.0.18.jar:11.0.18]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) ~[tomcat-embed-core-11.0.18.jar:11.0.18]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:946) ~[tomcat-embed-core-11.0.18.jar:11.0.18]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:480) ~[tomcat-embed-core-11.0.18.jar:11.0.18]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:57) ~[tomcat-embed-core-11.0.18.jar:11.0.18]
+	at java.base/java.lang.Thread.run(Thread.java:1583) ~[na:na]
+
+2026-04-16T13:45:58.528-03:00 ERROR 12816 --- [zettaFire] [http-nio-8080-exec-3] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception
+
+java.lang.NullPointerException: Cannot invoke "org.springframework.security.core.userdetails.UserDetails.getAuthorities()" because "user" is null
+	at com.br.zetta.fire.infra.security.SecurityFilter.doFilterInternal(SecurityFilter.java:38) ~[classes/:na]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-7.0.5.jar:7.0.5]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:380) ~[spring-security-web-7.0.3.jar:7.0.3]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:110) ~[spring-security-web-7.0.3.jar:7.0.3]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:96) ~[spring-security-web-7.0.3.jar:7.0.3]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:380) ~[spring-security-web-7.0.3.jar:7.0.3]
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90) ~[spring-security-web-7.0.3.jar:7.0.3]
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75) ~[spring-security-web-7.0.3.jar:7.0.3]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-7.0.5.jar:7.0.5]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:380) ~[spring-security-web-7.0.3.jar:7.0.3]
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:82) ~[spring-security-web-7.0.3.jar:7.0.3]
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:69) ~[spring-security-web-7.0.3.jar:7.0.3]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:380) ~[spring-security-web-7.0.3.jar:7.0.3]
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:62) ~[spring-security-web-7.0.3.jar:7.0.3]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-7.0.5.jar:7.0.5]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:380) ~[spring-security-web-7.0.3.jar:7.0.3]
+	at org.springframework.security.web.session.DisableEncodeUrlFilter.doFilterInternal(DisableEncodeUrlFilter.java:42) ~[spring-security-web-7.0.3.jar:7.0.3]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-7.0.5.jar:7.0.5]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:380) ~[spring-security-web-7.0.3.jar:7.0.3]
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:237) ~[spring-security-web-7.0.3.jar:7.0.3]
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:195) ~[spring-security-web-7.0.3.jar:7.0.3]
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113) ~[spring-web-7.0.5.jar:7.0.5]
+	at org.springframework.web.filter.ServletRequestPathFilter.doFilter(ServletRequestPathFilter.java:52) ~[spring-web-7.0.5.jar:7.0.5]
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113) ~[spring-web-7.0.5.jar:7.0.5]
+	at org.springframework.web.filter.CompositeFilter.doFilter(CompositeFilter.java:74) ~[spring-web-7.0.5.jar:7.0.5]
+	at org.springframework.security.config.annotation.web.configuration.WebSecurityConfiguration$CompositeFilterChainProxy.doFilter(WebSecurityConfiguration.java:317) ~[spring-security-config-7.0.3.jar:7.0.3]
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:355) ~[spring-web-7.0.5.jar:7.0.5]
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:272) ~[spring-web-7.0.5.jar:7.0.5]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:107) ~[tomcat-embed-core-11.0.18.jar:11.0.18]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-7.0.5.jar:7.0.5]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-7.0.5.jar:7.0.5]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:107) ~[tomcat-embed-core-11.0.18.jar:11.0.18]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-7.0.5.jar:7.0.5]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-7.0.5.jar:7.0.5]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:107) ~[tomcat-embed-core-11.0.18.jar:11.0.18]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:199) ~[spring-web-7.0.5.jar:7.0.5]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-7.0.5.jar:7.0.5]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:107) ~[tomcat-embed-core-11.0.18.jar:11.0.18]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:165) ~[tomcat-embed-core-11.0.18.jar:11.0.18]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:77) ~[tomcat-embed-core-11.0.18.jar:11.0.18]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:492) ~[tomcat-embed-core-11.0.18.jar:11.0.18]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:113) ~[tomcat-embed-core-11.0.18.jar:11.0.18]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:83) ~[tomcat-embed-core-11.0.18.jar:11.0.18]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:72) ~[tomcat-embed-core-11.0.18.jar:11.0.18]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:341) ~[tomcat-embed-core-11.0.18.jar:11.0.18]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:397) ~[tomcat-embed-core-11.0.18.jar:11.0.18]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63) ~[tomcat-embed-core-11.0.18.jar:11.0.18]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:903) ~[tomcat-embed-core-11.0.18.jar:11.0.18]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1779) ~[tomcat-embed-core-11.0.18.jar:11.0.18]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) ~[tomcat-embed-core-11.0.18.jar:11.0.18]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:946) ~[tomcat-embed-core-11.0.18.jar:11.0.18]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:480) ~[tomcat-embed-core-11.0.18.jar:11.0.18]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:57) ~[tomcat-embed-core-11.0.18.jar:11.0.18]
+	at java.base/java.lang.Thread.run(Thread.java:1583) ~[na:na]
+
+2026-04-16T13:46:00.604-03:00 ERROR 12816 --- [zettaFire] [http-nio-8080-exec-4] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception
+
+java.lang.NullPointerException: Cannot invoke "org.springframework.security.core.userdetails.UserDetails.getAuthorities()" because "user" is null
+	at com.br.zetta.fire.infra.security.SecurityFilter.doFilterInternal(SecurityFilter.java:38) ~[classes/:na]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-7.0.5.jar:7.0.5]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:380) ~[spring-security-web-7.0.3.jar:7.0.3]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:110) ~[spring-security-web-7.0.3.jar:7.0.3]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:96) ~[spring-security-web-7.0.3.jar:7.0.3]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:380) ~[spring-security-web-7.0.3.jar:7.0.3]
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90) ~[spring-security-web-7.0.3.jar:7.0.3]
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75) ~[spring-security-web-7.0.3.jar:7.0.3]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-7.0.5.jar:7.0.5]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:380) ~[spring-security-web-7.0.3.jar:7.0.3]
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:82) ~[spring-security-web-7.0.3.jar:7.0.3]
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:69) ~[spring-security-web-7.0.3.jar:7.0.3]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:380) ~[spring-security-web-7.0.3.jar:7.0.3]
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:62) ~[spring-security-web-7.0.3.jar:7.0.3]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-7.0.5.jar:7.0.5]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:380) ~[spring-security-web-7.0.3.jar:7.0.3]
+	at org.springframework.security.web.session.DisableEncodeUrlFilter.doFilterInternal(DisableEncodeUrlFilter.java:42) ~[spring-security-web-7.0.3.jar:7.0.3]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-7.0.5.jar:7.0.5]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:380) ~[spring-security-web-7.0.3.jar:7.0.3]
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:237) ~[spring-security-web-7.0.3.jar:7.0.3]
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:195) ~[spring-security-web-7.0.3.jar:7.0.3]
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113) ~[spring-web-7.0.5.jar:7.0.5]
+	at org.springframework.web.filter.ServletRequestPathFilter.doFilter(ServletRequestPathFilter.java:52) ~[spring-web-7.0.5.jar:7.0.5]
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113) ~[spring-web-7.0.5.jar:7.0.5]
+	at org.springframework.web.filter.CompositeFilter.doFilter(CompositeFilter.java:74) ~[spring-web-7.0.5.jar:7.0.5]
+	at org.springframework.security.config.annotation.web.configuration.WebSecurityConfiguration$CompositeFilterChainProxy.doFilter(WebSecurityConfiguration.java:317) ~[spring-security-config-7.0.3.jar:7.0.3]
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:355) ~[spring-web-7.0.5.jar:7.0.5]
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:272) ~[spring-web-7.0.5.jar:7.0.5]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:107) ~[tomcat-embed-core-11.0.18.jar:11.0.18]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-7.0.5.jar:7.0.5]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-7.0.5.jar:7.0.5]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:107) ~[tomcat-embed-core-11.0.18.jar:11.0.18]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-7.0.5.jar:7.0.5]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-7.0.5.jar:7.0.5]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:107) ~[tomcat-embed-core-11.0.18.jar:11.0.18]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:199) ~[spring-web-7.0.5.jar:7.0.5]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-7.0.5.jar:7.0.5]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:107) ~[tomcat-embed-core-11.0.18.jar:11.0.18]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:165) ~[tomcat-embed-core-11.0.18.jar:11.0.18]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:77) ~[tomcat-embed-core-11.0.18.jar:11.0.18]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:492) ~[tomcat-embed-core-11.0.18.jar:11.0.18]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:113) ~[tomcat-embed-core-11.0.18.jar:11.0.18]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:83) ~[tomcat-embed-core-11.0.18.jar:11.0.18]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:72) ~[tomcat-embed-core-11.0.18.jar:11.0.18]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:341) ~[tomcat-embed-core-11.0.18.jar:11.0.18]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:397) ~[tomcat-embed-core-11.0.18.jar:11.0.18]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63) ~[tomcat-embed-core-11.0.18.jar:11.0.18]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:903) ~[tomcat-embed-core-11.0.18.jar:11.0.18]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1779) ~[tomcat-embed-core-11.0.18.jar:11.0.18]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) ~[tomcat-embed-core-11.0.18.jar:11.0.18]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:946) ~[tomcat-embed-core-11.0.18.jar:11.0.18]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:480) ~[tomcat-embed-core-11.0.18.jar:11.0.18]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:57) ~[tomcat-embed-core-11.0.18.jar:11.0.18]
+	at java.base/java.lang.Thread.run(Thread.java:1583) ~[na:na]
+
+2026-04-16T13:46:34.235-03:00  INFO 12816 --- [zettaFire] [task-2] com.br.zetta.fire.service.EmailService   : Iniciando tentativa de envio para: admin2@gmail.com
+2026-04-16T13:46:34.235-03:00  INFO 12816 --- [zettaFire] [task-1] com.br.zetta.fire.service.EmailService   : Iniciando tentativa de envio para: admin8@gmail.com
+2026-04-16T13:46:34.235-03:00  INFO 12816 --- [zettaFire] [task-3] com.br.zetta.fire.service.EmailService   : Iniciando tentativa de envio para: paulo.taciano@estudante.ufla.br
+2026-04-16T13:46:34.237-03:00  INFO 12816 --- [zettaFire] [task-4] com.br.zetta.fire.service.EmailService   : Iniciando tentativa de envio para: telmagrazi@hotmail.com
+2026-04-16T13:46:47.856-03:00  INFO 12816 --- [zettaFire] [task-2] com.br.zetta.fire.service.EmailService   : Alerta enviado com sucesso para: admin2@gmail.com
+2026-04-16T13:46:47.931-03:00  INFO 12816 --- [zettaFire] [task-3] com.br.zetta.fire.service.EmailService   : Alerta enviado com sucesso para: paulo.taciano@estudante.ufla.br
+2026-04-16T13:46:48.135-03:00  INFO 12816 --- [zettaFire] [task-4] com.br.zetta.fire.service.EmailService   : Alerta enviado com sucesso para: telmagrazi@hotmail.com
+2026-04-16T13:46:48.359-03:00  INFO 12816 --- [zettaFire] [task-1] com.br.zetta.fire.service.EmailService   : Alerta enviado com sucesso para: admin8@gmail.com
+2026-04-16T15:06:52.424-03:00  INFO 12816 --- [zettaFire] [SpringApplicationShutdownHook] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
+2026-04-16T15:06:52.429-03:00  INFO 12816 --- [zettaFire] [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
+2026-04-16T15:06:52.441-03:00  INFO 12816 --- [zettaFire] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-04-16T15:06:52.445-03:00  INFO 12816 --- [zettaFire] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-04-16T15:06:52.452-03:00  INFO 12816 --- [zettaFire] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-04-16T15:29:47.623-03:00  INFO 2940 --- [zettaFire] [restartedMain] com.br.zetta.fire.StartUp                : Starting StartUp using Java 21.0.7 with PID 2940 (D:\zettaFinal\zettaFire\target\classes started by paulo in D:\zettaFinal\zettaFire)
+2026-04-16T15:29:47.626-03:00  INFO 2940 --- [zettaFire] [restartedMain] com.br.zetta.fire.StartUp                : No active profile set, falling back to 1 default profile: "default"
+2026-04-16T15:29:47.677-03:00  INFO 2940 --- [zettaFire] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2026-04-16T15:29:47.677-03:00  INFO 2940 --- [zettaFire] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2026-04-16T15:29:48.605-03:00  INFO 2940 --- [zettaFire] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-04-16T15:29:48.697-03:00  INFO 2940 --- [zettaFire] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 78 ms. Found 4 JPA repository interfaces.
+2026-04-16T15:29:49.523-03:00  INFO 2940 --- [zettaFire] [restartedMain] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8080 (http)
+2026-04-16T15:29:49.541-03:00  INFO 2940 --- [zettaFire] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-04-16T15:29:49.542-03:00  INFO 2940 --- [zettaFire] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.18]
+2026-04-16T15:29:49.603-03:00  INFO 2940 --- [zettaFire] [restartedMain] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 1926 ms
+2026-04-16T15:29:49.816-03:00  INFO 2940 --- [zettaFire] [restartedMain] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-04-16T15:29:49.918-03:00  INFO 2940 --- [zettaFire] [restartedMain] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.2.4.Final
+2026-04-16T15:29:50.921-03:00  INFO 2940 --- [zettaFire] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-04-16T15:29:50.968-03:00  INFO 2940 --- [zettaFire] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-04-16T15:29:51.196-03:00  INFO 2940 --- [zettaFire] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@2d6cf320
+2026-04-16T15:29:51.199-03:00  INFO 2940 --- [zettaFire] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-04-16T15:29:51.314-03:00  INFO 2940 --- [zettaFire] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:postgresql://localhost:5432/zettaFire]
+	Database driver: PostgreSQL JDBC Driver
+	Database dialect: PostgreSQLDialect
+	Database version: 17.7
+	Default catalog/schema: zettaFire/public
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-04-16T15:29:52.654-03:00  INFO 2940 --- [zettaFire] [restartedMain] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-04-16T15:29:52.755-03:00  INFO 2940 --- [zettaFire] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-04-16T15:29:52.820-03:00  INFO 2940 --- [zettaFire] [restartedMain] o.s.d.j.r.query.QueryEnhancerFactories   : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-04-16T15:29:53.127-03:00  INFO 2940 --- [zettaFire] [restartedMain] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name authService
+2026-04-16T15:29:53.257-03:00  WARN 2940 --- [zettaFire] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-04-16T15:29:53.809-03:00  INFO 2940 --- [zettaFire] [restartedMain] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8080 (http) with context path '/'
+2026-04-16T15:29:53.814-03:00  INFO 2940 --- [zettaFire] [restartedMain] com.br.zetta.fire.StartUp                : Started StartUp in 6.76 seconds (process running for 7.699)
+2026-04-16T15:30:14.055-03:00  INFO 2940 --- [zettaFire] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-04-16T15:30:14.055-03:00  INFO 2940 --- [zettaFire] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-04-16T15:30:14.056-03:00  INFO 2940 --- [zettaFire] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2026-04-16T15:30:27.464-03:00  INFO 2940 --- [zettaFire] [task-2] com.br.zetta.fire.service.EmailService   : Iniciando tentativa de envio para: admin2@gmail.com
+2026-04-16T15:30:27.464-03:00  INFO 2940 --- [zettaFire] [task-3] com.br.zetta.fire.service.EmailService   : Iniciando tentativa de envio para: paulo.taciano@estudante.ufla.br
+2026-04-16T15:30:27.464-03:00  INFO 2940 --- [zettaFire] [task-1] com.br.zetta.fire.service.EmailService   : Iniciando tentativa de envio para: admin8@gmail.com
+2026-04-16T15:30:27.464-03:00  INFO 2940 --- [zettaFire] [task-4] com.br.zetta.fire.service.EmailService   : Iniciando tentativa de envio para: telmagrazi@hotmail.com
+2026-04-16T15:30:27.465-03:00  INFO 2940 --- [zettaFire] [task-5] com.br.zetta.fire.service.EmailService   : Iniciando tentativa de envio para: paulostaciano@gmail.com
+2026-04-16T15:30:34.057-03:00 ERROR 2940 --- [zettaFire] [task-4] com.br.zetta.fire.service.EmailService   : Erro ao enviar email
+
+org.springframework.mail.MailAuthenticationException: Authentication failed
+	at org.springframework.mail.javamail.JavaMailSenderImpl.doSend(JavaMailSenderImpl.java:389) ~[spring-context-support-7.0.5.jar:7.0.5]
+	at org.springframework.mail.javamail.JavaMailSenderImpl.send(JavaMailSenderImpl.java:304) ~[spring-context-support-7.0.5.jar:7.0.5]
+	at org.springframework.mail.MailSender.send(MailSender.java:42) ~[spring-context-support-7.0.5.jar:7.0.5]
+	at com.br.zetta.fire.service.EmailService.sendEmail(EmailService.java:46) ~[classes/:na]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[na:na]
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:359) ~[spring-aop-7.0.5.jar:7.0.5]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.invokeJoinpoint(ReflectiveMethodInvocation.java:190) ~[spring-aop-7.0.5.jar:7.0.5]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:158) ~[spring-aop-7.0.5.jar:7.0.5]
+	at org.springframework.aop.interceptor.AsyncExecutionInterceptor.lambda$invoke$0(AsyncExecutionInterceptor.java:112) ~[spring-aop-7.0.5.jar:7.0.5]
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317) ~[na:na]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144) ~[na:na]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642) ~[na:na]
+	at java.base/java.lang.Thread.run(Thread.java:1583) ~[na:na]
+Caused by: jakarta.mail.AuthenticationFailedException: 535-5.7.8 Username and Password not accepted. For more information, go to
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials 71dfb90a1353d-56fa1ef7636sm531638e0c.0 - gsmtp
+
+	at org.eclipse.angus.mail.smtp.SMTPTransport$Authenticator.authenticate(SMTPTransport.java:954) ~[angus-mail-2.0.5.jar:na]
+	at org.eclipse.angus.mail.smtp.SMTPTransport.authenticate(SMTPTransport.java:865) ~[angus-mail-2.0.5.jar:na]
+	at org.eclipse.angus.mail.smtp.SMTPTransport.protocolConnect(SMTPTransport.java:769) ~[angus-mail-2.0.5.jar:na]
+	at jakarta.mail.Service.connect(Service.java:345) ~[jakarta.mail-api-2.1.5.jar:na]
+	at org.springframework.mail.javamail.JavaMailSenderImpl.connectTransport(JavaMailSenderImpl.java:467) ~[spring-context-support-7.0.5.jar:7.0.5]
+	at org.springframework.mail.javamail.JavaMailSenderImpl.doSend(JavaMailSenderImpl.java:386) ~[spring-context-support-7.0.5.jar:7.0.5]
+	... 13 common frames omitted
+
+2026-04-16T15:30:34.059-03:00 ERROR 2940 --- [zettaFire] [task-3] com.br.zetta.fire.service.EmailService   : Erro ao enviar email
+
+org.springframework.mail.MailAuthenticationException: Authentication failed
+	at org.springframework.mail.javamail.JavaMailSenderImpl.doSend(JavaMailSenderImpl.java:389) ~[spring-context-support-7.0.5.jar:7.0.5]
+	at org.springframework.mail.javamail.JavaMailSenderImpl.send(JavaMailSenderImpl.java:304) ~[spring-context-support-7.0.5.jar:7.0.5]
+	at org.springframework.mail.MailSender.send(MailSender.java:42) ~[spring-context-support-7.0.5.jar:7.0.5]
+	at com.br.zetta.fire.service.EmailService.sendEmail(EmailService.java:46) ~[classes/:na]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[na:na]
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:359) ~[spring-aop-7.0.5.jar:7.0.5]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.invokeJoinpoint(ReflectiveMethodInvocation.java:190) ~[spring-aop-7.0.5.jar:7.0.5]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:158) ~[spring-aop-7.0.5.jar:7.0.5]
+	at org.springframework.aop.interceptor.AsyncExecutionInterceptor.lambda$invoke$0(AsyncExecutionInterceptor.java:112) ~[spring-aop-7.0.5.jar:7.0.5]
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317) ~[na:na]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144) ~[na:na]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642) ~[na:na]
+	at java.base/java.lang.Thread.run(Thread.java:1583) ~[na:na]
+Caused by: jakarta.mail.AuthenticationFailedException: 535-5.7.8 Username and Password not accepted. For more information, go to
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials 71dfb90a1353d-56fa230801fsm465130e0c.10 - gsmtp
+
+	at org.eclipse.angus.mail.smtp.SMTPTransport$Authenticator.authenticate(SMTPTransport.java:954) ~[angus-mail-2.0.5.jar:na]
+	at org.eclipse.angus.mail.smtp.SMTPTransport.authenticate(SMTPTransport.java:865) ~[angus-mail-2.0.5.jar:na]
+	at org.eclipse.angus.mail.smtp.SMTPTransport.protocolConnect(SMTPTransport.java:769) ~[angus-mail-2.0.5.jar:na]
+	at jakarta.mail.Service.connect(Service.java:345) ~[jakarta.mail-api-2.1.5.jar:na]
+	at org.springframework.mail.javamail.JavaMailSenderImpl.connectTransport(JavaMailSenderImpl.java:467) ~[spring-context-support-7.0.5.jar:7.0.5]
+	at org.springframework.mail.javamail.JavaMailSenderImpl.doSend(JavaMailSenderImpl.java:386) ~[spring-context-support-7.0.5.jar:7.0.5]
+	... 13 common frames omitted
+
+2026-04-16T15:30:34.059-03:00 ERROR 2940 --- [zettaFire] [task-1] com.br.zetta.fire.service.EmailService   : Erro ao enviar email
+
+org.springframework.mail.MailAuthenticationException: Authentication failed
+	at org.springframework.mail.javamail.JavaMailSenderImpl.doSend(JavaMailSenderImpl.java:389) ~[spring-context-support-7.0.5.jar:7.0.5]
+	at org.springframework.mail.javamail.JavaMailSenderImpl.send(JavaMailSenderImpl.java:304) ~[spring-context-support-7.0.5.jar:7.0.5]
+	at org.springframework.mail.MailSender.send(MailSender.java:42) ~[spring-context-support-7.0.5.jar:7.0.5]
+	at com.br.zetta.fire.service.EmailService.sendEmail(EmailService.java:46) ~[classes/:na]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[na:na]
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:359) ~[spring-aop-7.0.5.jar:7.0.5]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.invokeJoinpoint(ReflectiveMethodInvocation.java:190) ~[spring-aop-7.0.5.jar:7.0.5]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:158) ~[spring-aop-7.0.5.jar:7.0.5]
+	at org.springframework.aop.interceptor.AsyncExecutionInterceptor.lambda$invoke$0(AsyncExecutionInterceptor.java:112) ~[spring-aop-7.0.5.jar:7.0.5]
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317) ~[na:na]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144) ~[na:na]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642) ~[na:na]
+	at java.base/java.lang.Thread.run(Thread.java:1583) ~[na:na]
+Caused by: jakarta.mail.AuthenticationFailedException: 535-5.7.8 Username and Password not accepted. For more information, go to
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials 71dfb90a1353d-56fa22fe9d8sm459222e0c.12 - gsmtp
+
+	at org.eclipse.angus.mail.smtp.SMTPTransport$Authenticator.authenticate(SMTPTransport.java:954) ~[angus-mail-2.0.5.jar:na]
+	at org.eclipse.angus.mail.smtp.SMTPTransport.authenticate(SMTPTransport.java:865) ~[angus-mail-2.0.5.jar:na]
+	at org.eclipse.angus.mail.smtp.SMTPTransport.protocolConnect(SMTPTransport.java:769) ~[angus-mail-2.0.5.jar:na]
+	at jakarta.mail.Service.connect(Service.java:345) ~[jakarta.mail-api-2.1.5.jar:na]
+	at org.springframework.mail.javamail.JavaMailSenderImpl.connectTransport(JavaMailSenderImpl.java:467) ~[spring-context-support-7.0.5.jar:7.0.5]
+	at org.springframework.mail.javamail.JavaMailSenderImpl.doSend(JavaMailSenderImpl.java:386) ~[spring-context-support-7.0.5.jar:7.0.5]
+	... 13 common frames omitted
+
+2026-04-16T15:30:34.092-03:00 ERROR 2940 --- [zettaFire] [task-2] com.br.zetta.fire.service.EmailService   : Erro ao enviar email
+
+org.springframework.mail.MailAuthenticationException: Authentication failed
+	at org.springframework.mail.javamail.JavaMailSenderImpl.doSend(JavaMailSenderImpl.java:389) ~[spring-context-support-7.0.5.jar:7.0.5]
+	at org.springframework.mail.javamail.JavaMailSenderImpl.send(JavaMailSenderImpl.java:304) ~[spring-context-support-7.0.5.jar:7.0.5]
+	at org.springframework.mail.MailSender.send(MailSender.java:42) ~[spring-context-support-7.0.5.jar:7.0.5]
+	at com.br.zetta.fire.service.EmailService.sendEmail(EmailService.java:46) ~[classes/:na]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[na:na]
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:359) ~[spring-aop-7.0.5.jar:7.0.5]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.invokeJoinpoint(ReflectiveMethodInvocation.java:190) ~[spring-aop-7.0.5.jar:7.0.5]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:158) ~[spring-aop-7.0.5.jar:7.0.5]
+	at org.springframework.aop.interceptor.AsyncExecutionInterceptor.lambda$invoke$0(AsyncExecutionInterceptor.java:112) ~[spring-aop-7.0.5.jar:7.0.5]
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317) ~[na:na]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144) ~[na:na]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642) ~[na:na]
+	at java.base/java.lang.Thread.run(Thread.java:1583) ~[na:na]
+Caused by: jakarta.mail.AuthenticationFailedException: 535-5.7.8 Username and Password not accepted. For more information, go to
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials a1e0cc1a2514c-958883d7319sm347152241.1 - gsmtp
+
+	at org.eclipse.angus.mail.smtp.SMTPTransport$Authenticator.authenticate(SMTPTransport.java:954) ~[angus-mail-2.0.5.jar:na]
+	at org.eclipse.angus.mail.smtp.SMTPTransport.authenticate(SMTPTransport.java:865) ~[angus-mail-2.0.5.jar:na]
+	at org.eclipse.angus.mail.smtp.SMTPTransport.protocolConnect(SMTPTransport.java:769) ~[angus-mail-2.0.5.jar:na]
+	at jakarta.mail.Service.connect(Service.java:345) ~[jakarta.mail-api-2.1.5.jar:na]
+	at org.springframework.mail.javamail.JavaMailSenderImpl.connectTransport(JavaMailSenderImpl.java:467) ~[spring-context-support-7.0.5.jar:7.0.5]
+	at org.springframework.mail.javamail.JavaMailSenderImpl.doSend(JavaMailSenderImpl.java:386) ~[spring-context-support-7.0.5.jar:7.0.5]
+	... 13 common frames omitted
+
+2026-04-16T15:30:34.515-03:00 ERROR 2940 --- [zettaFire] [task-5] com.br.zetta.fire.service.EmailService   : Erro ao enviar email
+
+org.springframework.mail.MailAuthenticationException: Authentication failed
+	at org.springframework.mail.javamail.JavaMailSenderImpl.doSend(JavaMailSenderImpl.java:389) ~[spring-context-support-7.0.5.jar:7.0.5]
+	at org.springframework.mail.javamail.JavaMailSenderImpl.send(JavaMailSenderImpl.java:304) ~[spring-context-support-7.0.5.jar:7.0.5]
+	at org.springframework.mail.MailSender.send(MailSender.java:42) ~[spring-context-support-7.0.5.jar:7.0.5]
+	at com.br.zetta.fire.service.EmailService.sendEmail(EmailService.java:46) ~[classes/:na]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[na:na]
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:359) ~[spring-aop-7.0.5.jar:7.0.5]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.invokeJoinpoint(ReflectiveMethodInvocation.java:190) ~[spring-aop-7.0.5.jar:7.0.5]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:158) ~[spring-aop-7.0.5.jar:7.0.5]
+	at org.springframework.aop.interceptor.AsyncExecutionInterceptor.lambda$invoke$0(AsyncExecutionInterceptor.java:112) ~[spring-aop-7.0.5.jar:7.0.5]
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317) ~[na:na]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144) ~[na:na]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642) ~[na:na]
+	at java.base/java.lang.Thread.run(Thread.java:1583) ~[na:na]
+Caused by: jakarta.mail.AuthenticationFailedException: 535-5.7.8 Username and Password not accepted. For more information, go to
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials a1e0cc1a2514c-9588841473csm399216241.4 - gsmtp
+
+	at org.eclipse.angus.mail.smtp.SMTPTransport$Authenticator.authenticate(SMTPTransport.java:954) ~[angus-mail-2.0.5.jar:na]
+	at org.eclipse.angus.mail.smtp.SMTPTransport.authenticate(SMTPTransport.java:865) ~[angus-mail-2.0.5.jar:na]
+	at org.eclipse.angus.mail.smtp.SMTPTransport.protocolConnect(SMTPTransport.java:769) ~[angus-mail-2.0.5.jar:na]
+	at jakarta.mail.Service.connect(Service.java:345) ~[jakarta.mail-api-2.1.5.jar:na]
+	at org.springframework.mail.javamail.JavaMailSenderImpl.connectTransport(JavaMailSenderImpl.java:467) ~[spring-context-support-7.0.5.jar:7.0.5]
+	at org.springframework.mail.javamail.JavaMailSenderImpl.doSend(JavaMailSenderImpl.java:386) ~[spring-context-support-7.0.5.jar:7.0.5]
+	... 13 common frames omitted
+
+2026-04-16T15:38:27.538-03:00  INFO 2940 --- [zettaFire] [SpringApplicationShutdownHook] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
+2026-04-16T15:38:27.543-03:00  INFO 2940 --- [zettaFire] [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
+2026-04-16T15:38:27.549-03:00  INFO 2940 --- [zettaFire] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-04-16T15:38:27.553-03:00  INFO 2940 --- [zettaFire] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-04-16T15:38:27.558-03:00  INFO 2940 --- [zettaFire] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-04-16T15:38:31.332-03:00  INFO 18100 --- [zettaFire] [restartedMain] com.br.zetta.fire.StartUp                : Starting StartUp using Java 21.0.7 with PID 18100 (D:\zettaFinal\zettaFire\target\classes started by paulo in D:\zettaFinal\zettaFire)
+2026-04-16T15:38:31.335-03:00  INFO 18100 --- [zettaFire] [restartedMain] com.br.zetta.fire.StartUp                : No active profile set, falling back to 1 default profile: "default"
+2026-04-16T15:38:31.402-03:00  INFO 18100 --- [zettaFire] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2026-04-16T15:38:31.403-03:00  INFO 18100 --- [zettaFire] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2026-04-16T15:38:32.144-03:00  INFO 18100 --- [zettaFire] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-04-16T15:38:32.219-03:00  INFO 18100 --- [zettaFire] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 65 ms. Found 4 JPA repository interfaces.
+2026-04-16T15:38:32.799-03:00  INFO 18100 --- [zettaFire] [restartedMain] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8080 (http)
+2026-04-16T15:38:32.813-03:00  INFO 18100 --- [zettaFire] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-04-16T15:38:32.814-03:00  INFO 18100 --- [zettaFire] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.18]
+2026-04-16T15:38:32.863-03:00  INFO 18100 --- [zettaFire] [restartedMain] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 1460 ms
+2026-04-16T15:38:32.989-03:00  INFO 18100 --- [zettaFire] [restartedMain] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-04-16T15:38:33.046-03:00  INFO 18100 --- [zettaFire] [restartedMain] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.2.4.Final
+2026-04-16T15:38:33.539-03:00  INFO 18100 --- [zettaFire] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-04-16T15:38:33.577-03:00  INFO 18100 --- [zettaFire] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-04-16T15:38:33.801-03:00  INFO 18100 --- [zettaFire] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@3bca6f5c
+2026-04-16T15:38:33.803-03:00  INFO 18100 --- [zettaFire] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-04-16T15:38:33.921-03:00  INFO 18100 --- [zettaFire] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:postgresql://localhost:5432/zettaFire]
+	Database driver: PostgreSQL JDBC Driver
+	Database dialect: PostgreSQLDialect
+	Database version: 17.7
+	Default catalog/schema: zettaFire/public
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-04-16T15:38:35.750-03:00  INFO 18100 --- [zettaFire] [restartedMain] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-04-16T15:38:35.838-03:00  INFO 18100 --- [zettaFire] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-04-16T15:38:35.906-03:00  INFO 18100 --- [zettaFire] [restartedMain] o.s.d.j.r.query.QueryEnhancerFactories   : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-04-16T15:38:36.302-03:00  INFO 18100 --- [zettaFire] [restartedMain] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name authService
+2026-04-16T15:38:36.426-03:00  WARN 18100 --- [zettaFire] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-04-16T15:38:36.936-03:00  INFO 18100 --- [zettaFire] [restartedMain] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8080 (http) with context path '/'
+2026-04-16T15:38:36.942-03:00  INFO 18100 --- [zettaFire] [restartedMain] com.br.zetta.fire.StartUp                : Started StartUp in 6.613 seconds (process running for 7.594)
+2026-04-16T15:38:52.150-03:00  INFO 18100 --- [zettaFire] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-04-16T15:38:52.150-03:00  INFO 18100 --- [zettaFire] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-04-16T15:38:52.151-03:00  INFO 18100 --- [zettaFire] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2026-04-16T15:38:52.968-03:00  INFO 18100 --- [zettaFire] [task-1] com.br.zetta.fire.service.EmailService   : Iniciando tentativa de envio para: admin8@gmail.com
+2026-04-16T15:38:52.968-03:00  INFO 18100 --- [zettaFire] [task-2] com.br.zetta.fire.service.EmailService   : Iniciando tentativa de envio para: admin2@gmail.com
+2026-04-16T15:38:52.969-03:00  INFO 18100 --- [zettaFire] [task-4] com.br.zetta.fire.service.EmailService   : Iniciando tentativa de envio para: telmagrazi@hotmail.com
+2026-04-16T15:38:52.969-03:00  INFO 18100 --- [zettaFire] [task-3] com.br.zetta.fire.service.EmailService   : Iniciando tentativa de envio para: paulo.taciano@estudante.ufla.br
+2026-04-16T15:38:52.970-03:00  INFO 18100 --- [zettaFire] [task-5] com.br.zetta.fire.service.EmailService   : Iniciando tentativa de envio para: paulostaciano@gmail.com
+2026-04-16T15:39:05.706-03:00  INFO 18100 --- [zettaFire] [task-5] com.br.zetta.fire.service.EmailService   : Alerta enviado com sucesso para: paulostaciano@gmail.com
+2026-04-16T15:39:06.123-03:00  INFO 18100 --- [zettaFire] [task-1] com.br.zetta.fire.service.EmailService   : Alerta enviado com sucesso para: admin8@gmail.com
+2026-04-16T15:39:06.433-03:00  INFO 18100 --- [zettaFire] [task-4] com.br.zetta.fire.service.EmailService   : Alerta enviado com sucesso para: telmagrazi@hotmail.com
+2026-04-16T15:39:07.044-03:00  INFO 18100 --- [zettaFire] [task-2] com.br.zetta.fire.service.EmailService   : Alerta enviado com sucesso para: admin2@gmail.com
+2026-04-16T15:39:07.315-03:00  INFO 18100 --- [zettaFire] [task-3] com.br.zetta.fire.service.EmailService   : Alerta enviado com sucesso para: paulo.taciano@estudante.ufla.br
+2026-04-16T15:41:27.699-03:00  INFO 18100 --- [zettaFire] [SpringApplicationShutdownHook] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
+2026-04-16T15:41:27.704-03:00  INFO 18100 --- [zettaFire] [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
+2026-04-16T15:41:27.708-03:00  INFO 18100 --- [zettaFire] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-04-16T15:41:27.711-03:00  INFO 18100 --- [zettaFire] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-04-16T15:41:27.719-03:00  INFO 18100 --- [zettaFire] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-04-16T15:41:32.798-03:00  INFO 7208 --- [zettaFire] [restartedMain] com.br.zetta.fire.StartUp                : Starting StartUp using Java 21.0.7 with PID 7208 (D:\zettaFinal\zettaFire\target\classes started by paulo in D:\zettaFinal\zettaFire)
+2026-04-16T15:41:32.801-03:00  INFO 7208 --- [zettaFire] [restartedMain] com.br.zetta.fire.StartUp                : No active profile set, falling back to 1 default profile: "default"
+2026-04-16T15:41:32.851-03:00  INFO 7208 --- [zettaFire] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2026-04-16T15:41:32.852-03:00  INFO 7208 --- [zettaFire] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2026-04-16T15:41:33.559-03:00  INFO 7208 --- [zettaFire] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-04-16T15:41:33.632-03:00  INFO 7208 --- [zettaFire] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 62 ms. Found 4 JPA repository interfaces.
+2026-04-16T15:41:34.179-03:00  INFO 7208 --- [zettaFire] [restartedMain] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8080 (http)
+2026-04-16T15:41:34.194-03:00  INFO 7208 --- [zettaFire] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-04-16T15:41:34.194-03:00  INFO 7208 --- [zettaFire] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.18]
+2026-04-16T15:41:34.245-03:00  INFO 7208 --- [zettaFire] [restartedMain] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 1393 ms
+2026-04-16T15:41:34.371-03:00  INFO 7208 --- [zettaFire] [restartedMain] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-04-16T15:41:34.437-03:00  INFO 7208 --- [zettaFire] [restartedMain] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.2.4.Final
+2026-04-16T15:41:34.906-03:00  INFO 7208 --- [zettaFire] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-04-16T15:41:34.937-03:00  INFO 7208 --- [zettaFire] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-04-16T15:41:35.106-03:00  INFO 7208 --- [zettaFire] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@3bca6f5c
+2026-04-16T15:41:35.112-03:00  INFO 7208 --- [zettaFire] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-04-16T15:41:35.186-03:00  INFO 7208 --- [zettaFire] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:postgresql://localhost:5432/zettaFire]
+	Database driver: PostgreSQL JDBC Driver
+	Database dialect: PostgreSQLDialect
+	Database version: 17.7
+	Default catalog/schema: zettaFire/public
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-04-16T15:41:36.380-03:00  INFO 7208 --- [zettaFire] [restartedMain] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-04-16T15:41:36.470-03:00  INFO 7208 --- [zettaFire] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-04-16T15:41:36.534-03:00  INFO 7208 --- [zettaFire] [restartedMain] o.s.d.j.r.query.QueryEnhancerFactories   : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-04-16T15:41:36.827-03:00  INFO 7208 --- [zettaFire] [restartedMain] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name authService
+2026-04-16T15:41:36.953-03:00  WARN 7208 --- [zettaFire] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-04-16T15:41:37.464-03:00  INFO 7208 --- [zettaFire] [restartedMain] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8080 (http) with context path '/'
+2026-04-16T15:41:37.469-03:00  INFO 7208 --- [zettaFire] [restartedMain] com.br.zetta.fire.StartUp                : Started StartUp in 5.138 seconds (process running for 5.75)
+2026-04-16T15:41:43.237-03:00  INFO 7208 --- [zettaFire] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-04-16T15:41:43.237-03:00  INFO 7208 --- [zettaFire] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-04-16T15:41:43.239-03:00  INFO 7208 --- [zettaFire] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2026-04-16T15:41:44.121-03:00  INFO 7208 --- [zettaFire] [task-1] com.br.zetta.fire.service.EmailService   : Iniciando tentativa de envio para: admin8@gmail.com
+2026-04-16T15:41:44.121-03:00  INFO 7208 --- [zettaFire] [task-2] com.br.zetta.fire.service.EmailService   : Iniciando tentativa de envio para: admin2@gmail.com
+2026-04-16T15:41:44.123-03:00  INFO 7208 --- [zettaFire] [task-4] com.br.zetta.fire.service.EmailService   : Iniciando tentativa de envio para: telmagrazi@hotmail.com
+2026-04-16T15:41:44.123-03:00  INFO 7208 --- [zettaFire] [task-3] com.br.zetta.fire.service.EmailService   : Iniciando tentativa de envio para: paulo.taciano@estudante.ufla.br
+2026-04-16T15:41:44.124-03:00  INFO 7208 --- [zettaFire] [task-5] com.br.zetta.fire.service.EmailService   : Iniciando tentativa de envio para: paulostaciano@gmail.com
+2026-04-16T15:41:44.184-03:00 ERROR 7208 --- [zettaFire] [task-1] com.br.zetta.fire.service.EmailService   : Erro ao enviar email
+
+org.springframework.mail.MailParseException: Could not parse mail
+	at org.springframework.mail.javamail.MimeMailMessage.setFrom(MimeMailMessage.java:82) ~[spring-context-support-7.0.5.jar:7.0.5]
+	at org.springframework.mail.SimpleMailMessage.copyTo(SimpleMailMessage.java:183) ~[spring-context-support-7.0.5.jar:7.0.5]
+	at org.springframework.mail.javamail.JavaMailSenderImpl.send(JavaMailSenderImpl.java:301) ~[spring-context-support-7.0.5.jar:7.0.5]
+	at org.springframework.mail.MailSender.send(MailSender.java:42) ~[spring-context-support-7.0.5.jar:7.0.5]
+	at com.br.zetta.fire.service.EmailService.sendEmail(EmailService.java:47) ~[classes/:na]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[na:na]
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:359) ~[spring-aop-7.0.5.jar:7.0.5]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.invokeJoinpoint(ReflectiveMethodInvocation.java:190) ~[spring-aop-7.0.5.jar:7.0.5]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:158) ~[spring-aop-7.0.5.jar:7.0.5]
+	at org.springframework.aop.interceptor.AsyncExecutionInterceptor.lambda$invoke$0(AsyncExecutionInterceptor.java:112) ~[spring-aop-7.0.5.jar:7.0.5]
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317) ~[na:na]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144) ~[na:na]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642) ~[na:na]
+	at java.base/java.lang.Thread.run(Thread.java:1583) ~[na:na]
+Caused by: jakarta.mail.internet.AddressException: Local address contains control or whitespace in string ``Zetta Fire''
+	at jakarta.mail.internet.InternetAddress.checkAddress(InternetAddress.java:1352) ~[jakarta.mail-api-2.1.5.jar:na]
+	at jakarta.mail.internet.InternetAddress.parse(InternetAddress.java:1200) ~[jakarta.mail-api-2.1.5.jar:na]
+	at jakarta.mail.internet.InternetAddress.parse(InternetAddress.java:737) ~[jakarta.mail-api-2.1.5.jar:na]
+	at jakarta.mail.internet.InternetAddress.parse(InternetAddress.java:714) ~[jakarta.mail-api-2.1.5.jar:na]
+	at org.springframework.mail.javamail.MimeMessageHelper.parseAddress(MimeMessageHelper.java:731) ~[spring-context-support-7.0.5.jar:7.0.5]
+	at org.springframework.mail.javamail.MimeMessageHelper.setFrom(MimeMessageHelper.java:568) ~[spring-context-support-7.0.5.jar:7.0.5]
+	at org.springframework.mail.javamail.MimeMailMessage.setFrom(MimeMailMessage.java:79) ~[spring-context-support-7.0.5.jar:7.0.5]
+	... 14 common frames omitted
+
+2026-04-16T15:41:44.182-03:00 ERROR 7208 --- [zettaFire] [task-4] com.br.zetta.fire.service.EmailService   : Erro ao enviar email
+
+org.springframework.mail.MailParseException: Could not parse mail
+	at org.springframework.mail.javamail.MimeMailMessage.setFrom(MimeMailMessage.java:82) ~[spring-context-support-7.0.5.jar:7.0.5]
+	at org.springframework.mail.SimpleMailMessage.copyTo(SimpleMailMessage.java:183) ~[spring-context-support-7.0.5.jar:7.0.5]
+	at org.springframework.mail.javamail.JavaMailSenderImpl.send(JavaMailSenderImpl.java:301) ~[spring-context-support-7.0.5.jar:7.0.5]
+	at org.springframework.mail.MailSender.send(MailSender.java:42) ~[spring-context-support-7.0.5.jar:7.0.5]
+	at com.br.zetta.fire.service.EmailService.sendEmail(EmailService.java:47) ~[classes/:na]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[na:na]
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:359) ~[spring-aop-7.0.5.jar:7.0.5]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.invokeJoinpoint(ReflectiveMethodInvocation.java:190) ~[spring-aop-7.0.5.jar:7.0.5]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:158) ~[spring-aop-7.0.5.jar:7.0.5]
+	at org.springframework.aop.interceptor.AsyncExecutionInterceptor.lambda$invoke$0(AsyncExecutionInterceptor.java:112) ~[spring-aop-7.0.5.jar:7.0.5]
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317) ~[na:na]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144) ~[na:na]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642) ~[na:na]
+	at java.base/java.lang.Thread.run(Thread.java:1583) ~[na:na]
+Caused by: jakarta.mail.internet.AddressException: Local address contains control or whitespace in string ``Zetta Fire''
+	at jakarta.mail.internet.InternetAddress.checkAddress(InternetAddress.java:1352) ~[jakarta.mail-api-2.1.5.jar:na]
+	at jakarta.mail.internet.InternetAddress.parse(InternetAddress.java:1200) ~[jakarta.mail-api-2.1.5.jar:na]
+	at jakarta.mail.internet.InternetAddress.parse(InternetAddress.java:737) ~[jakarta.mail-api-2.1.5.jar:na]
+	at jakarta.mail.internet.InternetAddress.parse(InternetAddress.java:714) ~[jakarta.mail-api-2.1.5.jar:na]
+	at org.springframework.mail.javamail.MimeMessageHelper.parseAddress(MimeMessageHelper.java:731) ~[spring-context-support-7.0.5.jar:7.0.5]
+	at org.springframework.mail.javamail.MimeMessageHelper.setFrom(MimeMessageHelper.java:568) ~[spring-context-support-7.0.5.jar:7.0.5]
+	at org.springframework.mail.javamail.MimeMailMessage.setFrom(MimeMailMessage.java:79) ~[spring-context-support-7.0.5.jar:7.0.5]
+	... 14 common frames omitted
+
+2026-04-16T15:41:44.183-03:00 ERROR 7208 --- [zettaFire] [task-5] com.br.zetta.fire.service.EmailService   : Erro ao enviar email
+
+org.springframework.mail.MailParseException: Could not parse mail
+	at org.springframework.mail.javamail.MimeMailMessage.setFrom(MimeMailMessage.java:82) ~[spring-context-support-7.0.5.jar:7.0.5]
+	at org.springframework.mail.SimpleMailMessage.copyTo(SimpleMailMessage.java:183) ~[spring-context-support-7.0.5.jar:7.0.5]
+	at org.springframework.mail.javamail.JavaMailSenderImpl.send(JavaMailSenderImpl.java:301) ~[spring-context-support-7.0.5.jar:7.0.5]
+	at org.springframework.mail.MailSender.send(MailSender.java:42) ~[spring-context-support-7.0.5.jar:7.0.5]
+	at com.br.zetta.fire.service.EmailService.sendEmail(EmailService.java:47) ~[classes/:na]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[na:na]
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:359) ~[spring-aop-7.0.5.jar:7.0.5]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.invokeJoinpoint(ReflectiveMethodInvocation.java:190) ~[spring-aop-7.0.5.jar:7.0.5]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:158) ~[spring-aop-7.0.5.jar:7.0.5]
+	at org.springframework.aop.interceptor.AsyncExecutionInterceptor.lambda$invoke$0(AsyncExecutionInterceptor.java:112) ~[spring-aop-7.0.5.jar:7.0.5]
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317) ~[na:na]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144) ~[na:na]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642) ~[na:na]
+	at java.base/java.lang.Thread.run(Thread.java:1583) ~[na:na]
+Caused by: jakarta.mail.internet.AddressException: Local address contains control or whitespace in string ``Zetta Fire''
+	at jakarta.mail.internet.InternetAddress.checkAddress(InternetAddress.java:1352) ~[jakarta.mail-api-2.1.5.jar:na]
+	at jakarta.mail.internet.InternetAddress.parse(InternetAddress.java:1200) ~[jakarta.mail-api-2.1.5.jar:na]
+	at jakarta.mail.internet.InternetAddress.parse(InternetAddress.java:737) ~[jakarta.mail-api-2.1.5.jar:na]
+	at jakarta.mail.internet.InternetAddress.parse(InternetAddress.java:714) ~[jakarta.mail-api-2.1.5.jar:na]
+	at org.springframework.mail.javamail.MimeMessageHelper.parseAddress(MimeMessageHelper.java:731) ~[spring-context-support-7.0.5.jar:7.0.5]
+	at org.springframework.mail.javamail.MimeMessageHelper.setFrom(MimeMessageHelper.java:568) ~[spring-context-support-7.0.5.jar:7.0.5]
+	at org.springframework.mail.javamail.MimeMailMessage.setFrom(MimeMailMessage.java:79) ~[spring-context-support-7.0.5.jar:7.0.5]
+	... 14 common frames omitted
+
+2026-04-16T15:41:44.181-03:00 ERROR 7208 --- [zettaFire] [task-3] com.br.zetta.fire.service.EmailService   : Erro ao enviar email
+
+org.springframework.mail.MailParseException: Could not parse mail
+	at org.springframework.mail.javamail.MimeMailMessage.setFrom(MimeMailMessage.java:82) ~[spring-context-support-7.0.5.jar:7.0.5]
+	at org.springframework.mail.SimpleMailMessage.copyTo(SimpleMailMessage.java:183) ~[spring-context-support-7.0.5.jar:7.0.5]
+	at org.springframework.mail.javamail.JavaMailSenderImpl.send(JavaMailSenderImpl.java:301) ~[spring-context-support-7.0.5.jar:7.0.5]
+	at org.springframework.mail.MailSender.send(MailSender.java:42) ~[spring-context-support-7.0.5.jar:7.0.5]
+	at com.br.zetta.fire.service.EmailService.sendEmail(EmailService.java:47) ~[classes/:na]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[na:na]
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:359) ~[spring-aop-7.0.5.jar:7.0.5]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.invokeJoinpoint(ReflectiveMethodInvocation.java:190) ~[spring-aop-7.0.5.jar:7.0.5]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:158) ~[spring-aop-7.0.5.jar:7.0.5]
+	at org.springframework.aop.interceptor.AsyncExecutionInterceptor.lambda$invoke$0(AsyncExecutionInterceptor.java:112) ~[spring-aop-7.0.5.jar:7.0.5]
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317) ~[na:na]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144) ~[na:na]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642) ~[na:na]
+	at java.base/java.lang.Thread.run(Thread.java:1583) ~[na:na]
+Caused by: jakarta.mail.internet.AddressException: Local address contains control or whitespace in string ``Zetta Fire''
+	at jakarta.mail.internet.InternetAddress.checkAddress(InternetAddress.java:1352) ~[jakarta.mail-api-2.1.5.jar:na]
+	at jakarta.mail.internet.InternetAddress.parse(InternetAddress.java:1200) ~[jakarta.mail-api-2.1.5.jar:na]
+	at jakarta.mail.internet.InternetAddress.parse(InternetAddress.java:737) ~[jakarta.mail-api-2.1.5.jar:na]
+	at jakarta.mail.internet.InternetAddress.parse(InternetAddress.java:714) ~[jakarta.mail-api-2.1.5.jar:na]
+	at org.springframework.mail.javamail.MimeMessageHelper.parseAddress(MimeMessageHelper.java:731) ~[spring-context-support-7.0.5.jar:7.0.5]
+	at org.springframework.mail.javamail.MimeMessageHelper.setFrom(MimeMessageHelper.java:568) ~[spring-context-support-7.0.5.jar:7.0.5]
+	at org.springframework.mail.javamail.MimeMailMessage.setFrom(MimeMailMessage.java:79) ~[spring-context-support-7.0.5.jar:7.0.5]
+	... 14 common frames omitted
+
+2026-04-16T15:41:44.186-03:00 ERROR 7208 --- [zettaFire] [task-2] com.br.zetta.fire.service.EmailService   : Erro ao enviar email
+
+org.springframework.mail.MailParseException: Could not parse mail
+	at org.springframework.mail.javamail.MimeMailMessage.setFrom(MimeMailMessage.java:82) ~[spring-context-support-7.0.5.jar:7.0.5]
+	at org.springframework.mail.SimpleMailMessage.copyTo(SimpleMailMessage.java:183) ~[spring-context-support-7.0.5.jar:7.0.5]
+	at org.springframework.mail.javamail.JavaMailSenderImpl.send(JavaMailSenderImpl.java:301) ~[spring-context-support-7.0.5.jar:7.0.5]
+	at org.springframework.mail.MailSender.send(MailSender.java:42) ~[spring-context-support-7.0.5.jar:7.0.5]
+	at com.br.zetta.fire.service.EmailService.sendEmail(EmailService.java:47) ~[classes/:na]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[na:na]
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:359) ~[spring-aop-7.0.5.jar:7.0.5]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.invokeJoinpoint(ReflectiveMethodInvocation.java:190) ~[spring-aop-7.0.5.jar:7.0.5]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:158) ~[spring-aop-7.0.5.jar:7.0.5]
+	at org.springframework.aop.interceptor.AsyncExecutionInterceptor.lambda$invoke$0(AsyncExecutionInterceptor.java:112) ~[spring-aop-7.0.5.jar:7.0.5]
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317) ~[na:na]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144) ~[na:na]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642) ~[na:na]
+	at java.base/java.lang.Thread.run(Thread.java:1583) ~[na:na]
+Caused by: jakarta.mail.internet.AddressException: Local address contains control or whitespace in string ``Zetta Fire''
+	at jakarta.mail.internet.InternetAddress.checkAddress(InternetAddress.java:1352) ~[jakarta.mail-api-2.1.5.jar:na]
+	at jakarta.mail.internet.InternetAddress.parse(InternetAddress.java:1200) ~[jakarta.mail-api-2.1.5.jar:na]
+	at jakarta.mail.internet.InternetAddress.parse(InternetAddress.java:737) ~[jakarta.mail-api-2.1.5.jar:na]
+	at jakarta.mail.internet.InternetAddress.parse(InternetAddress.java:714) ~[jakarta.mail-api-2.1.5.jar:na]
+	at org.springframework.mail.javamail.MimeMessageHelper.parseAddress(MimeMessageHelper.java:731) ~[spring-context-support-7.0.5.jar:7.0.5]
+	at org.springframework.mail.javamail.MimeMessageHelper.setFrom(MimeMessageHelper.java:568) ~[spring-context-support-7.0.5.jar:7.0.5]
+	at org.springframework.mail.javamail.MimeMailMessage.setFrom(MimeMailMessage.java:79) ~[spring-context-support-7.0.5.jar:7.0.5]
+	... 14 common frames omitted
+
+2026-04-16T15:43:02.768-03:00  INFO 7208 --- [zettaFire] [SpringApplicationShutdownHook] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
+2026-04-16T15:43:02.774-03:00  INFO 7208 --- [zettaFire] [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
+2026-04-16T15:43:02.778-03:00  INFO 7208 --- [zettaFire] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-04-16T15:43:02.781-03:00  INFO 7208 --- [zettaFire] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-04-16T15:43:02.788-03:00  INFO 7208 --- [zettaFire] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-04-16T15:43:07.386-03:00  INFO 6204 --- [zettaFire] [restartedMain] com.br.zetta.fire.StartUp                : Starting StartUp using Java 21.0.7 with PID 6204 (D:\zettaFinal\zettaFire\target\classes started by paulo in D:\zettaFinal\zettaFire)
+2026-04-16T15:43:07.389-03:00  INFO 6204 --- [zettaFire] [restartedMain] com.br.zetta.fire.StartUp                : No active profile set, falling back to 1 default profile: "default"
+2026-04-16T15:43:07.438-03:00  INFO 6204 --- [zettaFire] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2026-04-16T15:43:07.438-03:00  INFO 6204 --- [zettaFire] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2026-04-16T15:43:08.163-03:00  INFO 6204 --- [zettaFire] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-04-16T15:43:08.225-03:00  INFO 6204 --- [zettaFire] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 52 ms. Found 4 JPA repository interfaces.
+2026-04-16T15:43:08.791-03:00  INFO 6204 --- [zettaFire] [restartedMain] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8080 (http)
+2026-04-16T15:43:08.806-03:00  INFO 6204 --- [zettaFire] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-04-16T15:43:08.806-03:00  INFO 6204 --- [zettaFire] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.18]
+2026-04-16T15:43:08.858-03:00  INFO 6204 --- [zettaFire] [restartedMain] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 1419 ms
+2026-04-16T15:43:08.985-03:00  INFO 6204 --- [zettaFire] [restartedMain] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-04-16T15:43:09.051-03:00  INFO 6204 --- [zettaFire] [restartedMain] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.2.4.Final
+2026-04-16T15:43:09.659-03:00  INFO 6204 --- [zettaFire] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-04-16T15:43:09.698-03:00  INFO 6204 --- [zettaFire] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-04-16T15:43:09.914-03:00  INFO 6204 --- [zettaFire] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@3bca6f5c
+2026-04-16T15:43:09.917-03:00  INFO 6204 --- [zettaFire] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-04-16T15:43:09.987-03:00  INFO 6204 --- [zettaFire] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:postgresql://localhost:5432/zettaFire]
+	Database driver: PostgreSQL JDBC Driver
+	Database dialect: PostgreSQLDialect
+	Database version: 17.7
+	Default catalog/schema: zettaFire/public
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-04-16T15:43:11.272-03:00  INFO 6204 --- [zettaFire] [restartedMain] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-04-16T15:43:11.363-03:00  INFO 6204 --- [zettaFire] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-04-16T15:43:11.429-03:00  INFO 6204 --- [zettaFire] [restartedMain] o.s.d.j.r.query.QueryEnhancerFactories   : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-04-16T15:43:11.823-03:00  INFO 6204 --- [zettaFire] [restartedMain] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name authService
+2026-04-16T15:43:11.991-03:00  WARN 6204 --- [zettaFire] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-04-16T15:43:12.716-03:00  INFO 6204 --- [zettaFire] [restartedMain] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8080 (http) with context path '/'
+2026-04-16T15:43:12.724-03:00  INFO 6204 --- [zettaFire] [restartedMain] com.br.zetta.fire.StartUp                : Started StartUp in 5.808 seconds (process running for 6.424)
+2026-04-16T15:43:15.550-03:00  INFO 6204 --- [zettaFire] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-04-16T15:43:15.550-03:00  INFO 6204 --- [zettaFire] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-04-16T15:43:15.552-03:00  INFO 6204 --- [zettaFire] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2026-04-16T15:43:16.410-03:00  INFO 6204 --- [zettaFire] [task-2] com.br.zetta.fire.service.EmailService   : Iniciando tentativa de envio para: admin2@gmail.com
+2026-04-16T15:43:16.410-03:00  INFO 6204 --- [zettaFire] [task-1] com.br.zetta.fire.service.EmailService   : Iniciando tentativa de envio para: admin8@gmail.com
+2026-04-16T15:43:16.411-03:00  INFO 6204 --- [zettaFire] [task-3] com.br.zetta.fire.service.EmailService   : Iniciando tentativa de envio para: paulo.taciano@estudante.ufla.br
+2026-04-16T15:43:16.412-03:00  INFO 6204 --- [zettaFire] [task-5] com.br.zetta.fire.service.EmailService   : Iniciando tentativa de envio para: paulostaciano@gmail.com
+2026-04-16T15:43:16.412-03:00  INFO 6204 --- [zettaFire] [task-4] com.br.zetta.fire.service.EmailService   : Iniciando tentativa de envio para: telmagrazi@hotmail.com
+2026-04-16T15:43:29.092-03:00  INFO 6204 --- [zettaFire] [task-3] com.br.zetta.fire.service.EmailService   : Alerta enviado com sucesso para: paulo.taciano@estudante.ufla.br
+2026-04-16T15:43:29.312-03:00  INFO 6204 --- [zettaFire] [task-1] com.br.zetta.fire.service.EmailService   : Alerta enviado com sucesso para: admin8@gmail.com
+2026-04-16T15:43:29.689-03:00  INFO 6204 --- [zettaFire] [task-4] com.br.zetta.fire.service.EmailService   : Alerta enviado com sucesso para: telmagrazi@hotmail.com
+2026-04-16T15:43:29.964-03:00  INFO 6204 --- [zettaFire] [task-5] com.br.zetta.fire.service.EmailService   : Alerta enviado com sucesso para: paulostaciano@gmail.com
+2026-04-16T15:43:30.276-03:00  INFO 6204 --- [zettaFire] [task-2] com.br.zetta.fire.service.EmailService   : Alerta enviado com sucesso para: admin2@gmail.com
+2026-04-16T15:44:12.234-03:00  INFO 6204 --- [zettaFire] [task-1] com.br.zetta.fire.service.EmailService   : Iniciando tentativa de envio para: paulostaciano@gmail.com
+2026-04-16T15:44:12.234-03:00  INFO 6204 --- [zettaFire] [task-3] com.br.zetta.fire.service.EmailService   : Iniciando tentativa de envio para: telmagrazi@hotmail.com
+2026-04-16T15:44:12.234-03:00  INFO 6204 --- [zettaFire] [task-7] com.br.zetta.fire.service.EmailService   : Iniciando tentativa de envio para: admin2@gmail.com
+2026-04-16T15:44:12.234-03:00  INFO 6204 --- [zettaFire] [task-6] com.br.zetta.fire.service.EmailService   : Iniciando tentativa de envio para: admin8@gmail.com
+2026-04-16T15:44:12.238-03:00  INFO 6204 --- [zettaFire] [task-8] com.br.zetta.fire.service.EmailService   : Iniciando tentativa de envio para: paulo.taciano@estudante.ufla.br
+2026-04-16T15:44:24.674-03:00  INFO 6204 --- [zettaFire] [task-7] com.br.zetta.fire.service.EmailService   : Alerta enviado com sucesso para: admin2@gmail.com
+2026-04-16T15:44:24.972-03:00  INFO 6204 --- [zettaFire] [task-1] com.br.zetta.fire.service.EmailService   : Alerta enviado com sucesso para: paulostaciano@gmail.com
+2026-04-16T15:44:27.035-03:00  INFO 6204 --- [zettaFire] [task-6] com.br.zetta.fire.service.EmailService   : Alerta enviado com sucesso para: admin8@gmail.com
+2026-04-16T15:44:27.254-03:00  INFO 6204 --- [zettaFire] [task-3] com.br.zetta.fire.service.EmailService   : Alerta enviado com sucesso para: telmagrazi@hotmail.com
+2026-04-16T15:44:27.526-03:00  INFO 6204 --- [zettaFire] [task-8] com.br.zetta.fire.service.EmailService   : Alerta enviado com sucesso para: paulo.taciano@estudante.ufla.br
+2026-04-16T15:46:06.283-03:00  INFO 6204 --- [zettaFire] [task-9] com.br.zetta.fire.service.EmailService   : Iniciando tentativa de envio para: admin8@gmail.com
+2026-04-16T15:46:06.284-03:00  INFO 6204 --- [zettaFire] [task-10] com.br.zetta.fire.service.EmailService   : Iniciando tentativa de envio para: admin2@gmail.com
+2026-04-16T15:46:06.286-03:00  INFO 6204 --- [zettaFire] [task-13] com.br.zetta.fire.service.EmailService   : Iniciando tentativa de envio para: paulostaciano@gmail.com
+2026-04-16T15:46:06.286-03:00  INFO 6204 --- [zettaFire] [task-12] com.br.zetta.fire.service.EmailService   : Iniciando tentativa de envio para: telmagrazi@hotmail.com
+2026-04-16T15:46:06.287-03:00  INFO 6204 --- [zettaFire] [task-11] com.br.zetta.fire.service.EmailService   : Iniciando tentativa de envio para: paulo.taciano@estudante.ufla.br
+2026-04-16T15:46:06.287-03:00  INFO 6204 --- [zettaFire] [task-14] com.br.zetta.fire.service.EmailService   : Iniciando tentativa de envio para: joao.marciano@estudante.ufla.br
+2026-04-16T15:46:18.944-03:00  INFO 6204 --- [zettaFire] [task-13] com.br.zetta.fire.service.EmailService   : Alerta enviado com sucesso para: paulostaciano@gmail.com
+2026-04-16T15:46:19.474-03:00  INFO 6204 --- [zettaFire] [task-10] com.br.zetta.fire.service.EmailService   : Alerta enviado com sucesso para: admin2@gmail.com
+2026-04-16T15:46:19.742-03:00  INFO 6204 --- [zettaFire] [task-12] com.br.zetta.fire.service.EmailService   : Alerta enviado com sucesso para: telmagrazi@hotmail.com
+2026-04-16T15:46:20.012-03:00  INFO 6204 --- [zettaFire] [task-14] com.br.zetta.fire.service.EmailService   : Alerta enviado com sucesso para: joao.marciano@estudante.ufla.br
+2026-04-16T15:46:20.204-03:00  INFO 6204 --- [zettaFire] [task-11] com.br.zetta.fire.service.EmailService   : Alerta enviado com sucesso para: paulo.taciano@estudante.ufla.br
+2026-04-16T15:46:20.413-03:00  INFO 6204 --- [zettaFire] [task-9] com.br.zetta.fire.service.EmailService   : Alerta enviado com sucesso para: admin8@gmail.com
+2026-04-16T16:02:46.036-03:00  INFO 6204 --- [zettaFire] [SpringApplicationShutdownHook] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
+2026-04-16T16:02:46.041-03:00  INFO 6204 --- [zettaFire] [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
+2026-04-16T16:02:46.045-03:00  INFO 6204 --- [zettaFire] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-04-16T16:02:46.048-03:00  INFO 6204 --- [zettaFire] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-04-16T16:02:46.054-03:00  INFO 6204 --- [zettaFire] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.

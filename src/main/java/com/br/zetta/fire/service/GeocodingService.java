@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
+import org.springframework.http.client.SimpleClientHttpRequestFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -20,42 +21,51 @@ public class GeocodingService {
     private String apiKey;
 
     // Objeto do Spring usado para fazer requisições HTTP (chamar URLs externas)
-    private final RestTemplate restTemplate = new RestTemplate();
+    private final RestTemplate restTemplate;
 
-    //Obtém as coordenadas (Latitude e Longitude) a partir de um endereço
-    public BigDecimal[] getCoordinates(String street, String number, String city, String state, String cep) {
-        try {
-            //Formatando o endereço que vai buscar as coords
-            String address = String.format("%s, %s, %s, %s, %s, Brazil", cep, number, street,city, state);
+    public GeocodingService() {
+        SimpleClientHttpRequestFactory factory = new SimpleClientHttpRequestFactory();
+        factory.setConnectTimeout(60000); // 20 segundos de espera
+        factory.setReadTimeout(60000);    // 20 segundos de leitura
+        this.restTemplate = new RestTemplate(factory);
+    }
 
-            //url da api
+    public BigDecimal[] getCoordinates(String street, String city, String state) {
+        String queryCompleta = street + ", " + city + ", " + state + ", Brazil";
+        BigDecimal[] coords = executeRequest(queryCompleta);
+
+        if(coords[0].equals(BigDecimal.ZERO)) {
+            String queryCidade = city + ", " + state + ", Brazil";
+            coords = executeRequest(queryCidade);
+        }
+
+        return coords;
+    }
+
+    private BigDecimal[] executeRequest(String query) {
+        try{
             String urlApi = "https://us1.locationiq.com/v1/search?key=" + apiKey +
-                    "&street=" + URLEncoder.encode(street + ", " + number, StandardCharsets.UTF_8) +
-                    "&city=" + URLEncoder.encode(city, StandardCharsets.UTF_8) +
-                    "&postalcode=" + URLEncoder.encode(cep, StandardCharsets.UTF_8) +
-                    "&country=Brazil&format=json&limit=1";
+                    "&q=" + URLEncoder.encode(query, StandardCharsets.UTF_8) +
+                    "&format=json&limit=1";
 
-            /* Faz a chamada GET para a API
-               O ParameterizedTypeReference é usado porque a API retorna uma Lista [ ]
-               de objetos { }
-            */
-            ResponseEntity<List<Map<String, Object>>> response = restTemplate.exchange(
+            ResponseEntity<List<Map<String,Object>>> response = restTemplate.exchange(
                     urlApi,
                     HttpMethod.GET,
                     null,
-                    new ParameterizedTypeReference<List<Map<String, Object>>>(){}
+                    new ParameterizedTypeReference<List<Map<String, Object>>>() {}
             );
-            if (response.getBody() != null && !response.getBody().isEmpty()) {
-                Map<String, Object> result = response.getBody().get(0);
-                BigDecimal lati = new BigDecimal(result.get("lat").toString());
-                BigDecimal lon = new BigDecimal(result.get("lon").toString());
 
-                return new BigDecimal[]{lati, lon};
+            if(response.getBody() != null && !response.getBody().isEmpty()) {
+                Map<String, Object> result = response.getBody().get(0);
+                return new BigDecimal[] {
+                        new BigDecimal(result.get("lat").toString()),
+                        new BigDecimal(result.get("lon").toString())
+                };
             }
         } catch (Exception e) {
-            throw new RuntimeException();
+            throw new RuntimeException(e);
         }
-
-        return new BigDecimal[]{BigDecimal.ZERO, BigDecimal.ZERO};  // Retorno de segurança caso o endereço não seja encontrado
+        return new BigDecimal[]{BigDecimal.ZERO, BigDecimal.ZERO};
     }
+
 }

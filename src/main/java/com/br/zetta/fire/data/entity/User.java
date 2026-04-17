@@ -47,11 +47,16 @@ public class User implements UserDetails {
     @Column(name="userRole")
     private UserRole userRole;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "idAddress", referencedColumnName = "idAddress")
     private Address address;
 
-    @ManyToMany(mappedBy = "userList")
+    @ManyToMany
+    @JoinTable(
+            name = "user_alert",
+            joinColumns = @JoinColumn(name = "id_user"),
+            inverseJoinColumns = @JoinColumn(name = "id_alert")
+    )
     private List<Alert> alertList = new ArrayList<>();
 
 

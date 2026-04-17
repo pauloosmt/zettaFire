@@ -54,6 +54,7 @@ public class AuthController {
         }
         String encryptedPassword = new BCryptPasswordEncoder().encode(data.password());
 
+
         return ResponseEntity.status(HttpStatus.CREATED).body(userService.createUser(data, encryptedPassword));
     }
 }

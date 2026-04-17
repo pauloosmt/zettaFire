@@ -25,17 +25,12 @@ public class UserService {
         Address address = new Address(userRequestDTO.address());
         BigDecimal[] coord = geocodingService.getCoordinates(
                 userRequestDTO.address().street(),
-                userRequestDTO.address().number(),
                 userRequestDTO.address().city(),
-                userRequestDTO.address().state(),
-                userRequestDTO.address().cep()
+                userRequestDTO.address().state()
         ); //buscando coordenada do endereço
-
-        System.out.println("Lat: " + coord[0] + " Lon: " + coord[1]);
 
         address.setLatitude(coord[0]);
         address.setLongitude(coord[1]);
-
 
         User user = new User(userRequestDTO, password);
         user.setUserRole(UserRole.valueOf("ADMIN"));
@@ -45,4 +40,6 @@ public class UserService {
 
         return new UserResponseDTO(user);
     }
+
+    public String deleteUser()
 }

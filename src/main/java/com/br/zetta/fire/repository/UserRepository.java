@@ -30,4 +30,6 @@ public interface UserRepository extends JpaRepository<User, UUID> {
     List<User> findUsersAtRisk(@Param("fireEventId") UUID fireEventId);
 
     UserDetails findByEmail(String email);
+
+    UserDetails findByResetToken(String code);
 }

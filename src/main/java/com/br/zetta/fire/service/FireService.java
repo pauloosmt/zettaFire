@@ -1,9 +1,8 @@
 package com.br.zetta.fire.service;
 
-import com.br.zetta.fire.data.entity.Alert;
+
 import com.br.zetta.fire.data.entity.FireEvent;
 import com.br.zetta.fire.data.entity.User;
-import com.br.zetta.fire.data.entity.enums.StatusAlert;
 import com.br.zetta.fire.data.entity.enums.StatusFire;
 import com.br.zetta.fire.repository.AlertRepository;
 import com.br.zetta.fire.repository.FireEventRepository;
@@ -19,6 +18,16 @@ public class FireService {
     @Autowired private FireEventRepository fireRepository;
     @Autowired private UserRepository userRepository;
     @Autowired private AlertService alertService;
+
+    private static final String SUBJECT = "️ ALERTA CRÍTICO: Risco de Incêndio Detectado ";
+    private static final String BODY_TEMPLATE = """
+            Prezado Usuário,
+            
+            O sistema Bem-Te-Vi detectou um foco de incêndio ou risco iminente em sua área monitorada.
+            Por favor, mantenha a calma, siga os protocolos de segurança da sua região e, se necessário, realize a evacuação do local imediatamente. A sua segurança e a preservação do meio ambiente são nossas prioridades.
+            
+            Este é um alerta automático. Não responda a este e-mail
+            """;
 
     @Transactional
     public FireEvent createFireEvent(FireEvent event) {
@@ -37,7 +46,7 @@ public class FireService {
         List<User> usersAtRisk = userRepository.findUsersAtRisk(savedEvent.getIdFireEvent());
 
         if (!usersAtRisk.isEmpty()) {
-            alertService.createAndSendAlerts(savedEvent, usersAtRisk);
+            alertService.createAndSendAlerts(savedEvent, usersAtRisk, SUBJECT, BODY_TEMPLATE);
         }
 
         return savedEvent;

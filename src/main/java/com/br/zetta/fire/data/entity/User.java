@@ -4,15 +4,13 @@ package com.br.zetta.fire.data.entity;
 import com.br.zetta.fire.data.dto.request.UserRequestDTO;
 import com.br.zetta.fire.data.entity.enums.UserRole;
 import jakarta.persistence.*;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -47,6 +45,7 @@ public class User implements UserDetails {
     @Column(name="userRole")
     private UserRole userRole;
 
+    @ToString.Exclude
     @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "idAddress", referencedColumnName = "idAddress")
     private Address address;
@@ -59,6 +58,9 @@ public class User implements UserDetails {
     )
     private List<Alert> alertList = new ArrayList<>();
 
+
+    private String resetToken;
+    private LocalDateTime tokenExpiration;
 
 
     @Builder

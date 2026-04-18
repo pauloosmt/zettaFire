@@ -24,22 +24,14 @@ public class EmailService {
     }
 
     private static final Logger logger = LoggerFactory.getLogger(EmailService.class);
-    private static final String SUBJECT = "️ ALERTA CRÍTICO: Risco de Incêndio Detectado";
-    private static final String BODY_TEMPLATE = """
-            Prezado Usuário,
-            
-            Detectamos um perigo de incêndio iminente em sua área monitorada pelo sistema Zetta Fire.
-            Por favor, siga os protocolos de segurança e evacue o local se necessário.
-            
-            Este é um alerta automático. Não responda a este e-mail.
-            """;
+
 
     @Async
-    public void sendEmail(String to, UUID idAlert) {
+    public void sendEmail(String to, UUID idAlert, String SUBJECT, String BODY_TEMPLATE) {
         try{
             logger.info("Iniciando tentativa de envio para: {}", to);
             SimpleMailMessage message = new SimpleMailMessage();
-            message.setFrom("Zetta Fire <${spring.mail.username}>");
+            message.setFrom("Bem-Te-Vi <${spring.mail.username}>");
             message.setTo(to);
             message.setSubject(SUBJECT);
             message.setText(BODY_TEMPLATE);

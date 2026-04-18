@@ -26,19 +26,9 @@ public class AlertService {
         this.emailService = emailService;
     }
 
-    //Mensagens padrões alertas
-    private static final String SUBJECT = "️ ALERTA CRÍTICO: Risco de Incêndio Detectado";
-    private static final String BODY_TEMPLATE = """
-            Prezado Usuário,
-            
-            Detectamos um perigo de incêndio iminente em sua área monitorada pelo sistema Zetta Fire.
-            Por favor, siga os protocolos de segurança e evacue o local se necessário.
-            
-            Este é um alerta automático. Não responda a este e-mail.
-            """;
 
     @Transactional
-    public void createAndSendAlerts(FireEvent fireEvent, List<User> usersAtRisk) {
+    public void createAndSendAlerts(FireEvent fireEvent, List<User> usersAtRisk, String SUBJECT, String BODY) {
         if(usersAtRisk.isEmpty()) return;
 
         Alert alert = new Alert();
@@ -51,7 +41,7 @@ public class AlertService {
         Alert savedAlert = alertRepository.save(alert);
 
         for(User user : usersAtRisk) {
-            emailService.sendEmail(user.getEmail(), savedAlert.getIdAlert());
+            emailService.sendEmail(user.getEmail(), savedAlert.getIdAlert(), SUBJECT, BODY);
         }
     }
 

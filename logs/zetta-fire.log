@@ -346,3 +346,88 @@ Caused by: org.springframework.data.core.PropertyReferenceException: No property
 2026-04-18T15:55:31.672-03:00  INFO 9952 --- [zettaFire] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
 2026-04-18T15:55:31.675-03:00  INFO 9952 --- [zettaFire] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
 2026-04-18T15:55:31.680-03:00  INFO 9952 --- [zettaFire] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-04-18T15:55:36.447-03:00  INFO 13292 --- [zettaFire] [restartedMain] com.br.zetta.fire.StartUp                : Starting StartUp using Java 21.0.7 with PID 13292 (D:\zettaFinal\zettaFire\target\classes started by paulo in D:\zettaFinal\zettaFire)
+2026-04-18T15:55:36.450-03:00  INFO 13292 --- [zettaFire] [restartedMain] com.br.zetta.fire.StartUp                : No active profile set, falling back to 1 default profile: "default"
+2026-04-18T15:55:36.501-03:00  INFO 13292 --- [zettaFire] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2026-04-18T15:55:36.501-03:00  INFO 13292 --- [zettaFire] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2026-04-18T15:55:37.190-03:00  INFO 13292 --- [zettaFire] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-04-18T15:55:37.259-03:00  INFO 13292 --- [zettaFire] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 59 ms. Found 4 JPA repository interfaces.
+2026-04-18T15:55:37.800-03:00  INFO 13292 --- [zettaFire] [restartedMain] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8080 (http)
+2026-04-18T15:55:37.814-03:00  INFO 13292 --- [zettaFire] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-04-18T15:55:37.814-03:00  INFO 13292 --- [zettaFire] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.18]
+2026-04-18T15:55:37.864-03:00  INFO 13292 --- [zettaFire] [restartedMain] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 1363 ms
+2026-04-18T15:55:37.993-03:00  INFO 13292 --- [zettaFire] [restartedMain] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-04-18T15:55:38.047-03:00  INFO 13292 --- [zettaFire] [restartedMain] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.2.4.Final
+2026-04-18T15:55:38.510-03:00  INFO 13292 --- [zettaFire] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-04-18T15:55:38.541-03:00  INFO 13292 --- [zettaFire] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-04-18T15:55:38.708-03:00  INFO 13292 --- [zettaFire] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@9cc611
+2026-04-18T15:55:38.710-03:00  INFO 13292 --- [zettaFire] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-04-18T15:55:38.788-03:00  INFO 13292 --- [zettaFire] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:postgresql://localhost:5432/zettaFire]
+	Database driver: PostgreSQL JDBC Driver
+	Database dialect: PostgreSQLDialect
+	Database version: 17.7
+	Default catalog/schema: zettaFire/public
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-04-18T15:55:39.961-03:00  INFO 13292 --- [zettaFire] [restartedMain] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-04-18T15:55:40.052-03:00  INFO 13292 --- [zettaFire] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-04-18T15:55:40.117-03:00  INFO 13292 --- [zettaFire] [restartedMain] o.s.d.j.r.query.QueryEnhancerFactories   : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-04-18T15:55:40.407-03:00  INFO 13292 --- [zettaFire] [restartedMain] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name authService
+2026-04-18T15:55:40.606-03:00  WARN 13292 --- [zettaFire] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-04-18T15:55:41.197-03:00  INFO 13292 --- [zettaFire] [restartedMain] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8080 (http) with context path '/'
+2026-04-18T15:55:41.205-03:00  INFO 13292 --- [zettaFire] [restartedMain] com.br.zetta.fire.StartUp                : Started StartUp in 5.215 seconds (process running for 5.849)
+2026-04-18T15:55:45.316-03:00  INFO 13292 --- [zettaFire] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-04-18T15:55:45.317-03:00  INFO 13292 --- [zettaFire] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-04-18T15:55:45.318-03:00  INFO 13292 --- [zettaFire] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2026-04-18T15:55:46.003-03:00  INFO 13292 --- [zettaFire] [task-1] com.br.zetta.fire.service.EmailService   : Iniciando tentativa de envio para: paulo.taciano@estudante.ufla.br
+2026-04-18T15:56:00.945-03:00  INFO 13292 --- [zettaFire] [task-1] com.br.zetta.fire.service.EmailService   : Alerta enviado com sucesso para: paulo.taciano@estudante.ufla.br
+2026-04-18T16:02:53.643-03:00  INFO 13292 --- [zettaFire] [SpringApplicationShutdownHook] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
+2026-04-18T16:02:53.649-03:00  INFO 13292 --- [zettaFire] [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
+2026-04-18T16:02:53.662-03:00  INFO 13292 --- [zettaFire] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-04-18T16:02:53.669-03:00  INFO 13292 --- [zettaFire] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-04-18T16:02:53.680-03:00  INFO 13292 --- [zettaFire] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-04-18T16:21:11.180-03:00  INFO 3508 --- [zettaFire] [restartedMain] com.br.zetta.fire.StartUp                : Starting StartUp using Java 21.0.7 with PID 3508 (D:\zettaFinal\zettaFire\target\classes started by paulo in D:\zettaFinal\zettaFire)
+2026-04-18T16:21:11.183-03:00  INFO 3508 --- [zettaFire] [restartedMain] com.br.zetta.fire.StartUp                : No active profile set, falling back to 1 default profile: "default"
+2026-04-18T16:21:11.234-03:00  INFO 3508 --- [zettaFire] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2026-04-18T16:21:11.235-03:00  INFO 3508 --- [zettaFire] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2026-04-18T16:21:11.928-03:00  INFO 3508 --- [zettaFire] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-04-18T16:21:11.998-03:00  INFO 3508 --- [zettaFire] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 60 ms. Found 4 JPA repository interfaces.
+2026-04-18T16:21:12.545-03:00  INFO 3508 --- [zettaFire] [restartedMain] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8080 (http)
+2026-04-18T16:21:12.560-03:00  INFO 3508 --- [zettaFire] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-04-18T16:21:12.560-03:00  INFO 3508 --- [zettaFire] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.18]
+2026-04-18T16:21:12.609-03:00  INFO 3508 --- [zettaFire] [restartedMain] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 1374 ms
+2026-04-18T16:21:12.737-03:00  INFO 3508 --- [zettaFire] [restartedMain] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-04-18T16:21:12.794-03:00  INFO 3508 --- [zettaFire] [restartedMain] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.2.4.Final
+2026-04-18T16:21:13.273-03:00  INFO 3508 --- [zettaFire] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-04-18T16:21:13.304-03:00  INFO 3508 --- [zettaFire] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-04-18T16:21:13.471-03:00  INFO 3508 --- [zettaFire] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@9cc611
+2026-04-18T16:21:13.473-03:00  INFO 3508 --- [zettaFire] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-04-18T16:21:13.553-03:00  INFO 3508 --- [zettaFire] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:postgresql://localhost:5432/zettaFire]
+	Database driver: PostgreSQL JDBC Driver
+	Database dialect: PostgreSQLDialect
+	Database version: 17.7
+	Default catalog/schema: zettaFire/public
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-04-18T16:21:14.727-03:00  INFO 3508 --- [zettaFire] [restartedMain] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-04-18T16:21:14.812-03:00  INFO 3508 --- [zettaFire] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-04-18T16:21:14.875-03:00  INFO 3508 --- [zettaFire] [restartedMain] o.s.d.j.r.query.QueryEnhancerFactories   : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-04-18T16:21:15.165-03:00  INFO 3508 --- [zettaFire] [restartedMain] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name authService
+2026-04-18T16:21:15.294-03:00  WARN 3508 --- [zettaFire] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-04-18T16:21:15.797-03:00  INFO 3508 --- [zettaFire] [restartedMain] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8080 (http) with context path '/'
+2026-04-18T16:21:15.802-03:00  INFO 3508 --- [zettaFire] [restartedMain] com.br.zetta.fire.StartUp                : Started StartUp in 5.08 seconds (process running for 5.708)
+2026-04-18T16:22:01.190-03:00  INFO 3508 --- [zettaFire] [SpringApplicationShutdownHook] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
+2026-04-18T16:22:01.195-03:00  INFO 3508 --- [zettaFire] [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
+2026-04-18T16:22:01.199-03:00  INFO 3508 --- [zettaFire] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-04-18T16:22:01.202-03:00  INFO 3508 --- [zettaFire] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-04-18T16:22:01.206-03:00  INFO 3508 --- [zettaFire] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.

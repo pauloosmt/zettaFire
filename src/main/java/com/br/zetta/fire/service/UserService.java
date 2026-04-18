@@ -55,11 +55,11 @@ public class UserService {
 
         user.setResetToken(code);
 
-        user.setTokenExpiration(LocalDateTime.now().plusMinutes(5));
+        user.setTokenExpiration(LocalDateTime.now().plusMinutes(5)); //Adicionando o tempo que o codigo será válido
 
         userRepository.save(user);
 
-        String formattedBody = String.format(BODY, code);
+        String formattedBody = String.format(BODY, code); //Formatando a mensagem do email, para ela conter o codigo
 
         emailService.sendEmail(user.getEmail(), user.getIdUser(), SUBJECT, formattedBody);
     }
@@ -67,8 +67,9 @@ public class UserService {
     public void validateAndChangePassword(String code, String newPassword) {
         User user = (User) userRepository.findByResetToken(code);
 
-        if(user == null) throw new RuntimeException("Codigo Inválido");
+        if(user == null) throw new RuntimeException("Codigo Inválido"); // Se não achar nenhum usuario com o codigo, significa que o codigo não existe no BD
 
+        //Conferindo se o codigo ainda ta com o tempo válido
         if(LocalDateTime.now().isAfter(user.getTokenExpiration())) {
             user.setResetToken(null);
             userRepository.save(user);
@@ -76,6 +77,7 @@ public class UserService {
             throw new RuntimeException("Este código expirou! Peça um novo.");
         }
 
+        //Alteração da senha, e retirando os codigos do usuario (para melhor segurança e não gastar armazenamento)
         user.setPassword(new BCryptPasswordEncoder().encode(newPassword));
         user.setResetToken(null);
         user.setTokenExpiration(null);

@@ -1,0 +1,21 @@
+services:
+  db:
+    image: postgres:15
+    container_name: zetta_db
+    environment:
+      POSTGRES_USER: postZetta
+      POSTGRES_PASSWORD: squadA
+      POSTGRES_DB: zetta_fire
+    ports:
+      - "5432:5432"
+  api:
+    build: .
+    container_name: zetta_api
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/zetta_fire
+      SPRING_DATASOURCE_USERNAME: postZetta
+      SPRING_DATASOURCE_PASSWORD: squadA

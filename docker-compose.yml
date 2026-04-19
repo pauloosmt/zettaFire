@@ -16,6 +16,7 @@ services:
     depends_on:
       - db
     environment:
-      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/zetta_fire
-      SPRING_DATASOURCE_USERNAME: postZetta
-      SPRING_DATASOURCE_PASSWORD: squadA
+      - SPRING_PROFILES_ACTIVE=docker
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/zetta_fire
+      - SPRING_DATASOURCE_USERNAME-postZetta
+      - SPRING_DATASOURCE_PASSWORD=squadA

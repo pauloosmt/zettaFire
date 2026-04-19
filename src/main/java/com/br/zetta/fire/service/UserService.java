@@ -13,8 +13,9 @@ import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Random;
-
+import java.util.stream.Collectors;
 
 
 @Service
@@ -113,5 +114,11 @@ public class UserService {
         userRepository.delete(user);
 
         return "The user with email '"+ user.getEmail() + "' has been removed";
+    }
+
+    public List<UserResponseDTO> getAllUsers() {
+        List<User> users = userRepository.findAll();
+
+        return users.stream().map(UserResponseDTO::new).collect(Collectors.toList());
     }
 }

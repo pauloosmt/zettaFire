@@ -1,8 +1,11 @@
 package com.br.zetta.fire.controller;
 
+import com.br.zetta.fire.data.dto.response.UserResponseDTO;
 import com.br.zetta.fire.service.UserService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("user")
@@ -28,5 +31,10 @@ public class UserController {
         userService.validateAndChangePassword(code, newPassword);
 
         return ResponseEntity.ok("Password changed successfully! You can now log in to Bem-Te-Vi.");
+    }
+
+    @GetMapping("/all-users")
+    public ResponseEntity<List<UserResponseDTO>> getAllUsers() {
+        return ResponseEntity.ok().body(userService.getAllUsers());
     }
 }

@@ -33,7 +33,8 @@ build/
 .vscode/
 
 ### Application Properties ###
-/src/main/resources/application.properties
+/src/main/resources/application-docker.properties
+/src/main/resources/application-dev.properties
 
 
 ### Arquivos .env ###

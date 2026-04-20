@@ -13,6 +13,16 @@ COLUNAS_PARA_REMOVER = [
     "id_1",
     "id_2",
 ]
+COLUNAS_FINAIS = [
+    "id_foco_bdq",
+    "foco_id",
+    "longitude",
+    "latitude",
+    "data_hora_gmt",
+    "municipio",
+    "risco_fogo",
+    "frp",
+]
 COLUNA_ID_UNICO = "id_foco_bdq"
 NOME_ARQUIVO_FINAL = "focos_limpo.csv"
 
@@ -97,8 +107,15 @@ def filtrar_pontos_no_buffer(df, caminho_buffer):
 
 def limpar_dataframe(df, caminho_buffer):
     df_filtrado = filtrar_pontos_no_buffer(df, caminho_buffer)
-    colunas_existentes = [coluna for coluna in COLUNAS_PARA_REMOVER if coluna in df_filtrado.columns]
-    df_limpo = df_filtrado.drop(columns=colunas_existentes)
+    colunas_obrigatorias_ausentes = [
+        coluna for coluna in COLUNAS_FINAIS if coluna not in df_filtrado.columns
+    ]
+    if colunas_obrigatorias_ausentes:
+        raise ValueError(
+            "O CSV precisa conter as colunas esperadas para a limpeza final: "
+            + ", ".join(colunas_obrigatorias_ausentes)
+        )
+    df_limpo = df_filtrado.loc[:, COLUNAS_FINAIS].copy()
     if COLUNA_ID_UNICO not in df_limpo.columns:
         raise ValueError(
             f"O CSV precisa conter a coluna '{COLUNA_ID_UNICO}' para controlar duplicidade."
@@ -114,7 +131,11 @@ def montar_caminho_saida(arquivo_entrada):
 def carregar_csv_final(caminho_saida):
     if not caminho_saida.exists():
         return pd.DataFrame()
-    return pd.read_csv(caminho_saida)
+    df_existente = pd.read_csv(caminho_saida)
+    colunas_existentes = [coluna for coluna in COLUNAS_FINAIS if coluna in df_existente.columns]
+    if not colunas_existentes:
+        return df_existente
+    return df_existente.loc[:, colunas_existentes].copy()
 
 
 def acumular_registros_novos(df_novo, caminho_saida):
@@ -164,7 +185,7 @@ def executar_limpeza(caminho_entrada=None, caminho_saida=None):
     print(f"Total acumulado no CSV final: {len(df_final)}")
     print(f"Colunas antes: {len(df.columns)}")
     print(f"Colunas depois: {len(df_final.columns)}")
-    print("Colunas removidas:", ", ".join(COLUNAS_PARA_REMOVER))
+    print("Colunas finais mantidas:", ", ".join(COLUNAS_FINAIS))
 
     return {
         "input_path": caminho_entrada,

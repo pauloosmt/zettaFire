@@ -1,11 +1,11 @@
 services:
   db:
-    image: postgres:15
+    image: postgis/postgis:15-3.3
     container_name: zetta_db
     environment:
       POSTGRES_USER: postZetta
       POSTGRES_PASSWORD: squadA
-      POSTGRES_DB: zetta_fire
+      POSTGRES_DB: zettaFire
     ports:
       - "5432:5432"
   api:
@@ -17,6 +17,6 @@ services:
       - db
     environment:
       - SPRING_PROFILES_ACTIVE=docker
-      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/zetta_fire
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/zettaFire
       - SPRING_DATASOURCE_USERNAME-postZetta
       - SPRING_DATASOURCE_PASSWORD=squadA

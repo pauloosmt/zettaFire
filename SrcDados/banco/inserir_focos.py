@@ -1,7 +1,6 @@
 from __future__ import annotations
 
 import math
-import uuid
 from pathlib import Path
 
 import pandas as pd
@@ -11,16 +10,18 @@ from banco.conexao import criar_conexao
 
 
 COLUNAS_ESPERADAS = [
-    "id_foco_bdq",
-    "foco_id",
-    "longitude",
-    "latitude",
-    "data_hora_gmt",
-    "municipio",
-    "risco_fogo",
+    "city",
+    "fire_risk",
     "frp",
+    "latitude",
+    "longitude",
+    "radius_of_risk",
+    "start_data",
+    "status",
+    "geom",
+    "id_foco_bdq",
 ]
-RAIO_RISCO_PADRAO_METROS = 10000
+RAIO_RISCO_PADRAO_METROS = 3000
 STATUS_PADRAO = "ACTIVE"
 
 
@@ -41,13 +42,6 @@ def normalizar_valor(valor):
     return valor
 
 
-def normalizar_foco_id(valor):
-    valor = normalizar_valor(valor)
-    if valor is None:
-        return None
-    return str(valor)
-
-
 def normalizar_data_hora(valor):
     valor = normalizar_valor(valor)
     if valor is None:
@@ -58,33 +52,22 @@ def normalizar_data_hora(valor):
     return timestamp.to_pydatetime()
 
 
+def normalizar_geometry_wkt(valor, longitude, latitude):
+    valor = normalizar_valor(valor)
+    if valor is not None and str(valor).strip():
+        geometry_wkt = str(valor).strip()
+        if geometry_wkt.upper().startswith("SRID="):
+            return geometry_wkt
+        return f"SRID=4326;{geometry_wkt}"
+
+    if longitude is None or latitude is None:
+        return None
+    return f"SRID=4326;POINT({float(longitude)} {float(latitude)})"
+
+
 def carregar_dataframe(caminho_csv):
     caminho_csv = Path(caminho_csv)
     return pd.read_csv(caminho_csv)
-
-
-def garantir_tabela_fire_event(conexao):
-    with conexao.cursor() as cursor:
-        cursor.execute("CREATE EXTENSION IF NOT EXISTS postgis;")
-        cursor.execute(
-            """
-            CREATE TABLE IF NOT EXISTS fire_event (
-                id_fire_event UUID PRIMARY KEY,
-                id_foco_bdq BIGINT NOT NULL UNIQUE,
-                foco_id UUID NULL,
-                latitude DOUBLE PRECISION NOT NULL,
-                longitude DOUBLE PRECISION NOT NULL,
-                city VARCHAR(255) NOT NULL,
-                radius_of_risk BIGINT NOT NULL,
-                start_time TIMESTAMPTZ NOT NULL,
-                fire_risk DOUBLE PRECISION NULL,
-                frp DOUBLE PRECISION NULL,
-                status_fire VARCHAR(32) NOT NULL,
-                geom geography(Point, 4326) NOT NULL
-            );
-            """
-        )
-    conexao.commit()
 
 
 def buscar_ids_existentes(conexao, ids_focos):
@@ -109,26 +92,33 @@ def montar_registros_para_insercao(df, radius_of_risk):
         id_foco_bdq = normalizar_valor(registro["id_foco_bdq"])
         latitude = normalizar_valor(registro["latitude"])
         longitude = normalizar_valor(registro["longitude"])
-        data_hora = normalizar_data_hora(registro["data_hora_gmt"])
+        data_hora = normalizar_data_hora(registro["start_data"])
+        geometry_wkt = normalizar_geometry_wkt(registro.get("geom"), longitude, latitude)
+        radius_of_risk = normalizar_valor(registro["radius_of_risk"])
+        status = str(normalizar_valor(registro["status"]) or STATUS_PADRAO)
 
-        if id_foco_bdq is None or latitude is None or longitude is None or data_hora is None:
+        if (
+            id_foco_bdq is None
+            or latitude is None
+            or longitude is None
+            or data_hora is None
+            or radius_of_risk is None
+            or geometry_wkt is None
+        ):
             continue
 
         registros.append(
             (
-                str(uuid.uuid4()),
-                int(id_foco_bdq),
-                normalizar_foco_id(registro["foco_id"]),
+                str(normalizar_valor(registro["city"]) or "MUNICIPIO NAO INFORMADO"),
+                normalizar_valor(registro["fire_risk"]),
+                normalizar_valor(registro["frp"]),
                 float(latitude),
                 float(longitude),
-                str(normalizar_valor(registro["municipio"]) or "MUNICIPIO NAO INFORMADO"),
                 int(radius_of_risk),
                 data_hora,
-                normalizar_valor(registro["risco_fogo"]),
-                normalizar_valor(registro["frp"]),
-                STATUS_PADRAO,
-                float(longitude),
-                float(latitude),
+                status,
+                geometry_wkt,
+                int(id_foco_bdq),
             )
         )
     return registros
@@ -143,57 +133,25 @@ def inserir_registros(conexao, registros):
             cursor,
             """
             INSERT INTO fire_event (
-                id_fire_event,
-                id_foco_bdq,
-                foco_id,
-                latitude,
-                longitude,
                 city,
-                radius_of_risk,
-                start_time,
                 fire_risk,
                 frp,
+                latitude,
+                longitude,
+                radius_of_risk,
+                start_time,
                 status_fire,
-                geom
+                geom,
+                id_foco_bdq
             )
             VALUES %s
             ON CONFLICT (id_foco_bdq) DO NOTHING;
             """,
-            [
-                (
-                    id_fire_event,
-                    id_foco_bdq,
-                    foco_id,
-                    latitude,
-                    longitude,
-                    city,
-                    radius_of_risk,
-                    start_time,
-                    fire_risk,
-                    frp,
-                    status_fire,
-                    f"SRID=4326;POINT({longitude} {latitude})",
-                )
-                for (
-                    id_fire_event,
-                    id_foco_bdq,
-                    foco_id,
-                    latitude,
-                    longitude,
-                    city,
-                    radius_of_risk,
-                    start_time,
-                    fire_risk,
-                    frp,
-                    status_fire,
-                    _longitude_geom,
-                    _latitude_geom,
-                ) in registros
-            ],
+            registros,
             template="""
             (
-                %s, %s, %s::uuid, %s, %s, %s, %s, %s, %s, %s, %s,
-                ST_GeogFromText(%s)
+                %s, %s, %s, %s, %s, %s, %s, %s,
+                ST_GeogFromText(%s), %s
             )
             """,
         )
@@ -207,8 +165,6 @@ def inserir_focos_dataframe(df, radius_of_risk=RAIO_RISCO_PADRAO_METROS):
     validar_colunas(df)
 
     with criar_conexao() as conexao:
-        garantir_tabela_fire_event(conexao)
-
         ids_focos = [
             int(id_foco)
             for id_foco in df["id_foco_bdq"].dropna().tolist()

@@ -14,17 +14,21 @@ COLUNAS_PARA_REMOVER = [
     "id_2",
 ]
 COLUNAS_FINAIS = [
-    "id_foco_bdq",
-    "foco_id",
-    "longitude",
-    "latitude",
-    "data_hora_gmt",
-    "municipio",
-    "risco_fogo",
+    "city",
+    "fire_risk",
     "frp",
+    "latitude",
+    "longitude",
+    "radius_of_risk",
+    "start_data",
+    "status",
+    "geom",
+    "id_foco_bdq",
 ]
 COLUNA_ID_UNICO = "id_foco_bdq"
 NOME_ARQUIVO_FINAL = "focos_limpo.csv"
+RAIO_RISCO_PADRAO_METROS = 3000
+STATUS_PADRAO = "ACTIVE"
 
 PASTA_COLETA = Path(__file__).resolve().parents[1] / "coleta" / "dados_inpe"
 PASTA_SAIDA = Path(__file__).resolve().parent / "dados_tratados"
@@ -83,6 +87,60 @@ def preparar_coordenadas(df):
     return df_preparado
 
 
+def garantir_geom(df):
+    df_com_geometria = df.copy()
+    if "geom" not in df_com_geometria.columns:
+        df_com_geometria["geom"] = pd.Series(index=df_com_geometria.index, dtype="object")
+    else:
+        df_com_geometria["geom"] = df_com_geometria["geom"].astype("object")
+
+    mask_vazia = df_com_geometria["geom"].isna() | (
+        df_com_geometria["geom"].astype(str).str.strip() == ""
+    )
+    if mask_vazia.any():
+        df_com_geometria.loc[mask_vazia, "geom"] = [
+            f"POINT({longitude} {latitude})"
+            for longitude, latitude in zip(
+                df_com_geometria.loc[mask_vazia, "longitude"],
+                df_com_geometria.loc[mask_vazia, "latitude"],
+            )
+        ]
+    return df_com_geometria
+
+
+def padronizar_colunas(df):
+    df_padronizado = df.copy()
+    mapa_renomeacao = {
+        "municipio": "city",
+        "risco_fogo": "fire_risk",
+        "data_hora_gmt": "start_data",
+        "geometry_wkt": "geom",
+    }
+    df_padronizado = df_padronizado.rename(columns=mapa_renomeacao)
+
+    if "city" not in df_padronizado.columns:
+        df_padronizado["city"] = None
+    if "fire_risk" not in df_padronizado.columns:
+        df_padronizado["fire_risk"] = None
+    if "frp" not in df_padronizado.columns:
+        df_padronizado["frp"] = None
+    if "radius_of_risk" not in df_padronizado.columns:
+        df_padronizado["radius_of_risk"] = RAIO_RISCO_PADRAO_METROS
+    if "status" not in df_padronizado.columns:
+        df_padronizado["status"] = STATUS_PADRAO
+    if "start_data" not in df_padronizado.columns:
+        df_padronizado["start_data"] = None
+
+    df_padronizado["city"] = (
+        df_padronizado["city"].fillna("MUNICIPIO NAO INFORMADO").astype(str).str.strip()
+    )
+    df_padronizado.loc[df_padronizado["city"] == "", "city"] = "MUNICIPIO NAO INFORMADO"
+    df_padronizado["radius_of_risk"] = RAIO_RISCO_PADRAO_METROS
+    df_padronizado["status"] = STATUS_PADRAO
+    df_padronizado = garantir_geom(df_padronizado)
+    return df_padronizado
+
+
 def filtrar_pontos_no_buffer(df, caminho_buffer):
     df_preparado = preparar_coordenadas(df)
     if df_preparado.empty:
@@ -107,6 +165,7 @@ def filtrar_pontos_no_buffer(df, caminho_buffer):
 
 def limpar_dataframe(df, caminho_buffer):
     df_filtrado = filtrar_pontos_no_buffer(df, caminho_buffer)
+    df_filtrado = padronizar_colunas(df_filtrado)
     colunas_obrigatorias_ausentes = [
         coluna for coluna in COLUNAS_FINAIS if coluna not in df_filtrado.columns
     ]
@@ -132,6 +191,9 @@ def carregar_csv_final(caminho_saida):
     if not caminho_saida.exists():
         return pd.DataFrame()
     df_existente = pd.read_csv(caminho_saida)
+    if {"latitude", "longitude"}.issubset(df_existente.columns):
+        df_existente = preparar_coordenadas(df_existente)
+    df_existente = padronizar_colunas(df_existente)
     colunas_existentes = [coluna for coluna in COLUNAS_FINAIS if coluna in df_existente.columns]
     if not colunas_existentes:
         return df_existente
@@ -162,6 +224,8 @@ def acumular_registros_novos(df_novo, caminho_saida):
         df_final = pd.concat([df_existente, df_apenas_novos], ignore_index=True)
         df_final = df_final.drop_duplicates(subset=[COLUNA_ID_UNICO], keep="first")
 
+    df_final = padronizar_colunas(df_final)
+    df_final = df_final.loc[:, COLUNAS_FINAIS].copy()
     df_final.to_csv(caminho_saida, index=False, encoding="utf-8")
     return df_final, linhas_novas, linhas_repetidas
 

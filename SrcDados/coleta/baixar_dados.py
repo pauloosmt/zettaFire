@@ -180,6 +180,11 @@ def extrair_registros(geojson):
                 **propriedades,
                 "longitude": longitude,
                 "latitude": latitude,
+                "geometry_wkt": (
+                    f"POINT({longitude} {latitude})"
+                    if longitude is not None and latitude is not None
+                    else None
+                ),
             }
         )
 

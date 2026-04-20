@@ -7,7 +7,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
@@ -15,35 +14,43 @@ import java.util.UUID;
 @Entity
 @Getter
 @Setter
-@Table(name="fireEvent")
+@Table(name = "fire_event")
 @NoArgsConstructor
 public class FireEvent {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
+    @Column(name = "id_fire_event")
     private UUID idFireEvent;
 
-    @Column(name="latitude", nullable = false)
+    @Column(name = "id_foco_bdq", nullable = false, unique = true)
+    private Long idFocoBdq;
+
+    @Column(name = "foco_id")
+    private UUID focoId;
+
+    @Column(name = "latitude", nullable = false)
     private Double latitude;
 
-    @Column(name="city", nullable = false)
+    @Column(name = "city", nullable = false)
     private String city;
 
     @Column(name = "longitude", nullable = false)
     private Double longitude;
 
-    @Column(name="radiusOfRisk", nullable = false)
+    @Column(name = "radius_of_risk", nullable = false)
     private Long radiusOfRisk;
 
-    @Column(name="startData", nullable = false)
+    @Column(name = "start_time", nullable = false)
     private LocalDateTime startTime;
 
-    @Column(name="fireRisk", nullable = false)
+    @Column(name = "fire_risk")
     private Double fireRisk;
 
-    @Column(name="frp", nullable = false)
+    @Column(name = "frp")
     private Double frp;
 
-    @Column(name="status", nullable = false)
+    @Enumerated(EnumType.STRING)
+    @Column(name = "status_fire", nullable = false)
     private StatusFire statusFire;
 
 
@@ -59,6 +66,4 @@ public class FireEvent {
         this.statusFire = fireEventRequestDTO.statusFire();
         this.city = fireEventRequestDTO.city();
     }
-
-
 }

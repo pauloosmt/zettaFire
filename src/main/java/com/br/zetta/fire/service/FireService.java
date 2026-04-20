@@ -34,10 +34,16 @@ public class FireService {
 
     @Transactional
     public FireEvent createFireEvent(FireEvent event) {
+        if (event.getIdFocoBdq() != null) {
+            var fireEventExistente = fireRepository.findByIdFocoBdq(event.getIdFocoBdq());
+            if (fireEventExistente.isPresent()) {
+                return fireEventExistente.get();
+            }
+        }
+
         if (event.getStartTime() == null) {
             event.setStartTime(java.time.LocalDateTime.now());
         }
-
 
         if (event.getStatusFire() == null) {
             event.setStatusFire(StatusFire.ACTIVE);

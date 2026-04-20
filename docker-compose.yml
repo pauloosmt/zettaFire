@@ -8,6 +8,7 @@ services:
       POSTGRES_DB: zettaFire
     ports:
       - "5432:5432"
+
   api:
     build: .
     container_name: zetta_api
@@ -18,5 +19,24 @@ services:
     environment:
       - SPRING_PROFILES_ACTIVE=docker
       - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/zettaFire
-      - SPRING_DATASOURCE_USERNAME-postZetta
+      - SPRING_DATASOURCE_USERNAME=postZetta
       - SPRING_DATASOURCE_PASSWORD=squadA
+      - API_SECURITY_TOKEN_SECRET=zettafire-dev-secret
+      - LOCATIONIQ_API_KEY=dummy-key
+
+  pipeline:
+    build:
+      context: ./SrcDados
+    container_name: zetta_pipeline
+    depends_on:
+      - db
+    environment:
+      - DB_HOST=db
+      - DB_PORT=5432
+      - DB_NAME=zettaFire
+      - DB_USER=postZetta
+      - DB_PASSWORD=squadA
+      - PIPELINE_INTERVAL_SECONDS=1800
+      - PIPELINE_ONCE=false
+    volumes:
+      - ./SrcDados:/app

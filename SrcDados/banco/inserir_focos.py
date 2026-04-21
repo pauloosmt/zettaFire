@@ -57,12 +57,12 @@ def normalizar_geometry_wkt(valor, longitude, latitude):
     if valor is not None and str(valor).strip():
         geometry_wkt = str(valor).strip()
         if geometry_wkt.upper().startswith("SRID="):
-            return geometry_wkt
-        return f"SRID=4326;{geometry_wkt}"
+            geometry_wkt = geometry_wkt.split(";", 1)[1]
+        return geometry_wkt
 
     if longitude is None or latitude is None:
         return None
-    return f"SRID=4326;POINT({float(longitude)} {float(latitude)})"
+    return f"POINT({float(longitude)} {float(latitude)})"
 
 
 def carregar_dataframe(caminho_csv):
@@ -98,12 +98,12 @@ def montar_registros_para_insercao(df, radius_of_risk):
         status = str(normalizar_valor(registro["status"]) or STATUS_PADRAO)
 
         if (
-            id_foco_bdq is None
-            or latitude is None
-            or longitude is None
-            or data_hora is None
-            or radius_of_risk is None
-            or geometry_wkt is None
+                id_foco_bdq is None
+                or latitude is None
+                or longitude is None
+                or data_hora is None
+                or radius_of_risk is None
+                or geometry_wkt is None
         ):
             continue
 
@@ -145,13 +145,13 @@ def inserir_registros(conexao, registros):
                 id_foco_bdq
             )
             VALUES %s
-            ON CONFLICT (id_foco_bdq) DO NOTHING;
+                ON CONFLICT (id_foco_bdq) DO NOTHING;
             """,
             registros,
             template="""
             (
                 %s, %s, %s, %s, %s, %s, %s, %s,
-                ST_GeogFromText(%s), %s
+                ST_GeomFromText(%s, 4326), %s
             )
             """,
         )

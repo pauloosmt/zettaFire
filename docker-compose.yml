@@ -8,6 +8,11 @@ services:
       POSTGRES_DB: zettaFire
     ports:
       - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postZetta -d zettaFire"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
 
   api:
     build: .
@@ -15,7 +20,8 @@ services:
     ports:
       - "8080:8080"
     depends_on:
-      - db
+      db:
+        condition: service_healthy
     environment:
       - SPRING_PROFILES_ACTIVE=docker
       - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/zettaFire
@@ -23,13 +29,21 @@ services:
       - SPRING_DATASOURCE_PASSWORD=squadA
       - API_SECURITY_TOKEN_SECRET=zettafire-dev-secret
       - LOCATIONIQ_API_KEY=dummy-key
+    healthcheck:
+      test: ["CMD-SHELL", "wget -qO- http://localhost:8080/actuator/health || exit 1"]
+      interval: 15s
+      timeout: 5s
+      retries: 20
 
   pipeline:
     build:
       context: ./SrcDados
     container_name: zetta_pipeline
     depends_on:
-      - db
+      db:
+        condition: service_healthy
+      api:
+        condition: service_healthy
     environment:
       - DB_HOST=db
       - DB_PORT=5432

@@ -1,5 +1,6 @@
 package com.br.zetta.fire.controller;
 
+import com.br.zetta.fire.data.dto.request.ResetPasswordDTO;
 import com.br.zetta.fire.data.dto.response.UserResponseDTO;
 import com.br.zetta.fire.service.UserService;
 import org.springframework.http.ResponseEntity;
@@ -27,8 +28,8 @@ public class UserController {
     }
 
     @PostMapping("/reset-password")
-    public ResponseEntity<String> resetPassword(@RequestParam String code, @RequestParam String newPassword) {
-        userService.validateAndChangePassword(code, newPassword);
+    public ResponseEntity<String> resetPassword(@RequestBody ResetPasswordDTO dto) {
+        userService.validateAndChangePassword(dto.code(), dto.newPassword());
 
         return ResponseEntity.ok("Password changed successfully! You can now log in to Bem-Te-Vi.");
     }

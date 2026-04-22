@@ -38,10 +38,9 @@ services:
       context: ./SrcDados
     container_name: zetta_pipeline
     depends_on:
-      db:
-        condition: service_healthy
-      api:
-        condition: service_healthy
+      - db
+      - api
+    command: ["sh", "-c", "sleep 15 && python main.py"]
     environment:
       - DB_HOST=db
       - DB_PORT=5432

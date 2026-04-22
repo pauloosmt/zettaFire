@@ -26,9 +26,10 @@ public class Alert {
     private LocalDate shippingDate;
 
     @Column(name="status", nullable = false)
+    @Enumerated(EnumType.STRING)
     private StatusAlert statusAlert;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "user_alert",
             joinColumns = @JoinColumn(name = "id_alert"),
@@ -44,5 +45,8 @@ public class Alert {
         this.userList = user;
     }
 
+    public void setStatus(StatusAlert status) {
+        this.statusAlert = status;
+    }
 
 }

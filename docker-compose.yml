@@ -27,8 +27,6 @@ services:
       - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/zettaFire
       - SPRING_DATASOURCE_USERNAME=postZetta
       - SPRING_DATASOURCE_PASSWORD=squadA
-      - API_SECURITY_TOKEN_SECRET=zettafire-dev-secret
-      - LOCATIONIQ_API_KEY=dummy-key
     healthcheck:
       test: ["CMD-SHELL", "wget -qO- http://localhost:8080/actuator/health || exit 1"]
       interval: 15s

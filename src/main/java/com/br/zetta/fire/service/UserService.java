@@ -62,7 +62,7 @@ public class UserService {
 
         String formattedBody = String.format(BODY, code); //Formatando a mensagem do email, para ela conter o codigo
 
-        emailService.sendEmail(user.getEmail(), user.getIdUser(), SUBJECT, formattedBody);
+        emailService.sendEmail(user.getEmail(), null, SUBJECT, formattedBody);
     }
 
     public void validateAndChangePassword(String code, String newPassword) {

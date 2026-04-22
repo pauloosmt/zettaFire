@@ -28,8 +28,7 @@ public class EmailService {
 
     @Async
     public void sendEmail(String to, UUID idAlert, String SUBJECT, String BODY_TEMPLATE) {
-        try{
-            logger.info("Iniciando tentativa de envio para: {}", to);
+        try {
             SimpleMailMessage message = new SimpleMailMessage();
             message.setFrom("Bem-Te-Vi <${spring.mail.username}>");
             message.setTo(to);
@@ -38,11 +37,15 @@ public class EmailService {
 
             mailSender.send(message);
 
+            if (idAlert != null) {
+                updateAlertStatus(idAlert, StatusAlert.SENT);
+            }
             updateAlertStatus(idAlert, StatusAlert.SENT);
-
-            logger.info("Alerta enviado com sucesso para: {}", to);
+            logger.info("E-mail disparado com sucesso para: {}", to);
         } catch (Exception e) {
-            updateAlertStatus(idAlert, StatusAlert.FAILED);
+            if (idAlert != null) {
+                updateAlertStatus(idAlert, StatusAlert.FAILED);
+            }
             logger.error("Erro ao enviar email", e);
         }
     }

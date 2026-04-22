@@ -43,6 +43,8 @@ public class GeocodingService {
     }
 
     private BigDecimal[] executeRequest(String query) {
+
+
         try{
             String urlApi = "https://us1.locationiq.com/v1/search?key=" + apiKey +
                     "&q=" + URLEncoder.encode(query, StandardCharsets.UTF_8) +
@@ -63,7 +65,7 @@ public class GeocodingService {
                 };
             }
         } catch (Exception e) {
-            throw new RuntimeException(e);
+           throw new RuntimeException();
         }
         return new BigDecimal[]{BigDecimal.ZERO, BigDecimal.ZERO};
     }

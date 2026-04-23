@@ -1,0 +1,43 @@
+{
+  "expo": {
+    "name": "Bem-te-vi",
+    "slug": "zetta-fire",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/images/logo.png",
+    "scheme": "zettafire",
+    "userInterfaceStyle": "light", 
+    "newArchEnabled": true,
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "adaptiveIcon": {
+        "backgroundColor": "#F6F4EB",
+        "foregroundImage": "./assets/images/logo.png"
+      },
+      "edgeToEdgeEnabled": true,
+      "predictiveBackGestureEnabled": false
+    },
+    "web": {
+      "output": "static",
+      "favicon": "./assets/images/logo.png"
+    },
+    "plugins": [
+      "expo-router",
+      [
+        "expo-splash-screen",
+        {
+          "image": "./assets/images/logo.png",
+          "imageWidth": 200,
+          "resizeMode": "contain",
+          "backgroundColor": "#F6F4EB" 
+        }
+      ]
+    ],
+    "experiments": {
+      "typedRoutes": true,
+      "reactCompiler": true
+    }
+  }
+}

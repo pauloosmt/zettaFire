@@ -1,11 +1,16 @@
 package com.br.zetta.fire.service;
 
+import com.br.zetta.fire.exceptions.custom.ExternalServiceException;
+import com.br.zetta.fire.exceptions.general.GlobalExceptionHandler;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.client.SimpleClientHttpRequestFactory;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
 
 import java.math.BigDecimal;
@@ -16,6 +21,8 @@ import java.util.Map;
 
 @Service
 public class GeocodingService {
+
+    private static final Logger logger = LoggerFactory.getLogger(GlobalExceptionHandler.class);
 
     @Value("${locationiq.api.key}")
     private String apiKey;
@@ -64,8 +71,15 @@ public class GeocodingService {
                         new BigDecimal(result.get("lon").toString())
                 };
             }
+        } catch (HttpClientErrorException.Unauthorized e) {
+            logger.error("Chave da API LocationIQ inválida ou expirada.");
+            throw new ExternalServiceException("Falha na autenticação com o serviço de geolocalização.");
+        } catch (HttpClientErrorException.TooManyRequests e) {
+            logger.warn("Limite de requisições da LocationIQ atingido.");
+            throw new ExternalServiceException("Limite de busca excedido. Tente novamente mais tarde.");
         } catch (Exception e) {
-           throw new RuntimeException();
+            logger.error("Erro ao conectar com LocationIQ: {}", e.getMessage());
+            throw new ExternalServiceException("Não foi possível obter as coordenadas no momento.");
         }
         return new BigDecimal[]{BigDecimal.ZERO, BigDecimal.ZERO};
     }

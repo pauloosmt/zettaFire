@@ -5,7 +5,9 @@ import com.br.zetta.fire.data.dto.response.UserResponseDTO;
 import com.br.zetta.fire.data.entity.Address;
 import com.br.zetta.fire.data.entity.User;
 import com.br.zetta.fire.data.entity.enums.UserRole;
+import com.br.zetta.fire.exceptions.custom.AlertProcessingException;
 import com.br.zetta.fire.repository.UserRepository;
+import jakarta.persistence.EntityNotFoundException;
 import jakarta.validation.constraints.Email;
 import org.springframework.cglib.core.Local;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -49,7 +51,7 @@ public class UserService {
     public void generatePasswordResetToken(String email) {
 
         User user = (User) userRepository.findByEmail(email);
-        if(user == null) throw new RuntimeException("Email not found");
+        if(user == null) throw new EntityNotFoundException("Não encontramos um usuário com este e-mail.");;
 
         //Gerando o codigo de troca de senha
         String code = String.format("%06d", new Random().nextInt(1000000));
@@ -68,14 +70,14 @@ public class UserService {
     public void validateAndChangePassword(String code, String newPassword) {
         User user = (User) userRepository.findByResetToken(code);
 
-        if(user == null) throw new RuntimeException("Codigo Inválido"); // Se não achar nenhum usuario com o codigo, significa que o codigo não existe no BD
+        if(user == null) throw new AlertProcessingException("Código de verificação inválido.");// Se não achar nenhum usuario com o codigo, significa que o codigo não existe no BD
 
         //Conferindo se o codigo ainda ta com o tempo válido
         if(LocalDateTime.now().isAfter(user.getTokenExpiration())) {
             user.setResetToken(null);
             userRepository.save(user);
 
-            throw new RuntimeException("Este código expirou! Peça um novo.");
+            throw new AlertProcessingException("Este código expirou! Peça um novo.");
         }
 
         //Alteração da senha, e retirando os codigos do usuario (para melhor segurança e não gastar armazenamento)
@@ -110,6 +112,8 @@ public class UserService {
 
     public String deleteUser(String email) {
         User user = (User) userRepository.findByEmail(email);
+
+        if(user == null) throw new EntityNotFoundException("Usuário com o e-mail " + email + " não foi encontrado.");
 
         userRepository.delete(user);
 

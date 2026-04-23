@@ -10,6 +10,7 @@ import com.br.zetta.fire.infra.security.TokenService;
 import com.br.zetta.fire.repository.UserRepository;
 import com.br.zetta.fire.service.UserService;
 import jakarta.validation.Valid;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -50,7 +51,7 @@ public class AuthController {
     @PostMapping("/register")
     public ResponseEntity<UserResponseDTO> register(@RequestBody @Valid UserRequestDTO data) {
         if(this.userRepository.findByEmail(data.email()) != null) {
-            return ResponseEntity.badRequest().build();
+            throw new DataIntegrityViolationException("email already registered");
         }
         String encryptedPassword = new BCryptPasswordEncoder().encode(data.password());
 

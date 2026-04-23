@@ -5,6 +5,7 @@ import com.br.zetta.fire.data.entity.enums.StatusAlert;
 import com.br.zetta.fire.repository.AlertRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.mail.MailException;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.scheduling.annotation.Async;
@@ -42,6 +43,11 @@ public class EmailService {
             }
             updateAlertStatus(idAlert, StatusAlert.SENT);
             logger.info("E-mail disparado com sucesso para: {}", to);
+        } catch (MailException e) {
+            // Erro específico do Spring Mail (servidor fora, credenciais erradas)
+            logger.error("Falha na infraestrutura de e-mail para {}: {}", to, e.getMessage());
+            updateAlertStatus(idAlert, StatusAlert.FAILED);
+
         } catch (Exception e) {
             if (idAlert != null) {
                 updateAlertStatus(idAlert, StatusAlert.FAILED);

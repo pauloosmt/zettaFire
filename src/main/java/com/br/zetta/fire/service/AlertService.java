@@ -4,6 +4,7 @@ import com.br.zetta.fire.data.entity.Alert;
 import com.br.zetta.fire.data.entity.FireEvent;
 import com.br.zetta.fire.data.entity.User;
 import com.br.zetta.fire.data.entity.enums.StatusAlert;
+import com.br.zetta.fire.exceptions.custom.AlertProcessingException;
 import com.br.zetta.fire.repository.AlertRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -81,8 +82,10 @@ public class AlertService {
                 alert.setStatusAlert(StatusAlert.SENT);
                 alertRepository.save(alert);
 
-            } catch (Exception e) {
-                System.err.println("Erro ao processar alerta " + alert.getIdAlert() + ": " + e.getMessage());
+            } catch (AlertProcessingException ex) {
+                logger.warn("Erro de processamento: {}", ex.getMessage());
+                alert.setStatusAlert(StatusAlert.FAILED);
+                alertRepository.save(alert);
             }
         }
     }

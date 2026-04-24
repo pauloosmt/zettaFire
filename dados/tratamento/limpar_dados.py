@@ -34,8 +34,7 @@ PASTA_COLETA = Path(__file__).resolve().parents[1] / "coleta" / "dados_inpe"
 PASTA_SAIDA = Path(__file__).resolve().parent / "dados_tratados"
 PASTA_BUFFER = Path(__file__).resolve().parent
 ARQUIVOS_BUFFER_PADRAO = [
-    PASTA_BUFFER / "Lavras_buffer10km.geojson",
-    PASTA_BUFFER / "Lavras_buffer_10km.shp",
+    PASTA_BUFFER / "MG_Municipios_2025.shp",
 ]
 
 

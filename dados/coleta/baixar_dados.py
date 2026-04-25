@@ -19,7 +19,7 @@ SORT_BY = None
 INTERVALO_PADRAO_SEGUNDOS = 1800
 
 PASTA_SAIDA = Path(__file__).resolve().parent / "dados_inpe"
-PASTA_SAIDA.mkdir(exist_ok=True)
+PASTA_SAIDA.mkdir(parents=True, exist_ok=True)
 
 AUTO_SORT_BY = None
 

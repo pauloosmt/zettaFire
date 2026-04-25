@@ -32,6 +32,7 @@ STATUS_PADRAO = "ACTIVE"
 
 PASTA_COLETA = Path(__file__).resolve().parents[1] / "coleta" / "dados_inpe"
 PASTA_SAIDA = Path(__file__).resolve().parent / "dados_tratados"
+PASTA_SAIDA.mkdir(parents=True, exist_ok=True)
 PASTA_BUFFER = Path(__file__).resolve().parent
 ARQUIVOS_BUFFER_PADRAO = [
     PASTA_BUFFER / "MG_Municipios_2025.shp",
@@ -190,7 +191,6 @@ def limpar_dataframe(df, caminho_buffer):
 
 
 def montar_caminho_saida(arquivo_entrada):
-    PASTA_SAIDA.mkdir(exist_ok=True)
     return PASTA_SAIDA / NOME_ARQUIVO_FINAL
 
 

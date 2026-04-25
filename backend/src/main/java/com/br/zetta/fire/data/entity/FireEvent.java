@@ -1,6 +1,6 @@
 package com.br.zetta.fire.data.entity;
 
-import com.br.zetta.fire.data.dto.request.FireEventRequestDTO;
+
 import com.br.zetta.fire.data.entity.enums.StatusFire;
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -57,13 +57,4 @@ public class FireEvent {
     @OneToMany(mappedBy = "fireEvent")
     private List<Alert> alert;
 
-    public FireEvent(FireEventRequestDTO fireEventRequestDTO) {
-        this.latitude = fireEventRequestDTO.latitude();
-        this.longitude = fireEventRequestDTO.longitude();
-        this.fireRisk = fireEventRequestDTO.fireRisk();
-        this.frp = fireEventRequestDTO.frp();
-        this.radiusOfRisk = fireEventRequestDTO.radiusOfRisk();
-        this.statusFire = fireEventRequestDTO.statusFire();
-        this.city = fireEventRequestDTO.city();
-    }
 }

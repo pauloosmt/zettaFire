@@ -31,24 +31,6 @@ public class AlertService {
     }
 
 
-    @Transactional
-    public void createAndSendAlerts(FireEvent fireEvent, List<User> usersAtRisk, String SUBJECT, String BODY) {
-        if(usersAtRisk.isEmpty()) return;
-
-        Alert alert = new Alert();
-        alert.setShippingDate(LocalDate.now());
-        alert.setStatusAlert(StatusAlert.PENDING);
-        alert.setFireEvent(fireEvent);
-
-        alert.setUserList(usersAtRisk);
-
-        Alert savedAlert = alertRepository.save(alert);
-
-        for(User user : usersAtRisk) {
-            emailService.sendEmail(user.getEmail(), savedAlert.getIdAlert(), SUBJECT, BODY);
-        }
-    }
-
     @Scheduled(fixedDelay = 20000)
     @Transactional(readOnly = true)
     public void processPendingAlerts() {

@@ -102,7 +102,7 @@ public class UserService {
         address.setLongitude(coord[1]);
 
         User user = new User(userRequestDTO, password);
-        user.setUserRole(UserRole.valueOf("ADMIN"));
+        user.setUserRole(UserRole.valueOf("USER"));
         user.setAddress(address);
 
         userRepository.save(user);

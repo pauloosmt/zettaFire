@@ -1,5 +1,6 @@
 package com.br.zetta.fire.controller;
 
+import com.br.zetta.fire.data.dto.request.ForgotPasswordDTO;
 import com.br.zetta.fire.data.dto.request.ResetPasswordDTO;
 import com.br.zetta.fire.data.dto.response.UserResponseDTO;
 import com.br.zetta.fire.service.UserService;
@@ -15,16 +16,12 @@ public class UserController {
 
     public UserController(UserService userService) {this.userService = userService;}
 
-    @DeleteMapping("/delete")
-    public ResponseEntity<String> deleteUser(@RequestParam String email) {
-        return ResponseEntity.ok().body(userService.deleteUser(email));
-    }
 
     @PostMapping("/forgot-password")
-    public ResponseEntity<String> forgotPassword(@RequestParam String email) {
-        userService.generatePasswordResetToken(email);
+    public ResponseEntity<String> forgotPassword(@RequestBody ForgotPasswordDTO dto) {
+        userService.generatePasswordResetToken(dto.email());
 
-        return ResponseEntity.ok("Recovery code sent to your email: " + email);
+        return ResponseEntity.ok("Recovery code sent to your email: " + dto.email());
     }
 
     @PostMapping("/reset-password")
@@ -34,8 +31,5 @@ public class UserController {
         return ResponseEntity.ok("Password changed successfully! You can now log in to Bem-Te-Vi.");
     }
 
-    @GetMapping("/all-users")
-    public ResponseEntity<List<UserResponseDTO>> getAllUsers() {
-        return ResponseEntity.ok().body(userService.getAllUsers());
-    }
+
 }

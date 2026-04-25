@@ -1,0 +1,625 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="e7bd3834-864e-44c6-a39c-1b620b3e86e9" name="Changes" comment="fix: pipeline start bug fixed">
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/br/zetta/fire/controller/DashboardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/br/zetta/fire/controller/AdminController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/br/zetta/fire/controller/FireController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/br/zetta/fire/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/br/zetta/fire/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/br/zetta/fire/data/dto/request/FireEventRequestDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/br/zetta/fire/data/dto/response/AlertResponse.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/br/zetta/fire/data/entity/FireEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/br/zetta/fire/data/entity/FireEvent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/br/zetta/fire/infra/security/SecurityConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/br/zetta/fire/infra/security/SecurityConfiguration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/br/zetta/fire/repository/FireEventRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/br/zetta/fire/repository/FireEventRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/br/zetta/fire/service/AlertService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/br/zetta/fire/service/AlertService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/br/zetta/fire/service/FireService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/br/zetta/fire/service/FireService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/br/zetta/fire/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/br/zetta/fire/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dados/tratamento/dados_tratados/focos_limpo.csv" beforeDir="false" afterPath="$PROJECT_DIR$/dados/tratamento/dados_tratados/focos_limpo.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/infra/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/infra/docker-compose.yml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Enum" />
+        <option value="Interface" />
+        <option value="Dockerfile" />
+        <option value="Record" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="devBack" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;pauloosmt&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/pauloosmt/zettaFire.git&quot;,
+    &quot;accountId&quot;: &quot;5a48866e-a17c-4ed1-9920-04e89d009b26&quot;
+  }
+}</component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHomeTypeForPersistence" value="WRAPPER" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 4
+}</component>
+  <component name="ProjectId" id="3Auf44DGD9lrVABRBMODsl7ULRB" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.StartUp.executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;Spring Boot.StartUp.executor&quot;: &quot;Run&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;dev&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/zettaFinal/zettaFire&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\zettaFinal\zettaFire\backend\src\main\java\com\br\zetta\fire" />
+      <recent name="D:\zettaFinal\zettaFire\backend\src\main\java" />
+      <recent name="D:\zettaFinal\zettaFire\backend" />
+      <recent name="D:\zettaFinal\zettaFire\src\main\resources\static" />
+      <recent name="D:\zettaFinal\zettaFire\src\main\resources\templates" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="zettaFire" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="zettaFire" />
+      <option name="filePath" />
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="PythonConfigurationType" factoryName="Python">
+      <module name="zettaFire" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="RUN_TOOL" value="" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="StartUp" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <option name="ACTIVE_PROFILES" value="dev" />
+      <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
+      <module name="fire" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.br.zetta.fire.StartUp" />
+      <extension name="net.ashald.envfile">
+        <option name="IS_ENABLED" value="true" />
+        <option name="IS_SUBST" value="false" />
+        <option name="IS_PATH_MACRO_SUPPORTED" value="false" />
+        <option name="IS_IGNORE_MISSING_FILES" value="false" />
+        <option name="IS_ENABLE_EXPERIMENTAL_INTEGRATIONS" value="false" />
+        <ENTRIES>
+          <ENTRY IS_ENABLED="true" PARSER="runconfig" IS_EXECUTABLE="false" />
+          <ENTRY IS_ENABLED="true" PARSER="env" IS_EXECUTABLE="false" PATH="infra/.env" />
+        </ENTRIES>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="Tox" factoryName="Tox">
+      <module name="zettaFire" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="RUN_TOOL" value="" />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-30f59d01ecdd-2fc7cc6b9a17-intellij.indexing.shared.core-IU-253.31033.145" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="StructureViewState">
+    <option name="selectedTab" value="Logical" />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="e7bd3834-864e-44c6-a39c-1b620b3e86e9" name="Changes" comment="" />
+      <created>1773447182543</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1773447182543</updated>
+      <workItem from="1773447184277" duration="674000" />
+      <workItem from="1773506103904" duration="933000" />
+      <workItem from="1773684390270" duration="429000" />
+      <workItem from="1773684872857" duration="3143000" />
+      <workItem from="1773710020820" duration="6897000" />
+      <workItem from="1773786090564" duration="6483000" />
+      <workItem from="1774400616374" duration="2957000" />
+      <workItem from="1774750886192" duration="4851000" />
+      <workItem from="1774755785817" duration="139000" />
+      <workItem from="1774755963662" duration="211000" />
+      <workItem from="1774756210621" duration="70000" />
+      <workItem from="1774756310219" duration="834000" />
+      <workItem from="1774757629963" duration="62000" />
+      <workItem from="1775531992371" duration="1034000" />
+      <workItem from="1775688595519" duration="11950000" />
+      <workItem from="1775794006058" duration="1291000" />
+      <workItem from="1776274521312" duration="18000" />
+      <workItem from="1776274562028" duration="4000" />
+    </task>
+    <task id="LOCAL-00001" summary="Initial commit">
+      <option name="closed" value="true" />
+      <created>1773506267103</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1773506267103</updated>
+    </task>
+    <task id="LOCAL-00002" summary="feat: User entity created">
+      <option name="closed" value="true" />
+      <created>1773687432726</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1773687432726</updated>
+    </task>
+    <task id="LOCAL-00003" summary="feat: Address entity created">
+      <option name="closed" value="true" />
+      <created>1773713119278</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1773713119278</updated>
+    </task>
+    <task id="LOCAL-00004" summary="feat: UserRole added">
+      <option name="closed" value="true" />
+      <created>1773713160015</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1773713160015</updated>
+    </task>
+    <task id="LOCAL-00005" summary="feat: Fire Event entity created">
+      <option name="closed" value="true" />
+      <created>1773714839584</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1773714839584</updated>
+    </task>
+    <task id="LOCAL-00006" summary="fix: get enum added">
+      <option name="closed" value="true" />
+      <created>1773786720755</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1773786720756</updated>
+    </task>
+    <task id="LOCAL-00007" summary="feat: Alert entity created">
+      <option name="closed" value="true" />
+      <created>1773786740377</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1773786740377</updated>
+    </task>
+    <task id="LOCAL-00008" summary="fix: use getter annotation in enums">
+      <option name="closed" value="true" />
+      <created>1773787050919</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1773787050919</updated>
+    </task>
+    <task id="LOCAL-00009" summary="feat: relationships between created entities">
+      <option name="closed" value="true" />
+      <created>1773788604594</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1773788604594</updated>
+    </task>
+    <task id="LOCAL-00010" summary="feat: AddressRepository created">
+      <option name="closed" value="true" />
+      <created>1773789393962</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1773789393962</updated>
+    </task>
+    <task id="LOCAL-00011" summary="feat: AlertRepository created">
+      <option name="closed" value="true" />
+      <created>1773789401630</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1773789401630</updated>
+    </task>
+    <task id="LOCAL-00012" summary="feat: FireRepository created">
+      <option name="closed" value="true" />
+      <created>1773789408840</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1773789408840</updated>
+    </task>
+    <task id="LOCAL-00013" summary="feat: UserRepository created">
+      <option name="closed" value="true" />
+      <created>1773789415886</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1773789415886</updated>
+    </task>
+    <task id="LOCAL-00014" summary="feat: UserDetails implemented">
+      <option name="closed" value="true" />
+      <created>1774400976032</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1774400976032</updated>
+    </task>
+    <task id="LOCAL-00015" summary="feat: UserResponse created">
+      <option name="closed" value="true" />
+      <created>1774401318850</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1774401318850</updated>
+    </task>
+    <task id="LOCAL-00016" summary="feat: find by email implemented">
+      <option name="closed" value="true" />
+      <created>1774401822796</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1774401822796</updated>
+    </task>
+    <task id="LOCAL-00017" summary="feat: AuthService created">
+      <option name="closed" value="true" />
+      <created>1774401842050</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1774401842050</updated>
+    </task>
+    <task id="LOCAL-00018" summary="feat: initial security configuration implemented">
+      <option name="closed" value="true" />
+      <created>1774402266345</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1774402266345</updated>
+    </task>
+    <task id="LOCAL-00019" summary="feat: AuthController created">
+      <option name="closed" value="true" />
+      <created>1774403377029</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1774403377029</updated>
+    </task>
+    <task id="LOCAL-00020" summary="fix: authenticationManager implemented">
+      <option name="closed" value="true" />
+      <created>1774403402692</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1774403402692</updated>
+    </task>
+    <task id="LOCAL-00021" summary="feat: authentication system completion">
+      <option name="closed" value="true" />
+      <created>1774753466976</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1774753466976</updated>
+    </task>
+    <task id="LOCAL-00022" summary="feat: authentication completed">
+      <option name="closed" value="true" />
+      <created>1774757660076</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1774757660076</updated>
+    </task>
+    <task id="LOCAL-00023" summary="fix: redoing the alert relationship for the user">
+      <option name="closed" value="true" />
+      <created>1775533025505</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1775533025505</updated>
+    </task>
+    <task id="LOCAL-00024" summary="fix: redoing db's table">
+      <option name="closed" value="true" />
+      <created>1775689867188</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1775689867188</updated>
+    </task>
+    <task id="LOCAL-00025" summary="feat: Latitude and longitude API added.">
+      <option name="closed" value="true" />
+      <created>1775700514185</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1775700514185</updated>
+    </task>
+    <task id="LOCAL-00026" summary="feat: messaging system implemented, test version">
+      <option name="closed" value="true" />
+      <created>1775704310347</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1775704310347</updated>
+    </task>
+    <task id="LOCAL-00027" summary="refactor: adjust message system">
+      <option name="closed" value="true" />
+      <created>1776276703721</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1776276703721</updated>
+    </task>
+    <task id="LOCAL-00028" summary="fix: converting response from string to json">
+      <option name="closed" value="true" />
+      <created>1776277820122</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1776277820122</updated>
+    </task>
+    <task id="LOCAL-00029" summary="fix: converting response from string to json">
+      <option name="closed" value="true" />
+      <created>1776277823653</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1776277823653</updated>
+    </task>
+    <task id="LOCAL-00030" summary="feat: AlertResponse created">
+      <option name="closed" value="true" />
+      <created>1776277843379</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1776277843379</updated>
+    </task>
+    <task id="LOCAL-00031" summary="feat: EmailService created">
+      <option name="closed" value="true" />
+      <created>1776358377797</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1776358377798</updated>
+    </task>
+    <task id="LOCAL-00032" summary="feat: increased efficiency when sending emails">
+      <option name="closed" value="true" />
+      <created>1776358408722</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1776358408722</updated>
+    </task>
+    <task id="LOCAL-00033" summary="fix: AlertController deleted">
+      <option name="closed" value="true" />
+      <created>1776358528271</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1776358528271</updated>
+    </task>
+    <task id="LOCAL-00034" summary="fix: change of email sender">
+      <option name="closed" value="true" />
+      <created>1776366211036</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1776366211036</updated>
+    </task>
+    <task id="LOCAL-00035" summary="feat: comments added">
+      <option name="closed" value="true" />
+      <created>1776373553064</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1776373553064</updated>
+    </task>
+    <task id="LOCAL-00036" summary="fix: enhanced coordinate system">
+      <option name="closed" value="true" />
+      <created>1776446682752</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1776446682752</updated>
+    </task>
+    <task id="LOCAL-00037" summary="feat: &quot;Forgot my password&quot; system implemented">
+      <option name="closed" value="true" />
+      <created>1776538961515</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1776538961515</updated>
+    </task>
+    <task id="LOCAL-00038" summary="feat: deploying API in Docker">
+      <option name="closed" value="true" />
+      <created>1776546084018</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1776546084018</updated>
+    </task>
+    <task id="LOCAL-00039" summary="feat: get all users for adm added">
+      <option name="closed" value="true" />
+      <created>1776641454906</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1776641454906</updated>
+    </task>
+    <task id="LOCAL-00040" summary="feat: Dashboard Controller added">
+      <option name="closed" value="true" />
+      <created>1776696730327</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1776696730327</updated>
+    </task>
+    <task id="LOCAL-00041" summary="feat: Dashboard Controller added">
+      <option name="closed" value="true" />
+      <created>1776696739050</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1776696739050</updated>
+    </task>
+    <task id="LOCAL-00042" summary="fix: &#10;fixing Docker bugs">
+      <option name="closed" value="true" />
+      <created>1776827508416</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1776827508416</updated>
+    </task>
+    <task id="LOCAL-00043" summary="fix: fixing parameter passing for password change">
+      <option name="closed" value="true" />
+      <created>1776827832546</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1776827832546</updated>
+    </task>
+    <task id="LOCAL-00044" summary="fix: admin routes blocked">
+      <option name="closed" value="true" />
+      <created>1776828134941</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1776828134941</updated>
+    </task>
+    <task id="LOCAL-00045" summary="fix: pipeline start bug fixed">
+      <option name="closed" value="true" />
+      <created>1776828782822</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1776828782822</updated>
+    </task>
+    <option name="localTasksCounter" value="46" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="feat: AuthController created" />
+    <MESSAGE value="fix: authenticationManager implemented" />
+    <MESSAGE value="feat: authentication system completion" />
+    <MESSAGE value="feat: authentication completed" />
+    <MESSAGE value="fix: redoing the alert relationship for the user" />
+    <MESSAGE value="fix: redoing db's table" />
+    <MESSAGE value="feat: Latitude and longitude API added." />
+    <MESSAGE value="feat: messaging system implemented, test version" />
+    <MESSAGE value="refactor: adjust message system" />
+    <MESSAGE value="fix: converting response from string to json" />
+    <MESSAGE value="feat: AlertResponse created" />
+    <MESSAGE value="feat: EmailService created" />
+    <MESSAGE value="feat: increased efficiency when sending emails" />
+    <MESSAGE value="fix: AlertController deleted" />
+    <MESSAGE value="fix: change of email sender" />
+    <MESSAGE value="feat: comments added" />
+    <MESSAGE value="fix: enhanced coordinate system" />
+    <MESSAGE value="feat: &quot;Forgot my password&quot; system implemented" />
+    <MESSAGE value="feat: deploying API in Docker" />
+    <MESSAGE value="feat: get all users for adm added" />
+    <MESSAGE value="feat: Dashboard Controller added" />
+    <MESSAGE value="fix: &#10;fixing Docker bugs" />
+    <MESSAGE value="fix: fixing parameter passing for password change" />
+    <MESSAGE value="fix: admin routes blocked" />
+    <MESSAGE value="fix: pipeline start bug fixed" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix: pipeline start bug fixed" />
+  </component>
+</project>

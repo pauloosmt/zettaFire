@@ -1,6 +1,8 @@
 package com.br.zetta.fire.repository;
 
 import com.br.zetta.fire.data.entity.FireEvent;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -23,4 +25,6 @@ public interface FireEventRepository extends JpaRepository<FireEvent, UUID> {
     boolean existsByIdFocoBdq(Long idFocoBdq);
 
     Optional<FireEvent> findByIdFocoBdq(Long idFocoBdq);
+
+    Page<FireEvent> findAll(Pageable pageable);
 }

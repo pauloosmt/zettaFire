@@ -6,7 +6,7 @@
     "orientation": "portrait",
     "icon": "./assets/images/logo.png",
     "scheme": "zettafire",
-    "userInterfaceStyle": "light", 
+    "userInterfaceStyle": "light",
     "newArchEnabled": true,
     "ios": {
       "supportsTablet": true
@@ -23,6 +23,10 @@
       "output": "static",
       "favicon": "./assets/images/logo.png"
     },
+    "notification": {
+      "icon": "./assets/images/logo.png",
+      "color": "#EA580C"
+    },
     "plugins": [
       "expo-router",
       [
@@ -31,7 +35,13 @@
           "image": "./assets/images/logo.png",
           "imageWidth": 200,
           "resizeMode": "contain",
-          "backgroundColor": "#F6F4EB" 
+          "backgroundColor": "#F6F4EB"
+        }
+      ],
+      [
+        "expo-notifications",
+        {
+          "sounds": ["./assets/sounds/alertsound.wav"]
         }
       ]
     ],

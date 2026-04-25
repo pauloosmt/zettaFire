@@ -34,8 +34,8 @@ PASTA_COLETA = Path(__file__).resolve().parents[1] / "coleta" / "dados_inpe"
 PASTA_SAIDA = Path(__file__).resolve().parent / "dados_tratados"
 PASTA_BUFFER = Path(__file__).resolve().parent
 ARQUIVOS_BUFFER_PADRAO = [
-    PASTA_BUFFER / "Lavras_buffer10km.geojson",
-    PASTA_BUFFER / "Lavras_buffer_10km.shp",
+    PASTA_BUFFER / "MG_Municipios_2025.shp",
+    PASTA_BUFFER / "MG_Municipios_2025.shx",
 ]
 
 
@@ -70,6 +70,15 @@ def ajustar_crs_buffer(gdf_buffer):
     if parece_graus and gdf_buffer.crs != "EPSG:4326":
         return gdf_buffer.set_crs("EPSG:4326", allow_override=True)
     return gdf_buffer
+
+
+def garantir_crs_buffer(gdf_buffer, caminho_buffer):
+    gdf_ajustado = ajustar_crs_buffer(gdf_buffer)
+    if gdf_ajustado.crs is None:
+        raise ValueError(
+            f"O buffer {caminho_buffer} nao possui CRS definido e nao foi possivel inferir automaticamente."
+        )
+    return gdf_ajustado
 
 
 def preparar_coordenadas(df):
@@ -155,12 +164,10 @@ def filtrar_pontos_no_buffer(df, caminho_buffer):
     gdf_buffer = gpd.read_file(caminho_buffer)
     if gdf_buffer.empty:
         raise ValueError(f"O buffer {caminho_buffer} nao contem geometrias.")
-    if gdf_buffer.crs is None:
-        raise ValueError(f"O buffer {caminho_buffer} nao possui CRS definido.")
 
-    gdf_buffer = ajustar_crs_buffer(gdf_buffer).to_crs(gdf_pontos.crs)
+    gdf_buffer = garantir_crs_buffer(gdf_buffer, caminho_buffer).to_crs(gdf_pontos.crs)
     geometria_buffer = gdf_buffer.union_all()
-    return gdf_pontos[gdf_pontos.within(geometria_buffer)].drop(columns="geometry")
+    return gdf_pontos[gdf_pontos.intersects(geometria_buffer)].drop(columns="geometry")
 
 
 def limpar_dataframe(df, caminho_buffer):

@@ -29,7 +29,6 @@ export default function FeedScreen() {
         try {
             const response = await api.get('/fire-event/all', { params: { page: 0, size: 20 } });
             const data = response.data.content || response.data;
-            console.log("Fires fetched:", data);
             setFires(Array.isArray(data) ? data : []);
         } catch (error: any) {
             if (error.response?.status === 403) {

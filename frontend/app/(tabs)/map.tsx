@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, ActivityIndicator, Alert } from 'react-native';
-import MapView, { Heatmap, PROVIDER_GOOGLE, Marker, Callout } from 'react-native-maps';
+import MapView, { Heatmap, PROVIDER_GOOGLE } from 'react-native-maps';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Feather } from '@expo/vector-icons';
 import { useLocalSearchParams } from 'expo-router';
@@ -31,17 +31,6 @@ export default function MapScreen() {
     const [fires, setFires] = useState<FireEvent[]>([]);
     const [loading, setLoading] = useState(true);
 
-    const capitalizeCity = (name: string) => {
-        if (!name) return "Local";
-        return name.toLowerCase().split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
-    };
-
-    const formatRisk = (risk: number | null | undefined) => {
-        if (risk == null) return "N/D";
-        const pct = risk <= 1 ? risk * 100 : risk;
-        return pct.toFixed(1) + "%";
-    };
-
     const fetchFires = async () => {
         setLoading(true);
         try {
@@ -70,21 +59,22 @@ export default function MapScreen() {
         }
     }, [lat, lng]);
 
-    const heatmapPoints = fires
-        .filter(f => f.fire_risk != null && f.fire_risk > 0)
-        .map(fire => ({
+    const heatmapPoints = fires.map(fire => {
+        const risk = (fire.fire_risk != null && fire.fire_risk > 0) ? fire.fire_risk : 0.2;
+        return {
             latitude: fire.latitude,
             longitude: fire.longitude,
-            weight: fire.fire_risk <= 1 ? fire.fire_risk : fire.fire_risk / 100,
-        }));
+            weight: risk <= 1 ? risk : risk / 100,
+        };
+    });
 
     return (
         <View style={styles.container}>
             <View style={[styles.header, { paddingTop: insets.top + 12 }]}>
                 <View>
-                    <Text style={styles.headerTitle}>Mapa de Risco</Text>
+                    <Text style={styles.headerTitle}>Mapa de Calor</Text>
                     <Text style={styles.headerSubtitle}>
-                        {fires.length} focos detectados via Google Maps
+                        {fires.length} focos detectados em MG
                     </Text>
                 </View>
                 <TouchableOpacity style={styles.refreshButton} onPress={fetchFires}>
@@ -104,8 +94,8 @@ export default function MapScreen() {
                 {heatmapPoints.length > 0 && (
                     <Heatmap
                         points={heatmapPoints}
-                        radius={40}
-                        opacity={0.7}
+                        radius={60}
+                        opacity={0.8}
                         gradient={{
                             colors: ['transparent', '#fcd34d', '#ea580c', '#b91c1c'],
                             startPoints: [0.01, 0.25, 0.6, 1],
@@ -113,23 +103,6 @@ export default function MapScreen() {
                         }}
                     />
                 )}
-
-                {fires.map((fire) => (
-                    <Marker
-                        key={fire.id}
-                        coordinate={{ latitude: fire.latitude, longitude: fire.longitude }}
-                        pinColor={fire.fire_risk != null && fire.fire_risk > 0.7 ? "#b91c1c" : "#ea580c"}
-                    >
-                        <Callout tooltip>
-                            <View style={styles.calloutContainer}>
-                                <Text style={styles.calloutTitle}>{capitalizeCity(fire.city)}</Text>
-                                <Text style={styles.calloutDesc}>Risco: {formatRisk(fire.fire_risk)}</Text>
-                                <Text style={styles.calloutDesc}>Status: {fire.status_fire}</Text>
-                                <View style={styles.calloutArrow} />
-                            </View>
-                        </Callout>
-                    </Marker>
-                ))}
             </MapView>
 
             <TouchableOpacity
@@ -188,17 +161,5 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         elevation: 6,
-    },
-    calloutContainer: {
-        width: 160, backgroundColor: '#FFF', borderRadius: 8,
-        padding: 10, marginBottom: 5, borderColor: '#E5E7EB', borderWidth: 1,
-    },
-    calloutTitle: { fontWeight: 'bold', fontSize: 14, color: '#1F2937' },
-    calloutDesc: { fontSize: 12, color: '#4B5563' },
-    calloutArrow: {
-        width: 0, height: 0, backgroundColor: 'transparent', borderStyle: 'solid',
-        borderLeftWidth: 8, borderRightWidth: 8, borderTopWidth: 10,
-        borderLeftColor: 'transparent', borderRightColor: 'transparent', borderTopColor: '#FFF',
-        alignSelf: 'center', marginTop: -1,
     }
 });

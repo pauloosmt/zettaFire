@@ -25,6 +25,7 @@ public class TokenService {
             return JWT.create()
                     .withIssuer("zettaFire")
                     .withSubject(user.getEmail())
+                    .withClaim("role", user.getUserRole().name())
                     .withExpiresAt(genExpirationDate())
                     .sign(algorithm);
         } catch (JWTCreationException exception) {

@@ -104,6 +104,7 @@ public class UserService {
         User user = new User(userRequestDTO, password);
         user.setUserRole(UserRole.valueOf("USER"));
         user.setAddress(address);
+        user.setPushToken(userRequestDTO.pushToken());
 
         userRepository.save(user);
 

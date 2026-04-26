@@ -37,3 +37,8 @@ build/
 
 ### Arquivos .env ###
 *.env
+.env
+
+### Firebase ###
+firebase-service-account.json
+*firebase*.json

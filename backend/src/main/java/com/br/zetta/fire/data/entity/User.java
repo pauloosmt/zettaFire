@@ -1,6 +1,5 @@
 package com.br.zetta.fire.data.entity;
 
-
 import com.br.zetta.fire.data.dto.request.UserRequestDTO;
 import com.br.zetta.fire.data.entity.enums.UserRole;
 import jakarta.persistence.*;
@@ -21,6 +20,7 @@ import java.util.UUID;
 @Setter
 @Table(name = "users")
 @NoArgsConstructor
+@AllArgsConstructor
 public class User implements UserDetails {
 
     @Id
@@ -36,12 +36,16 @@ public class User implements UserDetails {
     @Column(name="password", nullable = false)
     private String password;
 
-    @Column(name="phone",nullable = false)
+    @Column(name="phone", nullable = false)
     private String phone;
+
+    @Column(name = "push_token", nullable = true)
+    private String pushToken;
 
     @Column(name = "createdAt")
     private LocalDate createdAt;
 
+    @Enumerated(EnumType.STRING)
     @Column(name="userRole")
     private UserRole userRole;
 
@@ -58,18 +62,17 @@ public class User implements UserDetails {
     )
     private List<Alert> alertList = new ArrayList<>();
 
-
     private String resetToken;
     private LocalDateTime tokenExpiration;
 
-
     @Builder
-    public User(UserRequestDTO userRequestDTO, String password) {
+    public User(UserRequestDTO userRequestDTO, String encryptedPassword) {
         this.name = userRequestDTO.name();
         this.email = userRequestDTO.email();
-        this.password = userRequestDTO.password();
+        this.password = encryptedPassword;
         this.phone = userRequestDTO.phone();
-        this.password = password;
+        this.pushToken = userRequestDTO.pushToken();
+        this.userRole = UserRole.USER;
         this.createdAt = LocalDate.now();
 
         Address addr = new Address();
@@ -99,24 +102,21 @@ public class User implements UserDetails {
 
     @Override
     public boolean isAccountNonExpired() {
-        return UserDetails.super.isAccountNonExpired();
+        return true;
     }
-
 
     @Override
     public boolean isAccountNonLocked() {
-        return UserDetails.super.isAccountNonLocked();
+        return true;
     }
-
 
     @Override
     public boolean isCredentialsNonExpired() {
-        return UserDetails.super.isCredentialsNonExpired();
+        return true;
     }
-
 
     @Override
     public boolean isEnabled() {
-        return UserDetails.super.isEnabled();
+        return true;
     }
 }

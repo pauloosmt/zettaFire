@@ -22,6 +22,8 @@ public record UserRequestDTO(
         @Pattern(regexp = "\\(\\d{2}\\)\\d{5}-\\d{4}", message = "Invalid phone. Use (XX)XXXXX-XXXX")
         String phone,
 
+        String pushToken,
+
         AddressRequestDTO address
 ) {
 }

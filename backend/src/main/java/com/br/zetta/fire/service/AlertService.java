@@ -1,10 +1,8 @@
 package com.br.zetta.fire.service;
 
 import com.br.zetta.fire.data.entity.Alert;
-import com.br.zetta.fire.data.entity.FireEvent;
 import com.br.zetta.fire.data.entity.User;
 import com.br.zetta.fire.data.entity.enums.StatusAlert;
-import com.br.zetta.fire.exceptions.custom.AlertProcessingException;
 import com.br.zetta.fire.repository.AlertRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,34 +10,27 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.List;
-
 
 @Service
 public class AlertService {
     private final AlertRepository alertRepository;
     private final EmailService emailService;
+    private final PushNotificationService pushNotificationService;
 
     private static final Logger logger = LoggerFactory.getLogger(AlertService.class);
 
-    public AlertService( AlertRepository alertRepository, EmailService emailService) {
+    public AlertService(AlertRepository alertRepository, EmailService emailService, PushNotificationService pushNotificationService) {
         this.alertRepository = alertRepository;
         this.emailService = emailService;
+        this.pushNotificationService = pushNotificationService;
     }
 
-
     @Scheduled(fixedDelay = 20000)
-    @Transactional(readOnly = true)
+    @Transactional
     public void processPendingAlerts() {
-
-        logger.info("Total de alertas no banco: {}", alertRepository.count());
         // Busca alertas com status PENDING (criados pelo Trigger SQL)
         List<Alert> pendingAlerts = alertRepository.findByStatusAlert(StatusAlert.PENDING);
-
-        logger.info("Alertas pendentes encontrados: {}", pendingAlerts.size());
 
         for (Alert alert : pendingAlerts) {
             try {
@@ -51,25 +42,33 @@ public class AlertService {
                             user.getEmail(),
                             alert.getIdAlert(),
                             "ALERTA CRÍTICO: Risco de Incêndio Detectado",
-                            "Prezado " + user.getName() + ",\n" +
-                                    "\n" +
-                                    "O sistema Bem-Te-Vi detectou um foco de incêndio ou risco iminente em sua área monitorada.\n" +
-                                    "Por favor, mantenha a calma, siga os protocolos de segurança da sua região e, se necessário, realize a evacuação do local imediatamente. A sua segurança e a preservação do meio ambiente são nossas prioridades.\n" +
-                                    "\n" +
-                                    "Este é um alerta automático. Não responda a este e-mail"
+                            "O sistema Bem-Te-Vi detectou um foco próximo a você."
                     );
+
+                    String token = user.getPushToken();
+                    logger.info("Verificando push para o usuario: {} - Token: {}", user.getName(), token);
+                    if (token != null && !token.isEmpty()) {
+                        pushNotificationService.sendPushNotification(
+                                token,
+                                "🔥 ALERTA DE INCÊNDIO",
+                                "Foco detectado em " + user.getAddress().getCity() + "! Verifique o mapa.",
+                                "alertsound.wav",
+                                "alertas-fogo"
+                        );
+                    } else {
+                        logger.warn("Usuario {} nao possui push_token cadastrado!", user.getName());
+                    }
                 }
 
                 // Opcional: Marcar como enviado aqui também para evitar duplicidade enquanto o @Async processa
                 alert.setStatusAlert(StatusAlert.SENT);
                 alertRepository.save(alert);
 
-            } catch (AlertProcessingException ex) {
-                logger.warn("Erro de processamento: {}", ex.getMessage());
+            } catch (Exception ex) {
+                logger.warn("Erro ao processar alerta {}: {}", alert.getIdAlert(), ex.getMessage());
                 alert.setStatusAlert(StatusAlert.FAILED);
                 alertRepository.save(alert);
             }
         }
     }
-
 }

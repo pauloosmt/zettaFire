@@ -75,3 +75,18 @@ $$ LANGUAGE plpgsql;
 CREATE TRIGGER tg_novo_incendio_alerta
 AFTER INSERT ON fire_event
 FOR EACH ROW EXECUTE FUNCTION monitorar_e_alertar_usuarios();
+
+CREATE OR REPLACE FUNCTION promote_first_user_to_admin()
+RETURNS TRIGGER AS $$
+BEGIN
+    -- Se não existir nenhum usuário, força a string 'ADMIN' que é o valor do Enum
+    IF (SELECT COUNT(*) FROM users) = 0 THEN
+        NEW."user_role" := 'ADMIN'; 
+    END IF;
+    RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE TRIGGER trg_first_user_admin
+BEFORE INSERT ON users
+FOR EACH ROW EXECUTE FUNCTION promote_first_user_to_admin();

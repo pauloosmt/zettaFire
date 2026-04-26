@@ -3,6 +3,7 @@ import { View, Text, TextInput, TextInputProps } from 'react-native';
 interface InputProps extends TextInputProps {
     label?: string;
     error?: string;
+    className?: string;
 }
 
 export function Input({ label, error, className = '', ...rest }: InputProps) {
@@ -15,8 +16,9 @@ export function Input({ label, error, className = '', ...rest }: InputProps) {
             )}
 
             <TextInput
-                className={`w-full bg-white px-4 py-4 rounded-xl border ${error ? 'border-red-500' : 'border-gray-200'
-                    } text-text`}
+                className={`w-full bg-white px-4 py-4 rounded-xl border ${
+                    error ? 'border-red-500' : 'border-gray-200'
+                } text-text`}
                 placeholderTextColor="#9CA3AF"
                 {...rest}
             />

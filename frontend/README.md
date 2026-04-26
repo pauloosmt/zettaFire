@@ -1,50 +1,90 @@
-# Welcome to your Expo app 👋
+# Zetta Fire - Frontend
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+Aplicativo móvel desenvolvido em **React Native** com **Expo** para monitoramento de focos de incêndio no estado de Minas Gerais.
 
-## Get started
+## 🔧 Tecnologias
 
-1. Install dependencies
+| Tecnologia | Descrição |
+|------------|-----------|
+| **Expo** | Framework para criação de apps React Native com ferramentas integradas |
+| **React Native** | Biblioteca para desenvolvimento de apps nativos iOS e Android |
+| **Expo Router** | Sistema de navegação baseado em arquivos para Expo |
+| **NativeWind** | Utilitário de estilização usando classes Tailwind CSS |
+| **TypeScript** | Superset JavaScript com tipagem estática |
+| **Expo Notifications** | Sistema de notificações push via Firebase Cloud Messaging |
 
-   ```bash
-   npm install
-   ```
+## 📱 Funcionalidades
 
-2. Start the app
+- **Autenticação**: Login e registro de usuários
+- **Dashboard**: Visualização de estatísticas e alertas
+- **Mapa Interativo**: Exibição de focos de incêndio em tempo real
+- **Notificações Push**: Alertas sobre novos focos detectados
+- **Interface Responsiva**: Design adaptável para diferentes tamanhos de tela
 
-   ```bash
-   npx expo start
-   ```
+## 🚀 Começando
 
-In the output, you'll find options to open the app in a
+### Pré-requisitos
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+- Node.js 18+
+- npm ou yarn
+- Conta Expo (para notificações push)
+- Projeto Firebase configurado
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
+### Instalação
 
 ```bash
-npm run reset-project
+# Instalar dependências
+npm install
+
+# Iniciar servidor de desenvolvimento
+npx expo start
+
+# Executar no Android
+npx expo run:android
+
+# Executar no iOS
+npx expo run:ios
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+### Build para Produção
 
-## Learn more
+```bash
+# Gerar build nativo local
+npx expo prebuild
 
-To learn more about developing your project with Expo, look at the following resources:
+# Build via EAS (cloud)
+npx eas-cli build --platform android --profile production
+```
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+## 📁 Estrutura de Diretórios
 
-## Join the community
+```
+frontend/
+├── app/                    # Páginas e rotas (Expo Router)
+│   ├── (auth)/            # Rotas de autenticação
+│   │   ├── login.tsx
+│   │   └── register.tsx
+│   ├── (tabs)/            # Rotas com tabs navigation
+│   │   ├── dashboard.tsx
+│   │   ├── map.tsx
+│   │   └── index.tsx
+│   ├── _layout.tsx        # Layout raiz
+│   └── index.tsx          # Entry point
+├── assets/                # Imagens, fontes, sons
+├── components/            # Componentes reutilizáveis
+│   ├── layout/
+│   └── ui/
+├── utils/                 # Funções utilitárias
+├── services/              # Configuração do Axios
+├── theme/                 # Configurações de tema
+└── package.json
+```
 
-Join our community of developers creating universal apps.
+## 🔔 Notificações Push
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+O app utiliza **Firebase Cloud Messaging (FCM)** para enviar notificações push. Para configurar:
+
+1. Criar projeto no [Firebase Console](https://console.firebase.google.com/)
+2. Adicionar app Android com package `com.henrique117.zettafire`
+3. Baixar `google-services.json` e colocar em `android/app/`
+4. Configurar credenciais no Expo

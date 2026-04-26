@@ -32,6 +32,14 @@ yarn-error.*
 
 # local .env files
 .env*.local
+.env
+
+# Firebase
+google-services.json
+*firebase*.json
+
+# EAS secrets
+.eas/
 
 # typescript
 *.tsbuildinfo

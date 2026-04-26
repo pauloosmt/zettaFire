@@ -1,26 +1,20 @@
-import React, { useEffect, useRef } from 'react';
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
-import MapView, { Heatmap, PROVIDER_GOOGLE } from 'react-native-maps';
+import React, { useEffect, useRef, useState } from 'react';
+import { View, Text, TouchableOpacity, StyleSheet, ActivityIndicator, Alert } from 'react-native';
+import MapView, { Heatmap, PROVIDER_GOOGLE, Marker, Callout } from 'react-native-maps';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Feather } from '@expo/vector-icons';
 import { useLocalSearchParams } from 'expo-router';
+import api from '../../services/api';
 
 interface FireEvent {
-    idFireEvent: string;
+    id: string;
+    city: string;
     latitude: number;
     longitude: number;
-    fireRisk: number;
+    status_fire: string;
+    fire_risk: number;
+    start_time: string;
 }
-
-const MOCK_FIRES: FireEvent[] = [
-    { idFireEvent: '1', latitude: -19.9167, longitude: -43.9345, fireRisk: 100 },
-    { idFireEvent: '2', latitude: -19.9500, longitude: -43.9000, fireRisk: 80 },
-    { idFireEvent: '3', latitude: -19.7672, longitude: -43.8528, fireRisk: 90 },
-    { idFireEvent: '4', latitude: -18.9186, longitude: -48.2772, fireRisk: 60 },
-    { idFireEvent: '5', latitude: -21.7664, longitude: -43.3496, fireRisk: 85 },
-    { idFireEvent: '6', latitude: -16.7333, longitude: -43.8667, fireRisk: 95 },
-    { idFireEvent: '7', latitude: -21.2312, longitude: -44.9934, fireRisk: 95.5},
-];
 
 const MG_REGION = {
     latitude: -18.5122,
@@ -34,32 +28,67 @@ export default function MapScreen() {
     const mapRef = useRef<MapView>(null);
     const { lat, lng } = useLocalSearchParams();
 
-    const heatmapPoints = MOCK_FIRES.map(fire => ({
-        latitude: fire.latitude,
-        longitude: fire.longitude,
-        weight: fire.fireRisk,
-    }));
+    const [fires, setFires] = useState<FireEvent[]>([]);
+    const [loading, setLoading] = useState(true);
+
+    const capitalizeCity = (name: string) => {
+        if (!name) return "Local";
+        return name.toLowerCase().split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
+    };
+
+    const formatRisk = (risk: number | null | undefined) => {
+        if (risk == null) return "N/D";
+        const pct = risk <= 1 ? risk * 100 : risk;
+        return pct.toFixed(1) + "%";
+    };
+
+    const fetchFires = async () => {
+        setLoading(true);
+        try {
+            const response = await api.get('/fire-event/all', { params: { page: 0, size: 100 } });
+            const data = response.data.content || response.data;
+            setFires(Array.isArray(data) ? data : []);
+        } catch (error) {
+            Alert.alert("Erro", "Falha ao sincronizar dados de satélite.");
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    useEffect(() => {
+        fetchFires();
+    }, []);
 
     useEffect(() => {
         if (lat && lng) {
             mapRef.current?.animateToRegion({
                 latitude: Number(lat),
                 longitude: Number(lng),
-                latitudeDelta: 0.1,
-                longitudeDelta: 0.1,
-            }, 1500);
+                latitudeDelta: 0.02,
+                longitudeDelta: 0.02,
+            }, 1000);
         }
     }, [lat, lng]);
 
+    const heatmapPoints = fires
+        .filter(f => f.fire_risk != null && f.fire_risk > 0)
+        .map(fire => ({
+            latitude: fire.latitude,
+            longitude: fire.longitude,
+            weight: fire.fire_risk <= 1 ? fire.fire_risk : fire.fire_risk / 100,
+        }));
+
     return (
         <View style={styles.container}>
-            <View style={[styles.header, { paddingTop: insets.top + 16 }]}>
+            <View style={[styles.header, { paddingTop: insets.top + 12 }]}>
                 <View>
                     <Text style={styles.headerTitle}>Mapa de Risco</Text>
-                    <Text style={styles.headerSubtitle}>Monitoramento em Tempo Real - MG</Text>
+                    <Text style={styles.headerSubtitle}>
+                        {fires.length} focos detectados via Google Maps
+                    </Text>
                 </View>
-                <TouchableOpacity style={styles.filterButton}>
-                    <Feather name="filter" size={20} color="#EA580C" />
+                <TouchableOpacity style={styles.refreshButton} onPress={fetchFires}>
+                    <Feather name="refresh-cw" size={20} color="#EA580C" />
                 </TouchableOpacity>
             </View>
 
@@ -68,74 +97,90 @@ export default function MapScreen() {
                 provider={PROVIDER_GOOGLE}
                 style={styles.map}
                 initialRegion={MG_REGION}
+                mapType="hybrid"
                 minZoomLevel={5}
-                maxZoomLevel={15}
-                showsUserLocation={true}
-                showsMyLocationButton={false}
-                mapType="terrain"
+                showsUserLocation={false}
             >
-                <Heatmap
-                    points={heatmapPoints}
-                    radius={20}
-                    opacity={0.8}
-                    gradient={{
-                        colors: ['transparent', '#fcd34d', '#ea580c', '#b91c1c'],
-                        startPoints: [0.01, 0.25, 0.6, 1],
-                        colorMapSize: 256,
-                    }}
-                />
+                {heatmapPoints.length > 0 && (
+                    <Heatmap
+                        points={heatmapPoints}
+                        radius={40}
+                        opacity={0.7}
+                        gradient={{
+                            colors: ['transparent', '#fcd34d', '#ea580c', '#b91c1c'],
+                            startPoints: [0.01, 0.25, 0.6, 1],
+                            colorMapSize: 256,
+                        }}
+                    />
+                )}
+
+                {fires.map((fire) => (
+                    <Marker
+                        key={fire.id}
+                        coordinate={{ latitude: fire.latitude, longitude: fire.longitude }}
+                        pinColor={fire.fire_risk != null && fire.fire_risk > 0.7 ? "#b91c1c" : "#ea580c"}
+                    >
+                        <Callout tooltip>
+                            <View style={styles.calloutContainer}>
+                                <Text style={styles.calloutTitle}>{capitalizeCity(fire.city)}</Text>
+                                <Text style={styles.calloutDesc}>Risco: {formatRisk(fire.fire_risk)}</Text>
+                                <Text style={styles.calloutDesc}>Status: {fire.status_fire}</Text>
+                                <View style={styles.calloutArrow} />
+                            </View>
+                        </Callout>
+                    </Marker>
+                ))}
             </MapView>
 
-            <TouchableOpacity style={styles.fab}>
-                <Feather name="refresh-cw" size={24} color="#FFF" />
+            <TouchableOpacity
+                style={styles.resetFab}
+                onPress={() => mapRef.current?.animateToRegion(MG_REGION)}
+            >
+                <Feather name="map" size={24} color="#FFF" />
             </TouchableOpacity>
+
+            {loading && (
+                <View style={styles.loadingOverlay}>
+                    <ActivityIndicator size="large" color="#EA580C" />
+                </View>
+            )}
         </View>
     );
 }
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: '#F3F4F6',
-    },
+    container: { flex: 1, backgroundColor: '#000' },
     header: {
-        backgroundColor: '#FFFFFF',
+        position: 'absolute',
+        top: 0, width: '100%',
+        backgroundColor: 'rgba(255, 255, 255, 0.9)',
         paddingHorizontal: 20,
-        paddingBottom: 16,
+        paddingBottom: 12,
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
+        zIndex: 10,
         borderBottomWidth: 1,
         borderBottomColor: '#E5E7EB',
-        zIndex: 10,
-        elevation: 5,
     },
-    headerTitle: {
-        fontSize: 20,
-        fontWeight: 'bold',
-        color: '#1F2937',
+    headerTitle: { fontSize: 18, fontWeight: 'bold', color: '#1F2937' },
+    headerSubtitle: { fontSize: 12, color: '#6B7280' },
+    refreshButton: {
+        width: 40, height: 40, borderRadius: 20,
+        backgroundColor: '#FFF7ED', justifyContent: 'center', alignItems: 'center',
     },
-    headerSubtitle: {
-        fontSize: 12,
-        color: '#6B7280',
-        marginTop: 2,
-    },
-    filterButton: {
-        width: 40,
-        height: 40,
-        borderRadius: 20,
-        backgroundColor: '#FFF7ED',
+    map: { flex: 1 },
+    loadingOverlay: {
+        ...StyleSheet.absoluteFillObject,
+        backgroundColor: 'rgba(0,0,0,0.3)',
         justifyContent: 'center',
         alignItems: 'center',
+        zIndex: 20,
     },
-    map: {
-        flex: 1,
-        width: '100%',
-    },
-    fab: {
+    resetFab: {
         position: 'absolute',
-        bottom: 24,
-        right: 24,
+        bottom: 30,
+        right: 20,
         width: 56,
         height: 56,
         borderRadius: 28,
@@ -143,9 +188,17 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         elevation: 6,
-        shadowColor: '#000',
-        shadowOffset: { width: 0, height: 3 },
-        shadowOpacity: 0.3,
-        shadowRadius: 4,
+    },
+    calloutContainer: {
+        width: 160, backgroundColor: '#FFF', borderRadius: 8,
+        padding: 10, marginBottom: 5, borderColor: '#E5E7EB', borderWidth: 1,
+    },
+    calloutTitle: { fontWeight: 'bold', fontSize: 14, color: '#1F2937' },
+    calloutDesc: { fontSize: 12, color: '#4B5563' },
+    calloutArrow: {
+        width: 0, height: 0, backgroundColor: 'transparent', borderStyle: 'solid',
+        borderLeftWidth: 8, borderRightWidth: 8, borderTopWidth: 10,
+        borderLeftColor: 'transparent', borderRightColor: 'transparent', borderTopColor: '#FFF',
+        alignSelf: 'center', marginTop: -1,
     }
 });

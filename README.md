@@ -29,7 +29,7 @@ graph TD
     Trigger -->|Gera Alerta PENDING| DB
     
     %% Disparo de Alertas
-    Spring -->|@Scheduled Worker a cada 20s| DB
+    Spring -->|Worker Agendado a cada 20s| DB
     Spring -->|Disparo SMTP / Gmail| Email[E-mail de Alerta Crítico ao Usuário]
     
     %% Frontend
